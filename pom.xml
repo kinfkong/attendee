@@ -1,0 +1,210 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wiproevents</groupId>
+    <artifactId>attendee-rest-api-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>attendee-rest-api-parent</name>
+    <packaging>pom</packaging>
+    <url>http://maven.apache.org</url>
+
+    <modules>
+        <module>shared</module>
+        <module>dbtool</module>
+        <module>microservice1</module>
+        <module>microservice2</module>
+        <module>gateway</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.10.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring.version>5.0.3.RELEASE</spring.version>
+        <jackson.version>2.9.4</jackson.version>
+        <spring-security.version>5.0.1.RELEASE</spring-security.version>
+        <spring-social.version>1.1.4.RELEASE</spring-social.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <azure.documentdb.uri>${env.COSMOS_DB_URI}</azure.documentdb.uri>
+        <azure.documentdb.key>${env.COSMOS_DB_KEY}</azure.documentdb.key>
+        <azure.documentdb.database>${env.COSMOS_DB_NAME}</azure.documentdb.database>
+
+        <social.facebook.appId>${env.SOCIAL_FACEBOOK_APP_ID}</social.facebook.appId>
+        <social.facebook.appSecret>${env.SOCIAL_FACEBOOK_APP_SECRET}</social.facebook.appSecret>
+
+        <social.linkedin.appId>${env.SOCIAL_LINKEDIN_APP_ID}</social.linkedin.appId>
+        <social.linkedin.appSecret>${env.SOCIAL_LINKEDIN_APP_SECRET}</social.linkedin.appSecret>
+
+        <social.twitter.appId>${env.SOCIAL_TWITTER_APP_ID}</social.twitter.appId>
+        <social.twitter.appSecret>${env.SOCIAL_TWITTER_APP_SECRET}</social.twitter.appSecret>
+
+        <social.google.appId>${env.SOCIAL_GOOGLE_APP_ID}</social.google.appId>
+        <social.google.appSecret>${env.SOCIAL_GOOGLE_APP_SECRET}</social.google.appSecret>
+
+        <spring.mail.host>${env.MAIL_SMTP_HOST}</spring.mail.host>
+        <spring.mail.port>${env.MAIL_SMTP_PORT}</spring.mail.port>
+        <spring.mail.username>${env.MAIL_SMTP_USERNAME}</spring.mail.username>
+        <spring.mail.password>${env.MAIL_SMTP_PASSWORD}</spring.mail.password>
+        <spring.mail.properties.mail.smtp.auth>${env.MAIL_SMTP_AUTH_REQUIRED}</spring.mail.properties.mail.smtp.auth>
+        <spring.mail.properties.mail.smtp.starttls.enable>${env.MAIL_SMTP_STARTTLS_ENABLED}</spring.mail.properties.mail.smtp.starttls.enable>
+        <spring.mail.properties.mail.smtp.starttls.required>${env.MAIL_SMTP_STARTTLS_REQUIRED}</spring.mail.properties.mail.smtp.starttls.required>
+        <mail.from>${env.MAIL_FROM_ADDRESS}</mail.from>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-bus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.9-RC1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+
+
+        <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb-spring-boot-starter -->
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-documentdb-spring-boot-starter</artifactId>
+            <version>0.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-social-linkedin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-social-facebook</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-social-twitter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-security</artifactId>
+            <version>${spring-social.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-config</artifactId>
+            <version>${spring-social.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-core</artifactId>
+            <version>${spring-social.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-web</artifactId>
+            <version>${spring-social.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.spring-social/spring-social-google -->
+        <dependency>
+            <groupId>com.github.spring-social</groupId>
+            <artifactId>spring-social-google</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

@@ -1,0 +1,2399 @@
+{
+	"info": {
+		"name": "Wipro Event Management REST API",
+		"_postman_id": "3e0a62e2-011e-96f6-65a7-77eedaff75be",
+		"description": "REST API for the Wipro Event Management Application.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "lookups",
+			"description": "Folder for designations",
+			"item": [
+				{
+					"name": "Get all designations.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/lookups/designations",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"lookups",
+								"designations"
+							]
+						},
+						"description": "Get all designations.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all countries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/lookups/countries",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"lookups",
+								"countries"
+							]
+						},
+						"description": "Get all designations.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all permissions.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/lookups/permissions",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"lookups",
+								"permissions"
+							]
+						},
+						"description": "Get all permissions.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all timezones.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/lookups/timezones",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"lookups",
+								"timezones"
+							]
+						},
+						"description": "Get all timezones.\n"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7fe0b3ca-f91a-49ca-81af-ee1c07a5ee2e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6d52e5b-1f65-42bc-9d25-ade019018b33",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "eventCategories",
+			"description": "Folder for eventCategories",
+			"item": [
+				{
+					"name": "Get EventCategory.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventCategories/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventCategories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_CATEGORY_ID}}"
+								}
+							]
+						},
+						"description": "Get EventCategory. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update EventCategory.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"5df1e612-e42f-4c55-95ae-6c0cf3979ef1\",\n    \"name\": \"Talk Show\",\n    \"logo\": {\n        \"id\": \"2d7364de-4d49-4921-9dd1-c990d83077d7\",\n        \"name\": \"the logo\",\n        \"fileURL\": \"http://xxx\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/eventCategories/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventCategories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_CATEGORY_ID}}"
+								}
+							]
+						},
+						"description": "Update EventCategory. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete EventCategory.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventCategories/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventCategories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_CATEGORY_ID}}"
+								}
+							]
+						},
+						"description": "Delete EventCategory.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Search event categories.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventCategories",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventCategories"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search event categories. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create event category.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a7307ca4-4c2b-4db2-b4c3-8d70c70c57b8",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"EVENT_CATEGORY_ID\", pm.response.json().id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"name\": \"Talk Show\",\n      \"logo\": {\n        \"id\": \"{{FILE_ID}}\"\n      }\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/eventCategories",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventCategories"
+							]
+						},
+						"description": "Create event category. \n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "eventDayAgendas",
+			"description": "Folder for eventDayAgendas",
+			"item": [
+				{
+					"name": "Search eventDayAgendas.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventDayAgendas?eventId={{EVENT_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventDayAgendas"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "{{EVENT_ID}}",
+									"equals": true
+								},
+								{
+									"key": "day",
+									"value": "{{day}}",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search eventDayAgendas.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create EventDayAgenda.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "979e298d-3f8e-4c12-8004-3ef6ffb248b3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"DAY_AGENDA_ID\", pm.response.json().id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event\": {\n      \"id\": \"{{EVENT_ID}}\"\n    },\n    \"day\": 123,\n    \"breaks\": [\n      {\n        \"name\": \"string\",\n        \"venue\": \"string\",\n        \"building\": \"string\",\n        \"rooms\": \"string\",\n        \"mapImage\": {\n          \"id\": \"{{FILE_ID}}\"\n        },\n        \"startTime\": \"2017-01-01\",\n        \"endTime\": \"2018-01-01\"\n      }\n    ]\n  }"
+						},
+						"url": {
+							"raw": "{{URL}}/eventDayAgendas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventDayAgendas"
+							]
+						},
+						"description": "Create EventDayAgenda. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get eventDayAgenda.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventDayAgendas/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventDayAgendas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{DAY_AGENDA_ID}}"
+								}
+							]
+						},
+						"description": "Get EventDayAgenda. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update EventDayAgenda.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"{{DAY_AGENDA_ID}}\",\n    \"event\": {\n      \"id\": \"{{EVENT_ID}}\"\n    },\n    \"day\": 321,\n    \"breaks\": [\n      {\n        \"name\": \"string\",\n        \"venue\": \"string\",\n        \"building\": \"string\",\n        \"rooms\": \"string\",\n        \"mapImage\": {\n          \"id\": \"{{FILE_ID}}\"\n        },\n        \"startTime\": \"2017-01-01\",\n        \"endTime\": \"2018-01-01\"\n      }\n    ]\n  }"
+						},
+						"url": {
+							"raw": "{{URL}}/eventDayAgendas/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventDayAgendas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{DAY_AGENDA_ID}}"
+								}
+							]
+						},
+						"description": "Update EventDayAgenda. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete EventDayAgenda.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventDayAgendas/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventDayAgendas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{DAY_AGENDA_ID}}"
+								}
+							]
+						},
+						"description": "Delete EventDayAgenda.\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "eventTypes",
+			"description": "Folder for eventTypes",
+			"item": [
+				{
+					"name": "Search event types.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventTypes?name=Event Type 1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventTypes"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Event Type 1",
+									"equals": true
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search event types. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create event type.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "35ea2f46-e56e-40fa-b4e2-4b8a988a26be",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"EVENT_TYPE_ID\", pm.response.json().id);",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"event1\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/eventTypes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventTypes"
+							]
+						},
+						"description": "Create event type. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get EventType.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventTypes/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventTypes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_TYPE_ID}}"
+								}
+							]
+						},
+						"description": "Get EventType. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update EventType.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"96b832e4-a756-4ef7-8c73-a957262be369\",\n    \"name\": \"event1_updated\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/eventTypes/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventTypes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_TYPE_ID}}"
+								}
+							]
+						},
+						"description": "Update EventType. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete EventType.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/eventTypes/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"eventTypes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_ID}}"
+								}
+							]
+						},
+						"description": "Delete EventType.\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "events",
+			"description": "Folder for events",
+			"item": [
+				{
+					"name": "Search events.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/events",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "locationLat",
+									"value": "{{locationLat}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "locationLng",
+									"value": "{{locationLng}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "durationDays",
+									"value": "{{durationDays}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "eventStartDate",
+									"value": "{{eventStartDate}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "eventEndDate",
+									"value": "{{eventEndDate}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "registrationStartDate",
+									"value": "{{registrationStartDate}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "registrationEndDate",
+									"value": "{{registrationEndDate}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "sortColumn",
+									"value": "{{sortColumn}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "sortOrder",
+									"value": "{{sortOrder}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "responseType",
+									"value": "{{responseType}}",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search events.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cce3b03c-ce56-40fc-b576-e72d76abcb4a",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"EVENT_ID\", pm.response.json().id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"template\" : true,\n  \"name\" : \"string\",\n  \"description\" : \"string\",\n  \"startDate\" : \"2017-01-01\",\n  \"endDate\" : \"2017-02-11\",\n  \"registrationEndDate\" : \"2016-01-01\",\n  \"registrationStartDate\" : \"2016-12-12\",\n  \"location\" : {\n    \"name\" : \"string\",\n    \"country\" : {\n      \"id\" : \"{{COUNTRY_ID}}\"\n    },\n    \"state\" : \"string\",\n    \"locality\" : \"string\",\n    \"streetAndBuilding\" : \"string\",\n    \"zip\" : \"string\",\n    \"latitude\" : 39.9,\n    \"longitude\" : 116.3\n  },\n  \"invitations\" : [\n    {\n      \"name\" : \"string\",\n      \"email\" : \"string\",\n      \"phone\" : \"string\"\n    }\n  ],\n  \"galleryImages\" : [\n    {\n      \"id\" : \"{{FILE_ID}}\"\n    }\n  ],\n  \"splashScreenRequired\" : true,\n  \"splashScreenFile\" : {\n    \"id\" : \"{{FILE_ID}}\"\n  },\n  \"imageThumbnailFile\" : {\n    \"id\" : \"{{FILE_ID}}\"\n  },\n  \"headerColor\" : \"string\",\n  \"category\" : {\n    \"id\" : \"{{EVENT_CATEGORY_ID}}\"\n  },\n  \"type\" : {\n    \"id\" : \"{{EVENT_TYPE_ID}}\"\n  },\n  \"souvenirsProvided\" : true,\n  \"souvenirs\" : [\n    {\n      \"name\" : \"T-shirt\",\n      \"description\" : \"string\",\n      \"options\" : [\n        \"S\", \"M\", \"XL\", \"XXL\"\n      ]\n    }\n  ],\n  \"ticketOptions\" : [\n    {\n      \"name\" : \"XL\",\n      \"price\" : 0,\n      \"quota\" : 0,\n      \"description\" : \"All benefits of regular registration\"\n    }\n  ],\n  \"paymentOptions\" : [\n    {\n      \"name\" : \"Credit Card\"\n    }\n  ],\n  \"status\" : \"Saved\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/events",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events"
+							]
+						},
+						"description": "Create Event. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get event.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/events/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_ID}}"
+								}
+							]
+						},
+						"description": "Get Event. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///events/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Update Event. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event.",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///events/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Delete Event. Please note that soft delete should be performed and the status should be set to deleted status, but the entity should remain. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get event dashboard.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/events/:id/dashboard",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								":id",
+								"dashboard"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "eaf0e008-4b0e-4438-88a5-45b2e7c9154c"
+								}
+							]
+						},
+						"description": "Get Event dashboard. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get event day agendas.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/events/:id/dayAgendas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								":id",
+								"dayAgendas"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_ID}}"
+								}
+							]
+						},
+						"description": "Get Event day agendas. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get event sessions.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/events/:id/sessions",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								":id",
+								"sessions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{EVENT_ID}}"
+								}
+							]
+						},
+						"description": "Get Event sessions. \n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sessionAttendees",
+			"description": "Folder for sessionAttendees",
+			"item": [
+				{
+					"name": "Search SessionAttendees.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/sessionAttendees?status=Deleted",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessionAttendees"
+							],
+							"query": [
+								{
+									"key": "sessionId",
+									"value": "3fbcb32f-a073-400e-bd7d-26cc91e1fdc1",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "7842146d-4c0a-4fab-9cf7-0a14f8fa4c83",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "Deleted",
+									"equals": true
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "sortColumn",
+									"value": "{{sortColumn}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "sortOrder",
+									"value": "{{sortOrder}}",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search SessionAttendee. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create event SessionAttendee.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"session\": {\n    \"id\": \"{{SESSION_ID}}\"\n  },\n  \"registeredOn\": \"2017-01-01\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/sessionAttendees",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessionAttendees"
+							]
+						},
+						"description": "Create event SessionAttendee. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get SessionAttendee.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/sessionAttendees/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessionAttendees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "676e2240-9a0f-42d0-affb-3b8499fee5e7"
+								}
+							]
+						},
+						"description": "Get SessionAttendee. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update SessionAttendee.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"676e2240-9a0f-42d0-affb-3b8499fee5e7\",\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"session\": {\n    \"id\": \"{{SESSION_ID}}\"\n  },\n  \"registeredOn\": \"2017-02-01\",\n  \"status\": \"Deleted\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/sessionAttendees/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessionAttendees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "676e2240-9a0f-42d0-affb-3b8499fee5e7"
+								}
+							]
+						},
+						"description": "Update SessionAttendee. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete SessionAttendee.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/sessionAttendees/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessionAttendees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "676e2240-9a0f-42d0-affb-3b8499fee5e7"
+								}
+							]
+						},
+						"description": "Delete SessionAttendee. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Set SessionAttendee status to deleted.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/sessionAttendees/:id/delete",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessionAttendees",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "547b4be7-b382-4ca7-a708-67cc72d5a275"
+								}
+							]
+						},
+						"description": "Set SessionAttendee status to deleted. \n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sessions",
+			"description": "Folder for sessions",
+			"item": [
+				{
+					"name": "Search sessions.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/sessions?dayAgendaId={{DAY_AGENDA_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "{{eventId}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "dayAgendaId",
+									"value": "{{DAY_AGENDA_ID}}",
+									"equals": true
+								},
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "startDateBefore",
+									"value": "{{startDate}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "endDateBefore",
+									"value": "{{endDate}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "sortColumn",
+									"value": "{{sortColumn}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "sortOrder",
+									"value": "{{sortOrder}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "startDateAfter",
+									"value": "",
+									"equals": false,
+									"disabled": true
+								},
+								{
+									"key": "endDateAfter",
+									"value": "",
+									"equals": false,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search sessions.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Session.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa964ded-85f0-4bb2-9408-c03b56ffd682",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"SESSION_ID\", pm.response.json().id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event\": {\n      \"id\": \"{{EVENT_ID}}\"\n    },\n    \"dayAgendaId\": \"{{DAY_AGENDA_ID}}\",\n    \"name\": \"string\",\n    \"venue\": \"string\",\n    \"building\": \"string\",\n    \"rooms\": \"string\",\n    \"mapImage\": {\n      \"id\": \"{{FILE_ID}}\"\n    },\n    \"startTime\": \"2017-01-01\",\n    \"endTime\": \"2018-01-01\",\n    \"seatCapability\": 0,\n    \"assignedSpeakers\": [\n      {\n        \"id\": \"{{USER_ID}}\"\n      }\n    ],\n    \"addedSpeakers\": [\n      {\n        \"name\": \"string\",\n        \"company\": \"string\",\n        \"job\": \"string\",\n        \"description\": \"string\",\n        \"profilePictureURL\": \"string\"\n      }\n    ],\n    \"galleryImages\": [\n      {\n        \"id\": \"{{FILE_ID}}\"\n      }\n    ],\n    \"files\": [\n      {\n        \"category\": {\n          \"id\": \"{{FILE_CATEGORY_ID}}\"\n        },\n        \"files\": [\n          {\n            \"id\": \"{{FILE_ID}}\"\n          }\n        ]\n      },\n      {\n        \"category\": {\n          \"id\": \"{{FILE_CATEGORY_ID}}\"\n        },\n        \"files\": [\n          {\n            \"id\": \"{{FILE_ID}}\"\n          }\n        ]\n      }\n    ],\n    \"status\": \"Active\"\n  }"
+						},
+						"url": {
+							"raw": "{{URL}}/sessions",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessions"
+							]
+						},
+						"description": "Create Session. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get session.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/sessions/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{SESSION_ID}}"
+								}
+							]
+						},
+						"description": "Get Session. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Session.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///sessions/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Update Session. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Session.",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///sessions/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Delete Session. Please note that soft delete should be performed and the status should be set to deleted status, but the entity should remain. \n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "userEventAssignments",
+			"description": "Folder for userEventAssignments",
+			"item": [
+				{
+					"name": "Get UserEventAssignments.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/userEventAssignments?userId={{USER_ID}}&eventId={{EVENT_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userEventAssignments"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{USER_ID}}",
+									"equals": true
+								},
+								{
+									"key": "eventId",
+									"value": "{{EVENT_ID}}",
+									"equals": true
+								}
+							]
+						},
+						"description": "Get UserEventAssignments.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create UserEventAssignment.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": {\n\t\t\"id\": \"{{USER_ID}}\"\n\t},\n\t\"event\": {\n\t\t\"id\": \"{{EVENT_ID}}\"\n\t},\n\t\"roles\": [{\n\t\t\"id\": \"{{ADMIN_ROLE_ID}}\"\n\t}] \n}"
+						},
+						"url": {
+							"raw": "{{URL}}/userEventAssignments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userEventAssignments"
+							]
+						},
+						"description": "Create UserEventAssignment. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update UserEventAssignment.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"34b3a899-6ed6-4afe-afa9-6635d72d03d9\",\n\t\"user\": {\n\t\t\"id\": \"{{USER_ID}}\"\n\t},\n\t\"event\": {\n\t\t\"id\": \"{{EVENT_ID}}\"\n\t},\n\t\"roles\": [{\n\t\t\"id\": \"{{ADMIN_ROLE_ID}}\"\n\t}] \n}"
+						},
+						"url": {
+							"raw": "{{URL}}/userEventAssignments/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userEventAssignments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "34b3a899-6ed6-4afe-afa9-6635d72d03d9"
+								}
+							]
+						},
+						"description": "Update UserEventAssignment.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete UserEventAssignment.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/userEventAssignments/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userEventAssignments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5dc9476e-52a7-428b-b507-c7ae2586295c"
+								}
+							]
+						},
+						"description": "Delete UserEventAssignment.\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "userPreferences",
+			"description": "Folder for userPreferences",
+			"item": [
+				{
+					"name": "Get current user preferences.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/userPreferences",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userPreferences"
+							]
+						},
+						"description": "Get UserPreferences. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update UserPreferences.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"notificationMethodPreferences\": [\n    {\n      \"notificationTypesCovered\": [\n        {\n          \"id\": \"5b725233-b50e-2161-bfe6-41a861e23fb7\"\n        }\n      ],\n      \"notificationMethod\": \"SMS\"\n    }\n  ],\n    \"rooms\": [\"room1\"],\n    \"food\": [\"fish\", \"meat\"]\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/userPreferences",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userPreferences"
+							]
+						},
+						"description": "Update UserPreferences. \n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "userRoles",
+			"description": "Folder for userRoles",
+			"item": [
+				{
+					"name": "Get UserRoles.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/userRoles",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userRoles"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ADMIN",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get UserRoles.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create UserRole.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"ADMIN\",\n\t\"permissions\": [{\n\t\t\"id\": \"5ee8597f-f368-b5ec-bc7f-f8eaee2b33ef\"\n\t},{\n\t\t\"id\": \"dbcb194c-e476-7466-060f-b31fb670a5ed\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/userRoles",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userRoles"
+							]
+						},
+						"description": "Create UserRole. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update UserRole.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"772bf2ad-838f-a7de-714a-66b27831cf55\",\n            \"name\": \"USER\",\n            \"permissions\": [\n                {\n                    \"id\": \"c745e285-623b-3630-e80b-b9668cb5ca16\"\n                }\n            ]\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/userRoles/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userRoles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "772bf2ad-838f-a7de-714a-66b27831cf55"
+								}
+							]
+						},
+						"description": "Update UserRole.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete UserRole.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/userRoles/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userRoles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "a1b5f6cb-0988-4e46-b621-b3fea383cebc"
+								}
+							]
+						},
+						"description": "Delete UserRole.\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"description": "Folder for users",
+			"item": [
+				{
+					"name": "Search Users.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/users?fullName=kinfkong&sortColumn=fullName&sortOrder=DESC&pageSize=10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "fullName",
+									"value": "kinfkong",
+									"equals": true
+								},
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "userRoleId",
+									"value": "{{userRoleId}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "{{status}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "sortColumn",
+									"value": "fullName",
+									"equals": true
+								},
+								{
+									"key": "sortOrder",
+									"value": "DESC",
+									"equals": true
+								},
+								{
+									"key": "responseType",
+									"value": "{{responseType}}",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "10",
+									"equals": true
+								}
+							]
+						},
+						"description": "Search Users. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get the User.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/users/:id?responseType=",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"query": [
+								{
+									"key": "responseType",
+									"value": "",
+									"equals": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "40d989b3-d308-4549-94d6-ec09a1b32cde"
+								}
+							]
+						},
+						"description": "retrieve User.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update user.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{USER_ID}}\",\n    \"email\": \"kinfkong@126.com\",\n    \"fullName\": \"kinfkong\",\n    \"personalPhone\": \"1234567\",\n    \"businessPhone\": \"1234567\",\n    \"businessUnit\": \"1234567\",\n    \"designation\": {\n    \t\"id\": \"81a0af60-c154-6e7c-ba28-2862e7ba03fd\"\n    },\n    \"aboutMe\": \"This is me\",\n    \"profilePictureURL\": \"http://www.baidu.com\",\n    \"status\": \"ACTIVE\",\n    \"roles\": [\n        {\n            \"id\": \"772bf2ad-838f-a7de-714a-66b27831cf55\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/users/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{USER_ID}}"
+								}
+							]
+						},
+						"description": "Update User. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/users/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{USER_ID}}"
+								}
+							]
+						},
+						"description": "Delete User. Please note that soft delete should be performed and the status should be set to deleted status, but the entity should remain. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get current User.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d32445a-4b24-43bb-a801-a7bc6b66d73f",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"USER_ID\", pm.response.json().id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "retrieve current User.\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Security",
+			"description": "",
+			"item": [
+				{
+					"name": "verify email.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/verifyEmail?email=jjinggtt@tc.com&verificationToken=bb10dedb-a007-4146-ab6f-079b7cd7cd5c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"verifyEmail"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "jjinggtt@tc.com",
+									"equals": true
+								},
+								{
+									"key": "verificationToken",
+									"value": "bb10dedb-a007-4146-ab6f-079b7cd7cd5c",
+									"equals": true
+								}
+							]
+						},
+						"description": "verify email.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update user password.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"123456\",\n  \"newPassword\": \"abcdefg\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/updatePassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"updatePassword"
+							]
+						},
+						"description": "update User password.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Register User.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"John Nash\",\n  \"email\": \"user2@tc.com\",\n  \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"signup"
+							]
+						},
+						"description": "Signup/register user. Please note that it will create user with full name, email and password first. The user profile will then be updated using the update user endpoint.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with facebook.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{URL}}/connect/facebook",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"connect",
+								"facebook"
+							]
+						},
+						"description": "Sign up with facebook\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with twitter.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///signup/twitter",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"signup",
+								"twitter"
+							]
+						},
+						"description": "Sign up with twitter.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with google.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///signup/google",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"signup",
+								"google"
+							]
+						},
+						"description": "Sign up with google,\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with linkedin.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///signup/linkedIn",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"signup",
+								"linkedIn"
+							]
+						},
+						"description": "Sign up with linkedin.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6797ebce-72b5-4323-9465-cd83128c2e14",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"USER_TOKEN\", pm.response.json().token);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user@tc.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"rememberMe\": false\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Login using username and password. \n"
+					},
+					"response": []
+				},
+				{
+					"name": "Log out.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"logout"
+							]
+						},
+						"description": "Logging out. It requires authentication.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Change forgot password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"jjinggtt@tc.com\",\n  \"forgotPasswordToken\": \"d9bd3a22-9505-4fa0-a6ec-7fbe015bf4f9\",\n  \"newPassword\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/changeForgotPassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"changeForgotPassword"
+							]
+						},
+						"description": "Change forgot password.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Initiate forgot password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/initiateForgotPassword?email=jjinggtt@tc.com",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"initiateForgotPassword"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "jjinggtt@tc.com",
+									"equals": true
+								}
+							]
+						},
+						"description": "Initiate forgot password.\n"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
