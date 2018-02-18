@@ -5,10 +5,13 @@ package com.wiproevents.services.springdata;
 
 import com.wiproevents.entities.Notification;
 import com.wiproevents.entities.criteria.NotificationSearchCriteria;
+import com.wiproevents.entities.statuses.NotificationStatus;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.services.NotificationService;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * The Spring Data JPA implementation of NotificationService,
@@ -29,6 +32,14 @@ public class NotificationServiceImpl
     protected DocumentDbSpecification<Notification> getSpecification(NotificationSearchCriteria criteria)
             throws AttendeeException {
         return new NotificationSpecification(criteria);
+    }
+
+    @Override
+    protected void handleNestedCreate(Notification entity) throws AttendeeException {
+        entity.setStatus(NotificationStatus.New);
+        entity.setCreatedOn(new Date());
+        entity.setReadOn(null);
+        super.handleNestedCreate(entity);
     }
 }
 

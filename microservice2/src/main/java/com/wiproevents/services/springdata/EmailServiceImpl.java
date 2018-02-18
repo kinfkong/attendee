@@ -5,10 +5,19 @@ package com.wiproevents.services.springdata;
 
 import com.wiproevents.entities.Email;
 import com.wiproevents.entities.criteria.EmailSearchCriteria;
+import com.wiproevents.entities.statuses.EmailStatus;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.services.EmailService;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 /**
  * The Spring Data JPA implementation of EmailService,
@@ -17,6 +26,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailServiceImpl
         extends BaseService<Email, EmailSearchCriteria> implements EmailService {
+
+
+    /**
+     * The java mail sender.
+     */
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    /**
+     * The default from email address.
+     */
+    @Value("${mail.from}")
+    private String fromAddress;
 
     /**
      * This method is used to get the specification.
@@ -29,6 +51,43 @@ public class EmailServiceImpl
     protected DocumentDbSpecification<Email> getSpecification(EmailSearchCriteria criteria)
             throws AttendeeException {
         return new EmailSpecification(criteria);
+    }
+
+
+    @Override
+    public Email create(Email entity) throws AttendeeException {
+        if (!entity.isScheduled()) {
+            // send immediately
+            for (String email: entity.getEmails()) {
+                sendEmail(email, entity.getTitle(), entity.getText());
+            }
+            entity.setStatus(EmailStatus.Sent);
+        } else {
+            entity.setStatus(EmailStatus.Scheduled);
+        }
+        return super.create(entity);
+    }
+
+    /**
+     * Send email with to email address, email fullName and model params.
+     *
+     * @param toEmail  the email to send
+     * @param title the email subject
+     * @param text the email body
+     * @throws AttendeeException throws if error to send email.
+     */
+    private void sendEmail(String toEmail, String title, String text) throws AttendeeException {
+        try {
+            MimeMessage mail = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mail);
+            helper.setTo(toEmail);
+            helper.setFrom(fromAddress);
+            helper.setSubject(title);
+            helper.setText(text, true);
+            javaMailSender.send(mail);
+        } catch (MessagingException | MailException e) {
+            throw new AttendeeException("Error to send email", e);
+        }
     }
 }
 

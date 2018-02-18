@@ -10,5 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Document(collection = "timezone")
-public class Timezone extends LookupEntity {
+public class Timezone extends IdentifiableEntity {
+    private String value;
+    private String time;
 }
