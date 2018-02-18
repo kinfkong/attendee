@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
@@ -44,7 +45,13 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
     @Getter(value = PROTECTED)
     private DocumentDbSpecificationRepository<T, String> repository;
 
+    @Autowired
+    private ApplicationContext appContext;
+
     private PropertyUtilsBean beanUtils = new PropertyUtilsBean();
+
+
+    private Map<String, DocumentDbSpecificationRepository> repositories = new HashMap<>();
 
     /**
      * Check if all required fields are initialized properly.
@@ -54,6 +61,7 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
     @PostConstruct
     protected void checkConfiguration() {
         Helper.checkConfigNotNull(repository, "repository");
+        repositories = appContext.getBeansOfType(DocumentDbSpecificationRepository.class);
     }
 
     /**
@@ -208,10 +216,11 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
         return result;
     }
 
-    private <ST extends IdentifiableEntity> DocumentDbSpecificationRepository<ST,String>
+    @SuppressWarnings("unchecked")
+    private <ST extends IdentifiableEntity> DocumentDbSpecificationRepository<ST, String>
         getRepositoryByClass(Class<? extends IdentifiableEntity> clazz) {
-
-        return null;
+        String name = clazz.getSimpleName().substring(0, 1).toLowerCase() + clazz.getSimpleName().substring(1);
+        return repositories.get(name);
     }
 
 

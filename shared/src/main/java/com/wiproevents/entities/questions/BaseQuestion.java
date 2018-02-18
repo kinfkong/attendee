@@ -18,6 +18,6 @@ public abstract class BaseQuestion extends IdentifiableEntity {
     private int orderNumber;
     private boolean multiSelectAllowed;
 
-    @Reference(by = "questionId", cascade = true)
+    @Reference(cascade = true)
     private List<AnswerOption> answerOptions;
 }
