@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Getter
 @Setter
-public class BaseEngagement extends IdentifiableEntity {
+public abstract class BaseEngagement extends IdentifiableEntity {
     private String name;
     private EngagementContextType context;
     private String eventId;

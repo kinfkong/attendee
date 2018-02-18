@@ -46,11 +46,11 @@ public class ExtMappingDocumentDbConverter extends MappingDocumentDbConverter {
 
         Class<? extends Object> clazz = entity.getClass();
         while (clazz != null) {
-            // for reference document, save the id only
             for (final Field field : clazz.getDeclaredFields()) {
                 if (null != idProperty && field.getName().equals(idProperty.getName())) {
                     continue;
                 }
+
                 Object value = accessor.getProperty(entityInformation.getPersistentProperty(field.getName()));
                 value = modifyValue(value);
                 targetDocument.set(field.getName(), value);

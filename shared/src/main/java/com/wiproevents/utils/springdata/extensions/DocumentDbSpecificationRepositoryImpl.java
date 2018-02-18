@@ -39,6 +39,7 @@ public class DocumentDbSpecificationRepositoryImpl<T, ID extends Serializable> e
         this.entityInformation = metadata;
     }
 
+
     @Override
     public SearchResult<T> findAll(DocumentDbSpecification<T> spec, Paging paging) {
         Query q = new Query();

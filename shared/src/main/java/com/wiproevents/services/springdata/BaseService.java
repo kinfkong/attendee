@@ -114,6 +114,106 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
         return this.get(obj.getId());
     }
 
+    @SuppressWarnings(value = "unchecked")
+    private <ST extends IdentifiableEntity> ST createOrUpdateEntity(ST entity, ST oldEntity,
+                                                          DocumentDbSpecificationRepository<ST, String> repository)
+            throws AttendeeException {
+
+        Helper.checkNull(entity, "entity");
+
+        boolean isNew = oldEntity == null;
+
+        if (isNew && entity.getId() == null) {
+            entity.setId(UUID.randomUUID().toString());
+        }
+
+        if (repository == null) {
+            repository = getRepositoryByClass(entity.getClass());
+        }
+        if (entity instanceof AuditableEntity) {
+            AuditableEntity auditableEntity = (AuditableEntity) entity;
+            Date now = new Date();
+            if (isNew) {
+                auditableEntity.setCreatedOn(new Date());
+            } else {
+                auditableEntity.setCreatedOn(((AuditableEntity) oldEntity).getCreatedOn());
+            }
+            auditableEntity.setUpdatedOn(now);
+            if (entity instanceof AuditableUserEntity) {
+                AuditableUserEntity auditableUserEntity = (AuditableUserEntity) entity;
+                if (Helper.getAuthUser() != null) {
+                    if (isNew) {
+                        auditableUserEntity.setCreatedBy(Helper.getAuthUser().getId());
+                    } else {
+                        auditableUserEntity.setCreatedBy(((AuditableUserEntity) oldEntity).getCreatedBy());
+                    }
+                    auditableUserEntity.setUpdatedBy(Helper.getAuthUser().getId());
+                }
+            }
+        }
+
+        ST result = repository.save(entity);
+
+        Class<?> clazz = entity.getClass();
+        while (clazz != null) {
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                Reference reverseReferenceAnnotation = field.getAnnotation(Reference.class);
+
+                // handle cascade reference
+                if (reverseReferenceAnnotation == null || !reverseReferenceAnnotation.cascade()) {
+                    continue;
+                }
+
+                boolean originalAccess = field.isAccessible();
+                field.setAccessible(true);
+                Object value;
+                Object oldValue = null;
+                try {
+                    value = field.get(entity);
+                    if (oldEntity != null) {
+                        oldValue = field.get(oldEntity);
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new AttendeeException("cannot get the field: "
+                            + field.getName() + " from class: " + clazz.getName());
+                }
+                field.setAccessible(originalAccess);
+                if (value == null) {
+                    continue;
+                }
+                if (value instanceof List) {
+                    Map<String, IdentifiableEntity> oldEntityMappings = new HashMap<>();
+                    if (oldValue != null) {
+                        for (IdentifiableEntity subEntity: (List<IdentifiableEntity>) oldValue) {
+                            oldEntityMappings.put(subEntity.getId(), subEntity);
+                        }
+                    }
+                    for (IdentifiableEntity subEntity: (List<IdentifiableEntity>) value) {
+                        if (subEntity.getId() == null) {
+                            createOrUpdateEntity(subEntity, null, null);
+                            continue;
+                        }
+                        IdentifiableEntity oldSubEntity = oldEntityMappings.get(subEntity.getId());
+                        createOrUpdateEntity(subEntity, oldSubEntity, null);
+                    }
+                } else {
+                    createOrUpdateEntity((IdentifiableEntity) value, (IdentifiableEntity) oldValue, null);
+                }
+            }
+
+            clazz = clazz.getSuperclass();
+        }
+
+        return result;
+    }
+
+    private <ST extends IdentifiableEntity> DocumentDbSpecificationRepository<ST,String>
+        getRepositoryByClass(Class<? extends IdentifiableEntity> clazz) {
+
+        return null;
+    }
+
 
     /**
      * This method is used to delete an entity.
