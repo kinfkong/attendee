@@ -5,6 +5,236 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1db7e8f3-1706-4eb5-9c94-2645a257af46" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/DatabaseConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/aop/LogAspect.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/BaseEmailController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/ConversationController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/EmailController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/EventWallPostController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/MessageController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/NotificationController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/PollController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/QuizController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/SurveyController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/UserNoteController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/UserPollAnswerController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/UserQuizAnswerController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/UserSurveyAnswerController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/dbtool/CollectionTool.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/dbtool/DatabaseConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/dbtool/DbToolApplication.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/AccessToken.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/AgendaBreak.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/AnswerOption.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/AuditableEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/AuditableUserEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/BaseEngagement.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Conversation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Country.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Designation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Email.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Event.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/EventCategory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/EventDayAgenda.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/EventFAQ.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/EventInvitation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/EventNotification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/EventStatistics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/EventWallPost.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/FeedbackSurveyQuestion.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/FileCategory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/FileEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/ForgotPassword.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/ForgotPasswordToken.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/IdentifiableEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Location.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/LoginRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/LookupEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Message.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Model.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/NewPassword.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Notification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/NotificationMethodPreference.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/PaymentOption.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Poll.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Quiz.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Session.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/SessionAttendee.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/SessionFile.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/SessionStatistics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/SessionStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/SocialUser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Souvenir.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Speaker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Survey.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/TicketOption.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Timezone.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/Token.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/User.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/UserEventAssignment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/UserEventFeedback.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/UserNote.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/UserPermission.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/UserPreference.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/UserRole.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/VerifyEmailToken.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/BaseAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/BaseQuestionAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/FAQQuestionAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/UserPollAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/UserPollQuestionAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/UserQuizAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/UserQuizQuestionAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/UserSurveyAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/answers/UserSurveyQuestionAnswer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/briefs/EventBrief.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/briefs/PollBrief.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/briefs/QuizBrief.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/briefs/SessionBrief.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/briefs/SurveyBrief.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/briefs/UserBrief.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/BaseSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/ConversationSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/EmailSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/EventCategorySearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/EventDayAgendaSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/EventFAQSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/EventSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/EventTypeSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/EventWallPostSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/MessageSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/NotificationSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/PollSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/QuizSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/SessionAttendeeSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/SessionSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/SocialUserSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/SurveySearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserEventAssignmentSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserEventFeedbackSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserNoteSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserPollAnswerSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserQuizAnswerSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserRoleSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/criteria/UserSurveyAnswerSearchCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/questions/BaseQuestion.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/questions/PollQuestion.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/questions/QuizQuestion.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/questions/SurveyQuestion.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/ConversationStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/EmailStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/EngagementStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/EventStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/EventWallPostStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/MessageStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/NotificationStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/SessionAttendeeStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/statuses/UserStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/types/ConversationType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/types/EngagementContextType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/types/EngagementType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/types/EventType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/types/NotificationType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/entities/types/RecipientType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/exceptions/AccessDeniedException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/exceptions/AttendeeException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/exceptions/ConfigurationException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/exceptions/EntityNotFoundException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/exceptions/ServiceExceptionHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/CustomAuthenticationEntryPoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/CustomUserDetails.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/MvcConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/SecurityConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/SimpleUserDetailsService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/StatelessAuthenticationFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/TokenAuthenticationService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/UserAuthentication.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/security/social/DefaultConnectionFactoryConfigurer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/ConversationService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/EmailService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/EventWallPostService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/GenericService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/MessageService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/NotificationService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/PollService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/QuizService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/SocialUserService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/SurveyService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/UserNoteService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/UserPollAnswerService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/UserQuizAnswerService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/UserSurveyAnswerService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/AccessTokenRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/BaseService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/ConversationRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/ConversationServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/ConversationSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/EmailRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/EmailServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/EmailSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/EventBriefRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/EventWallPostRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/EventWallPostServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/EventWallPostSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/FileEntityRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/MessageRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/MessageServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/MessageSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/NotificationRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/NotificationServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/NotificationSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/NotificationTypeRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/PollRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/PollServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/PollSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/QuizRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/QuizServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/QuizSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/SocialUserRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/SocialUserServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/SocialUserSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/SurveyRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/SurveyServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/SurveySpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/TimezoneRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserNoteRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserNoteServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserNoteSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserPermissionRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserPollAnswerRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserPollAnswerServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserPollAnswerSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserPreferenceRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserPreferenceServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserPreferenceSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserQuizAnswerRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserQuizAnswerServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserQuizAnswerSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserRoleRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserRoleServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserRoleSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserSurveyAnswerRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserSurveyAnswerServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/UserSurveyAnswerSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/services/springdata/VerifyEmailTokenRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/Helper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/DocumentDbSpecification.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/DocumentDbSpecificationRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/DocumentDbSpecificationRepositoryImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/ExtDocumentDbOperations.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/ExtDocumentDbRepositoryFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/ExtDocumentDbRepositoryFactoryBean.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/ExtDocumentDbTemplate.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/ExtMappingDocumentDbConverter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/Paging.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/SearchResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/utils/springdata/extensions/SortOrder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/resources/application.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/microservice1/src/main/resources/log4j2.properties" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="work.iws" />
@@ -35,11 +265,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="DatabaseConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shared/src/main/java/com/wiproevents/DatabaseConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -241,6 +481,168 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="microservice1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="microservice1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wiproevents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="microservice1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wiproevents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="microservice1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wiproevents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="springdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="microservice1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wiproevents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -594,10 +996,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46943006" sideWeight="0.5042598" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24653888" sideWeight="0.48700175" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49637306" sideWeight="0.49574015" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3326425" sideWeight="0.49574015" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30138445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30138445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -735,29 +1137,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_files/event.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice2/src/main/java/com/wiproevents/MicroService2Application.java" />
-    <entry file="file://$PROJECT_DIR$/test_files/session.json" />
-    <entry file="file://$PROJECT_DIR$/test_files/day_agenda.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="185" selection-start-line="0" selection-start-column="185" selection-end-line="0" selection-end-column="185" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_files/event_session.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -926,6 +1305,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/src/main/java/com/wiproevents/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/src/main/java/com/wiproevents/SocialConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/src/main/java/com/wiproevents/DatabaseConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice1/src/main/java/com/wiproevents/controllers/SurveyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding />
         </state>
       </provider>
