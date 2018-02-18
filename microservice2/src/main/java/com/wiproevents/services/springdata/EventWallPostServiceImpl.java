@@ -24,5 +24,16 @@ public class EventWallPostServiceImpl extends BaseService<EventWallPost, EventWa
     protected DocumentDbSpecification<EventWallPost> getSpecification(EventWallPostSearchCriteria criteria) throws AttendeeException {
         return new EventWallPostSpecification(criteria);
     }
+
+    @Override
+    protected void handlePopulate(EventWallPost entity) throws AttendeeException {
+        super.handlePopulate(entity);
+
+        // populate the child posts
+        EventWallPostSearchCriteria criteria = new EventWallPostSearchCriteria();
+        criteria.setParentPostId(entity.getId());
+        entity.setChildPosts(search(criteria, null).getEntities());
+
+    }
 }
 

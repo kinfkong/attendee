@@ -16,5 +16,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MessageSearchCriteria extends BaseSearchCriteria {
+    private String conversationId;
 }
 

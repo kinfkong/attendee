@@ -37,12 +37,37 @@ public class RepositoryRelation {
     @Autowired
     private EmailRepository emailRepository;
 
+    @Autowired
+    private ConversationRepository conversationRepository;
+
+    @Autowired
+    private UserBriefRepository userBriefRepository;
+
+    @Autowired
+    private MessageRepository messageRepository;
+
+    @Autowired
+    private EventWallPostRepository eventWallPostRepository;
+
     @PostConstruct
     public void handleRepositoryRelations() {
         handleUserNoteRepository();
         handleNotificationRepository();
         handleEmailRepository();
+        handleConversationRepository();
+        handleMessageRepository();
+        handleEventWallPostRepository();
+    }
 
+    private void handleEventWallPostRepository() {
+        eventWallPostRepository.addNestedRepository("user", userBriefRepository);
+        eventWallPostRepository.addNestedRepository("attachedFiles", fileEntityRepository);
+        eventWallPostRepository.addNestedRepository("likeFromUsers", userBriefRepository);
+    }
+
+    private void handleMessageRepository() {
+        messageRepository.addNestedRepository("sender", userBriefRepository);
+        messageRepository.addNestedRepository("attachedFiles", fileEntityRepository);
     }
 
     private void handleUserNoteRepository() {
@@ -59,5 +84,8 @@ public class RepositoryRelation {
         emailRepository.addNestedRepository("timezone", timezoneRepository);
     }
 
-
+    private void handleConversationRepository() {
+        conversationRepository.addNestedRepository("participants", userBriefRepository);
+        conversationRepository.addNestedRepository("session", sessionBriefRepository);
+    }
 }

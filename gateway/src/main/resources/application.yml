@@ -1,5 +1,11 @@
 zuul:
   routes:
+    eventWallPosts:
+      path: /eventWallPosts/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
     userNotes:
       path: /userNotes/**
       serviceId: microservice2
@@ -14,6 +20,18 @@ zuul:
 
     emails:
       path: /emails/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
+    conversations:
+      path: /conversations/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
+    messages:
+      path: /messages/**
       serviceId: microservice2
       sensitiveHeaders:
       stripPrefix: false

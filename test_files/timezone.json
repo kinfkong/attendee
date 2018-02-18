@@ -1,4 +1,4 @@
 [
-{"_attachments":"attachments/","_rid":"TK4PAKML4AEBAAAAAAAAAA==","name":"GMT+8","id":"b310062c-eb97-f2c6-4e8a-a89b9ca13d87","_self":"dbs/TK4PAA==/colls/TK4PAKML4AE=/docs/TK4PAKML4AEBAAAAAAAAAA==/","_etag":"\"000085b4-0000-0000-0000-5a88c02a0000\"","_ts":1518911530},
-{"_attachments":"attachments/","_rid":"TK4PAKML4AECAAAAAAAAAA==","name":"GMT+0","id":"2e596559-26f7-3f6a-b1bc-f03fec3e1284","_self":"dbs/TK4PAA==/colls/TK4PAKML4AE=/docs/TK4PAKML4AECAAAAAAAAAA==/","_etag":"\"000086b4-0000-0000-0000-5a88c02a0000\"","_ts":1518911530}
+{"_attachments":"attachments/","_rid":"TK4PAOr5gAEBAAAAAAAAAA==","time":"GMT+08:00","id":"e07ed08d-911a-d3fa-c781-12f0a1687f9a","_self":"dbs/TK4PAA==/colls/TK4PAOr5gAE=/docs/TK4PAOr5gAEBAAAAAAAAAA==/","value":"Asia/Shanghai","_etag":"\"00003347-0000-0000-0000-5a893baa0000\"","_ts":1518943146},
+{"_attachments":"attachments/","_rid":"TK4PAOr5gAECAAAAAAAAAA==","time":"GMT-10:00","id":"77a5d0a6-a986-1537-32c3-7c8d37226a77","_self":"dbs/TK4PAA==/colls/TK4PAOr5gAE=/docs/TK4PAOr5gAECAAAAAAAAAA==/","value":"US/Hawaii","_etag":"\"00003447-0000-0000-0000-5a893baa0000\"","_ts":1518943146}
 ]
