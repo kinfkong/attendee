@@ -2,17 +2,9 @@ package com.wiproevents;
 
 import com.wiproevents.utils.Helper;
 import org.apache.logging.log4j.ThreadContext;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.boot.autoconfigure.social.SocialWebAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -29,12 +21,7 @@ import java.util.UUID;
 /**
  * The main application.
  */
-@SpringBootApplication(exclude = {SocialWebAutoConfiguration.class, DataSourceAutoConfiguration.class,
-        DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-@ComponentScan(basePackages = {"com.wiproevents"}, excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com.wiproevents.dbtool.*")
-})
-public class Application {
+public abstract class BaseMicoServiceApplication {
     /**
      * The request id listener.
      */
@@ -143,17 +130,5 @@ public class Application {
         templateResolver.setCheckExistence(true);
         templateResolver.setCacheable(false);
         return templateResolver;
-    }
-
-
-
-
-    /**
-     * The main entry point of the application.
-     *
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
     }
 }
