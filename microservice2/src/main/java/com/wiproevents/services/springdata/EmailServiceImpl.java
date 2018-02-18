@@ -4,11 +4,14 @@
 package com.wiproevents.services.springdata;
 
 import com.wiproevents.entities.Email;
+import com.wiproevents.entities.Timezone;
 import com.wiproevents.entities.criteria.EmailSearchCriteria;
 import com.wiproevents.entities.statuses.EmailStatus;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.services.EmailService;
+import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
+import com.wiproevents.utils.springdata.extensions.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
@@ -18,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.Date;
 
 /**
  * The Spring Data JPA implementation of EmailService,
@@ -27,6 +31,8 @@ import javax.mail.internet.MimeMessage;
 public class EmailServiceImpl
         extends BaseService<Email, EmailSearchCriteria> implements EmailService {
 
+    @Autowired
+    private TimezoneRepository timezoneRepository;
 
     /**
      * The java mail sender.
@@ -39,6 +45,7 @@ public class EmailServiceImpl
      */
     @Value("${mail.from}")
     private String fromAddress;
+
 
     /**
      * This method is used to get the specification.
@@ -64,6 +71,22 @@ public class EmailServiceImpl
             entity.setStatus(EmailStatus.Sent);
         } else {
             entity.setStatus(EmailStatus.Scheduled);
+            Helper.checkNull(entity.getDateScheduled(), "dateScheduled");
+
+            // modify the time by timezone
+            if (entity.getTimezone() != null && entity.getTimezone().getId() != null) {
+                Timezone timezone = timezoneRepository.findOne(entity.getTimezone().getId());
+
+                if (timezone == null) {
+                    throw new IllegalArgumentException("The timezone id: "
+                            + entity.getTimezone().getId() + " does not exist.");
+                }
+
+                String timezoneSuffix = timezone.getTime().replace("GMT", "");
+                String dateStr = Helper.toISO8601UTC(entity.getDateScheduled());
+                dateStr = dateStr.replace("Z", timezoneSuffix);
+                entity.setDateScheduled(Helper.fromTimezoneDateString(dateStr));
+            }
         }
         return super.create(entity);
     }
@@ -88,6 +111,28 @@ public class EmailServiceImpl
         } catch (MessagingException | MailException e) {
             throw new AttendeeException("Error to send email", e);
         }
+    }
+
+    public int sendScheduledEmails() throws AttendeeException {
+        // fetch the new emails
+        EmailSearchCriteria criteria = new EmailSearchCriteria();
+        criteria.setStatus(EmailStatus.Scheduled);
+        SearchResult<Email> emails = search(criteria, null);
+        int counter = 0;
+        for (Email entity: emails.getEntities()) {
+            if (entity.getDateScheduled() == null
+                    || entity.getDateScheduled().getTime() > new Date().getTime()) {
+                continue;
+            }
+            for (String email: entity.getEmails()) {
+                sendEmail(email, entity.getTitle(), entity.getText());
+                // update the status
+                entity.setStatus(EmailStatus.Sent);
+                update(entity.getId(), entity);
+                counter++;
+            }
+        }
+        return counter;
     }
 }
 

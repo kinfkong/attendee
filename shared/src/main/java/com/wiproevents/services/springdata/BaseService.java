@@ -157,7 +157,10 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
                 AuditableUserEntity auditableUserEntity = (AuditableUserEntity) entity;
 
                 auditableUserEntity.setCreatedBy(((AuditableUserEntity) existing).getCreatedBy());
-                auditableUserEntity.setUpdatedBy(Helper.getAuthUser().getId());
+                if (Helper.getAuthUser() != null) {
+                    auditableUserEntity.setUpdatedBy(Helper.getAuthUser().getId());
+                }
+
             }
         }
 

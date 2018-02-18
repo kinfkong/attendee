@@ -5,6 +5,7 @@ package com.wiproevents.services;
 
 import com.wiproevents.entities.Email;
 import com.wiproevents.entities.criteria.EmailSearchCriteria;
+import com.wiproevents.exceptions.AttendeeException;
 
 /**
  * The email service.Implementation should be effectively thread-safe.
@@ -13,5 +14,6 @@ import com.wiproevents.entities.criteria.EmailSearchCriteria;
  * @version 1.0
  */
 public interface EmailService extends GenericService<Email, EmailSearchCriteria> {
+    int sendScheduledEmails() throws AttendeeException;
 }
 

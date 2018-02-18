@@ -3,6 +3,7 @@
  */
 package com.wiproevents.entities.criteria;
 
+import com.wiproevents.entities.statuses.EmailStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EmailSearchCriteria extends BaseSearchCriteria {
+    private EmailStatus status;
 }
 

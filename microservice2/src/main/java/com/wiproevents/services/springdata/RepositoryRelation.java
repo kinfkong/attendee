@@ -31,10 +31,17 @@ public class RepositoryRelation {
     @Autowired
     private NotificationRepository notificationRepository;
 
+    @Autowired
+    private TimezoneRepository timezoneRepository;
+
+    @Autowired
+    private EmailRepository emailRepository;
+
     @PostConstruct
     public void handleRepositoryRelations() {
         handleUserNoteRepository();
         handleNotificationRepository();
+        handleEmailRepository();
 
     }
 
@@ -46,6 +53,10 @@ public class RepositoryRelation {
 
     private void handleNotificationRepository() {
         notificationRepository.addNestedRepository("type", notificationTypeRepository);
+    }
+
+    private void handleEmailRepository() {
+        emailRepository.addNestedRepository("timezone", timezoneRepository);
     }
 
 

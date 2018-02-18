@@ -27,6 +27,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.InvocationTargetException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -491,6 +494,24 @@ public class Helper {
             return result;
         } else {
             return beanUtils.getProperty(entity, path);
+        }
+    }
+
+
+    public static String toISO8601UTC(Date date) {
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        df.setTimeZone(tz);
+        return df.format(date);
+    }
+
+    public static Date fromTimezoneDateString(String dateStr) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        try {
+            return df.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new IllegalStateException("Failed to parse the date string: " + dateStr, e);
         }
     }
 
