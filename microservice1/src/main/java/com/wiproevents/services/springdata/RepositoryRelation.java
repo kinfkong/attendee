@@ -68,7 +68,7 @@ public class RepositoryRelation {
         handleEventDayAgendaRepository();
         handleSessionRepository();
         handleUserRoleRepository();
-        handleUserRepository();
+        // handleUserRepository();
         handleUserPreferenceRepository();
         handleUserEventAssignmentRepository();
         handleSessionAttendeeRepository();

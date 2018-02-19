@@ -2410,6 +2410,133 @@
 						}
 					],
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "eventFAQs",
+					"description": "",
+					"item": [
+						{
+							"name": "Search event FAQs.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http:///events/:id/eventFAQ",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"events",
+										":id",
+										"eventFAQ"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Search event FAQs. \n"
+							},
+							"response": []
+						},
+						{
+							"name": "Update EventFAQ.",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http:///events/:id/eventFAQ",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"events",
+										":id",
+										"eventFAQ"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Update EventFAQ. \n"
+							},
+							"response": []
+						},
+						{
+							"name": "Create event FAQ.",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http:///events/:id/eventFAQ",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"events",
+										":id",
+										"eventFAQ"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Create event FAQ. \n"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete EventFAQ.",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http:///events/:id/eventFAQ",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"events",
+										":id",
+										"eventFAQ"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Delete EventFAQ.\n"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
 				}
 			]
 		},
@@ -2418,929 +2545,1393 @@
 			"description": "",
 			"item": [
 				{
-					"name": "userSurveyAnswers",
-					"description": "Folder for userSurveyAnswers",
+					"name": "Engagements",
+					"description": "",
 					"item": [
 						{
-							"name": "Search UserSurveyAnswers.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/userSurveyAnswers?userId=7842146d-4c0a-4fab-9cf7-0a14f8fa4c83",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userSurveyAnswers"
-									],
-									"query": [
-										{
-											"key": "sessionId",
-											"value": "{{sessionId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "eventId",
-											"value": "{{eventId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "userId",
-											"value": "7842146d-4c0a-4fab-9cf7-0a14f8fa4c83",
-											"equals": true
-										},
-										{
-											"key": "surveyId",
-											"value": "{{surveyId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "offset",
-											"value": "{{offset}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "limit",
-											"value": "{{limit}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortColumn",
-											"value": "{{sortColumn}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortOrder",
-											"value": "{{sortOrder}}",
-											"equals": true,
-											"disabled": true
-										}
-									]
-								},
-								"description": "Search UserSurveyAnswers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Create UserSurveyAnswers.",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"survey\": {\n    \"id\": \"{{SURVEY_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{SURVEY_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": true\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userSurveyAnswers",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userSurveyAnswers"
-									]
-								},
-								"description": "Create UserSurveyAnswers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Get survey answers.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/userSurveyAnswers/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userSurveyAnswers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "65a1c05e-2a71-482d-8289-3535ab8fa983"
-										}
-									]
-								},
-								"description": "Get survey answers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Update UserSurveyAnswers.",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n \"id\": \"2538a786-e6ef-4638-b609-7ef36fe3d7ca\",\n  \"survey\": {\n    \"id\": \"{{SURVEY_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{SURVEY_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n        },\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": false\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userSurveyAnswers/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userSurveyAnswers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "2538a786-e6ef-4638-b609-7ef36fe3d7ca"
-										}
-									]
-								},
-								"description": "Update UserSurveyAnswers. \n"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "userQuizAnswers",
-					"description": "Folder for userQuizAnswers",
-					"item": [
-						{
-							"name": "Search UserQuizAnswers.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/userQuizAnswers",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userQuizAnswers"
-									],
-									"query": [
-										{
-											"key": "sessionId",
-											"value": "{{sessionId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "eventId",
-											"value": "{{eventId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "userId",
-											"value": "{{userId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "quizId",
-											"value": "{{quizId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "offset",
-											"value": "{{offset}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "limit",
-											"value": "{{limit}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortColumn",
-											"value": "{{sortColumn}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortOrder",
-											"value": "{{sortOrder}}",
-											"equals": true,
-											"disabled": true
-										}
-									]
-								},
-								"description": "Search UserQuizAnswers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Create UserQuizAnswers.",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"quiz\": {\n    \"id\": \"{{QUIZ_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{QUIZ_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{QUIZ_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ],\n      \"answerCorrect\": true\n    }\n  ],\n  \"completed\": true,\n  \"score\": 0,\n  \"totalWeight\": 0\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userQuizAnswers",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userQuizAnswers"
-									]
-								},
-								"description": "Create UserQuizAnswers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Get quiz answers.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/userQuizAnswers/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userQuizAnswers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "0b83e9fb-abfe-455b-8f13-246716c97580"
-										}
-									]
-								},
-								"description": "Get quiz answers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Update UserQuizAnswers.",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"313fb670-b53e-47af-a4d5-7d449da9615f\",\t\n  \"quiz\": {\n    \"id\": \"{{QUIZ_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{QUIZ_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{QUIZ_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ],\n      \"answerCorrect\": true\n    }\n  ],\n  \"completed\": false,\n  \"score\": 89,\n  \"totalWeight\": 2.0\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userQuizAnswers/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userQuizAnswers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "313fb670-b53e-47af-a4d5-7d449da9615f"
-										}
-									]
-								},
-								"description": "Update UserQuizAnswers. \n"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "userPollAnswers",
-					"description": "Folder for userPollAnswers",
-					"item": [
-						{
-							"name": "Search UserPollAnswers.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/userPollAnswers",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userPollAnswers"
-									],
-									"query": [
-										{
-											"key": "sessionId",
-											"value": "{{sessionId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "eventId",
-											"value": "{{eventId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "userId",
-											"value": "{{userId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "pollId",
-											"value": "{{pollId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "offset",
-											"value": "{{offset}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "limit",
-											"value": "{{limit}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortColumn",
-											"value": "{{sortColumn}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortOrder",
-											"value": "{{sortOrder}}",
-											"equals": true,
-											"disabled": true
-										}
-									]
-								},
-								"description": "Search UserPollAnswers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Create UserPollAnswers.",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"poll\": {\n    \"id\": \"{{POLL_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{POLL_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{POLL_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": true\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userPollAnswers",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userPollAnswers"
-									]
-								},
-								"description": "Create UserPollAnswers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Get poll answers.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/userPollAnswers/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userPollAnswers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "38d2615e-6101-44a2-b40d-89de7f69b313"
-										}
-									]
-								},
-								"description": "Get poll answers. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Update UserPollAnswers.",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"903fb075-0600-4648-b692-f2fa4880bfbc\",\n  \"poll\": {\n    \"id\": \"{{POLL_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{POLL_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{POLL_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": false\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userPollAnswers/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userPollAnswers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "903fb075-0600-4648-b692-f2fa4880bfbc"
-										}
-									]
-								},
-								"description": "Update UserPollAnswers. \n"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "userEventFeedbacks",
-					"description": "Folder for userEventFeedbacks",
-					"item": [
-						{
-							"name": "Search UserEventFeedbacks.",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "http:///userEventFeedbacks?eventId={{eventId}}&userId={{userId}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
-									"host": [
-										"http:"
-									],
-									"port": "",
-									"path": [
-										"",
-										"",
-										"userEventFeedbacks"
-									],
-									"query": [
-										{
-											"key": "eventId",
-											"value": "{{eventId}}"
-										},
-										{
-											"key": "userId",
-											"value": "{{userId}}"
-										},
-										{
-											"key": "offset",
-											"value": "{{offset}}"
-										},
-										{
-											"key": "limit",
-											"value": "{{limit}}"
-										},
-										{
-											"key": "sortColumn",
-											"value": "{{sortColumn}}"
-										},
-										{
-											"key": "sortOrder",
-											"value": "{{sortOrder}}"
-										}
-									]
-								},
-								"description": "Search UserEventFeedback. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Create event UserEventFeedback.",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"event\": {\n    \"id\": \"{{EVENT_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"feedback\": {\n    \"survey\": {\n      \"id\": \"{{SURVEY_ID}}\"\n    },\n    \"user\": {\n      \"id\": \"{{USER_ID}}\"\n    },\n    \"userAnswers\": [\n      {\n        \"question\": {\n          \"id\": \"{{SURVEY_QUESTION_ID}}\"\n        },\n        \"user\": {\n          \"id\": \"{{USER_ID}}\"\n        },\n        \"selectedAnswerOptions\": [\n          {\n            \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n          }\n        ]\n      }\n    ],\n    \"completed\": true\n  },\n  \"eventRating\": 0,\n  \"comment\": \"this is an comment\",\n  \"completed\": true\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userEventFeedbacks",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userEventFeedbacks"
-									]
-								},
-								"description": "Create event UserEventFeedback. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Get UserEventFeedback.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/userEventFeedbacks/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userEventFeedbacks",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "fb6fa7ed-7740-4cbf-8d26-74fcfa10ea27"
-										}
-									]
-								},
-								"description": "Get UserEventFeedback. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Update UserEventFeedback.",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"a27282e2-46af-46c2-88a6-65feda9ddc3b\",\n  \"event\": {\n    \"id\": \"{{EVENT_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"feedback\": {\n    \"survey\": {\n      \"id\": \"{{SURVEY_ID}}\"\n    },\n    \"user\": {\n      \"id\": \"{{USER_ID}}\"\n    },\n    \"userAnswers\": [\n      {\n        \"question\": {\n          \"id\": \"{{SURVEY_QUESTION_ID}}\"\n        },\n        \"user\": {\n          \"id\": \"{{USER_ID}}\"\n        },\n        \"selectedAnswerOptions\": [\n          {\n            \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n          }\n        ]\n      }\n    ],\n    \"completed\": true\n  },\n  \"eventRating\": 10,\n  \"comment\": \"this is an comment (updated)\",\n  \"completed\": true\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/userEventFeedbacks/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"userEventFeedbacks",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "a27282e2-46af-46c2-88a6-65feda9ddc3b"
-										}
-									]
-								},
-								"description": "Update UserEventFeedback. \n"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "quizes",
-					"description": "Folder for quizes",
-					"item": [
-						{
-							"name": "Search quizes.",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {},
-								"url": {
-									"raw": "http:///quizes?sessionId={{sessionId}}&eventId={{eventId}}&name={{name}}&context={{context}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
-									"host": [
-										"http:"
-									],
-									"port": "",
-									"path": [
-										"",
-										"",
-										"quizes"
-									],
-									"query": [
-										{
-											"key": "sessionId",
-											"value": "{{sessionId}}"
-										},
-										{
-											"key": "eventId",
-											"value": "{{eventId}}"
-										},
-										{
-											"key": "name",
-											"value": "{{name}}"
-										},
-										{
-											"key": "context",
-											"value": "{{context}}"
-										},
-										{
-											"key": "offset",
-											"value": "{{offset}}"
-										},
-										{
-											"key": "limit",
-											"value": "{{limit}}"
-										},
-										{
-											"key": "sortColumn",
-											"value": "{{sortColumn}}"
-										},
-										{
-											"key": "sortOrder",
-											"value": "{{sortOrder}}"
-										}
-									]
-								},
-								"description": "Search quizes. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Create Quiz.",
-							"event": [
+							"name": "userSurveyAnswers",
+							"description": "Folder for userSurveyAnswers",
+							"item": [
 								{
-									"listen": "test",
-									"script": {
-										"id": "6608d94c-9169-4f45-86c2-3c84cd4a2b7b",
-										"type": "text/javascript",
-										"exec": [
-											"pm.environment.set(\"QUIZ_ID\", pm.response.json().id);",
-											"pm.environment.set(\"QUIZ_QUESTION_ID\", pm.response.json().questions[0].id);",
-											"pm.environment.set(\"QUIZ_QUESTION_ANSWER_OPTION_ID\", pm.response.json().questions[0].answerOptions[0].id);"
-										]
-									}
+									"name": "Search UserSurveyAnswers.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/userSurveyAnswers?userId=7842146d-4c0a-4fab-9cf7-0a14f8fa4c83",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userSurveyAnswers"
+											],
+											"query": [
+												{
+													"key": "sessionId",
+													"value": "{{sessionId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "eventId",
+													"value": "{{eventId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "userId",
+													"value": "7842146d-4c0a-4fab-9cf7-0a14f8fa4c83",
+													"equals": true
+												},
+												{
+													"key": "surveyId",
+													"value": "{{surveyId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "offset",
+													"value": "{{offset}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "limit",
+													"value": "{{limit}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortColumn",
+													"value": "{{sortColumn}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortOrder",
+													"value": "{{sortOrder}}",
+													"equals": true,
+													"disabled": true
+												}
+											]
+										},
+										"description": "Search UserSurveyAnswers. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Create UserSurveyAnswers.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"survey\": {\n    \"id\": \"{{SURVEY_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{SURVEY_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": true\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userSurveyAnswers",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userSurveyAnswers"
+											]
+										},
+										"description": "Create UserSurveyAnswers. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Get survey answers.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/userSurveyAnswers/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userSurveyAnswers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "65a1c05e-2a71-482d-8289-3535ab8fa983"
+												}
+											]
+										},
+										"description": "Get survey answers. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Update UserSurveyAnswers.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \"id\": \"2538a786-e6ef-4638-b609-7ef36fe3d7ca\",\n  \"survey\": {\n    \"id\": \"{{SURVEY_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{SURVEY_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n        },\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": false\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userSurveyAnswers/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userSurveyAnswers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2538a786-e6ef-4638-b609-7ef36fe3d7ca"
+												}
+											]
+										},
+										"description": "Update UserSurveyAnswers. \n"
+									},
+									"response": []
 								}
 							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"name\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"sessionId\": null,\n  \"description\": \"string\",\n  \"questions\": [\n    {\n      \"weight\": 0,\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"string\",\n          \"orderNumber\": 0,\n          \"rightAnswer\": true\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-01-01\",\n  \"endTime\": \"2018-01-01\"\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/quizes",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"quizes"
-									]
-								},
-								"description": "Create Quiz. \n"
-							},
-							"response": []
+							"_postman_isSubFolder": true
 						},
 						{
-							"name": "Get quiz.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/quizes/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"quizes",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{QUIZ_ID}}"
-										}
-									]
+							"name": "userQuizAnswers",
+							"description": "Folder for userQuizAnswers",
+							"item": [
+								{
+									"name": "Search UserQuizAnswers.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/userQuizAnswers",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userQuizAnswers"
+											],
+											"query": [
+												{
+													"key": "sessionId",
+													"value": "{{sessionId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "eventId",
+													"value": "{{eventId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "userId",
+													"value": "{{userId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "quizId",
+													"value": "{{quizId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "offset",
+													"value": "{{offset}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "limit",
+													"value": "{{limit}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortColumn",
+													"value": "{{sortColumn}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortOrder",
+													"value": "{{sortOrder}}",
+													"equals": true,
+													"disabled": true
+												}
+											]
+										},
+										"description": "Search UserQuizAnswers. \n"
+									},
+									"response": []
 								},
-								"description": "Get quiz. \n"
-							},
-							"response": []
+								{
+									"name": "Create UserQuizAnswers.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"quiz\": {\n    \"id\": \"{{QUIZ_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{QUIZ_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{QUIZ_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ],\n      \"answerCorrect\": true\n    }\n  ],\n  \"completed\": true,\n  \"score\": 0,\n  \"totalWeight\": 0\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userQuizAnswers",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userQuizAnswers"
+											]
+										},
+										"description": "Create UserQuizAnswers. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Get quiz answers.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/userQuizAnswers/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userQuizAnswers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "0b83e9fb-abfe-455b-8f13-246716c97580"
+												}
+											]
+										},
+										"description": "Get quiz answers. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Update UserQuizAnswers.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"313fb670-b53e-47af-a4d5-7d449da9615f\",\t\n  \"quiz\": {\n    \"id\": \"{{QUIZ_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{QUIZ_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{QUIZ_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ],\n      \"answerCorrect\": true\n    }\n  ],\n  \"completed\": false,\n  \"score\": 89,\n  \"totalWeight\": 2.0\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userQuizAnswers/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userQuizAnswers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "313fb670-b53e-47af-a4d5-7d449da9615f"
+												}
+											]
+										},
+										"description": "Update UserQuizAnswers. \n"
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
 						},
 						{
-							"name": "Update Quiz.",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
+							"name": "userPollAnswers",
+							"description": "Folder for userPollAnswers",
+							"item": [
+								{
+									"name": "Search UserPollAnswers.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/userPollAnswers",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userPollAnswers"
+											],
+											"query": [
+												{
+													"key": "sessionId",
+													"value": "{{sessionId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "eventId",
+													"value": "{{eventId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "userId",
+													"value": "{{userId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "pollId",
+													"value": "{{pollId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "offset",
+													"value": "{{offset}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "limit",
+													"value": "{{limit}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortColumn",
+													"value": "{{sortColumn}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortOrder",
+													"value": "{{sortOrder}}",
+													"equals": true,
+													"disabled": true
+												}
+											]
+										},
+										"description": "Search UserPollAnswers. \n"
 									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"{{QUIZ_ID}}\",\n    \"name\": \"string\",\n    \"context\": \"Event\",\n    \"eventId\": \"0\",\n    \"sessionId\": \"0\",\n    \"description\": \"string\",\n    \"status\": \"Active\",\n    \"type\": \"Live\",\n    \"startTime\": 1483228800000,\n    \"endTime\": 1514764800000,\n    \"questions\": [\n    \t{\n            \"text\": \"new question\",\n            \"orderNumber\": 0,\n            \"type\": \"SingleSelection\",\n            \"answerOptions\": [\n                {\n                    \"text\": \"string\",\n                    \"orderNumber\": 0\n                },\n                 {\n                    \"text\": \"option\",\n                    \"orderNumber\": 0\n                }\n            ],\n            \"weight\": 3\n        },\n        {\n            \"id\": \"{{QUIZ_QUESTION_ID}}\",\n            \"text\": \"Will you recommend this event?\",\n            \"orderNumber\": 0,\n            \"type\": \"SingleSelection\",\n            \"answerOptions\": [\n                {\n                    \"id\": \"{{QUIZ_QUESTION_ANSWER_OPTION_ID}}\",\n                    \"text\": \"string\",\n                    \"orderNumber\": 0\n                },\n                 {\n                    \"text\": \"new option\",\n                    \"orderNumber\": 0\n                }\n            ],\n            \"weight\": 1\n        }\n    ]\n}"
+									"response": []
 								},
-								"url": {
-									"raw": "{{URL}}/quizes/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"quizes",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{QUIZ_ID}}"
-										}
-									]
+								{
+									"name": "Create UserPollAnswers.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"poll\": {\n    \"id\": \"{{POLL_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{POLL_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{POLL_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": true\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userPollAnswers",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userPollAnswers"
+											]
+										},
+										"description": "Create UserPollAnswers. \n"
+									},
+									"response": []
 								},
-								"description": "Update Quiz. \n"
-							},
-							"response": []
+								{
+									"name": "Get poll answers.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/userPollAnswers/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userPollAnswers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "38d2615e-6101-44a2-b40d-89de7f69b313"
+												}
+											]
+										},
+										"description": "Get poll answers. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Update UserPollAnswers.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"903fb075-0600-4648-b692-f2fa4880bfbc\",\n  \"poll\": {\n    \"id\": \"{{POLL_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"userAnswers\": [\n    {\n      \"question\": {\n        \"id\": \"{{POLL_QUESTION_ID}}\"\n      },\n      \"user\": {\n        \"id\": \"{{USER_ID}}\"\n      },\n      \"selectedAnswerOptions\": [\n        {\n          \"id\": \"{{POLL_QUESTION_ANSWER_OPTION_ID}}\"\n        }\n      ]\n    }\n  ],\n  \"completed\": false\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userPollAnswers/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userPollAnswers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "903fb075-0600-4648-b692-f2fa4880bfbc"
+												}
+											]
+										},
+										"description": "Update UserPollAnswers. \n"
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
 						},
 						{
-							"name": "Delete Quiz.",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
+							"name": "userEventFeedbacks",
+							"description": "Folder for userEventFeedbacks",
+							"item": [
+								{
+									"name": "Search UserEventFeedbacks.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "http:///userEventFeedbacks?eventId={{eventId}}&userId={{userId}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
+											"host": [
+												"http:"
+											],
+											"port": "",
+											"path": [
+												"",
+												"",
+												"userEventFeedbacks"
+											],
+											"query": [
+												{
+													"key": "eventId",
+													"value": "{{eventId}}"
+												},
+												{
+													"key": "userId",
+													"value": "{{userId}}"
+												},
+												{
+													"key": "offset",
+													"value": "{{offset}}"
+												},
+												{
+													"key": "limit",
+													"value": "{{limit}}"
+												},
+												{
+													"key": "sortColumn",
+													"value": "{{sortColumn}}"
+												},
+												{
+													"key": "sortOrder",
+													"value": "{{sortOrder}}"
+												}
+											]
+										},
+										"description": "Search UserEventFeedback. \n"
 									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
+									"response": []
 								},
-								"url": {
-									"raw": "{{URL}}/quizes/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"quizes",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "6b6509c2-4d4f-43b4-96c8-bd5074f4515b"
-										}
-									]
+								{
+									"name": "Create event UserEventFeedback.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"event\": {\n    \"id\": \"{{EVENT_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"feedback\": {\n    \"survey\": {\n      \"id\": \"{{SURVEY_ID}}\"\n    },\n    \"user\": {\n      \"id\": \"{{USER_ID}}\"\n    },\n    \"userAnswers\": [\n      {\n        \"question\": {\n          \"id\": \"{{SURVEY_QUESTION_ID}}\"\n        },\n        \"user\": {\n          \"id\": \"{{USER_ID}}\"\n        },\n        \"selectedAnswerOptions\": [\n          {\n            \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n          }\n        ]\n      }\n    ],\n    \"completed\": true\n  },\n  \"eventRating\": 0,\n  \"comment\": \"this is an comment\",\n  \"completed\": true\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userEventFeedbacks",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userEventFeedbacks"
+											]
+										},
+										"description": "Create event UserEventFeedback. \n"
+									},
+									"response": []
 								},
-								"description": "Delete Quiz. \n"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "polls",
-					"description": "Folder for polls",
-					"item": [
+								{
+									"name": "Get UserEventFeedback.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/userEventFeedbacks/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userEventFeedbacks",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "fb6fa7ed-7740-4cbf-8d26-74fcfa10ea27"
+												}
+											]
+										},
+										"description": "Get UserEventFeedback. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Update UserEventFeedback.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"a27282e2-46af-46c2-88a6-65feda9ddc3b\",\n  \"event\": {\n    \"id\": \"{{EVENT_ID}}\"\n  },\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"feedback\": {\n    \"survey\": {\n      \"id\": \"{{SURVEY_ID}}\"\n    },\n    \"user\": {\n      \"id\": \"{{USER_ID}}\"\n    },\n    \"userAnswers\": [\n      {\n        \"question\": {\n          \"id\": \"{{SURVEY_QUESTION_ID}}\"\n        },\n        \"user\": {\n          \"id\": \"{{USER_ID}}\"\n        },\n        \"selectedAnswerOptions\": [\n          {\n            \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\"\n          }\n        ]\n      }\n    ],\n    \"completed\": true\n  },\n  \"eventRating\": 10,\n  \"comment\": \"this is an comment (updated)\",\n  \"completed\": true\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/userEventFeedbacks/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"userEventFeedbacks",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "a27282e2-46af-46c2-88a6-65feda9ddc3b"
+												}
+											]
+										},
+										"description": "Update UserEventFeedback. \n"
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
 						{
-							"name": "Search polls.",
+							"name": "quizes",
+							"description": "Folder for quizes",
+							"item": [
+								{
+									"name": "Search quizes.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "http:///quizes?sessionId={{sessionId}}&eventId={{eventId}}&name={{name}}&context={{context}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
+											"host": [
+												"http:"
+											],
+											"port": "",
+											"path": [
+												"",
+												"",
+												"quizes"
+											],
+											"query": [
+												{
+													"key": "sessionId",
+													"value": "{{sessionId}}"
+												},
+												{
+													"key": "eventId",
+													"value": "{{eventId}}"
+												},
+												{
+													"key": "name",
+													"value": "{{name}}"
+												},
+												{
+													"key": "context",
+													"value": "{{context}}"
+												},
+												{
+													"key": "offset",
+													"value": "{{offset}}"
+												},
+												{
+													"key": "limit",
+													"value": "{{limit}}"
+												},
+												{
+													"key": "sortColumn",
+													"value": "{{sortColumn}}"
+												},
+												{
+													"key": "sortOrder",
+													"value": "{{sortOrder}}"
+												}
+											]
+										},
+										"description": "Search quizes. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Create Quiz.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6608d94c-9169-4f45-86c2-3c84cd4a2b7b",
+												"type": "text/javascript",
+												"exec": [
+													"pm.environment.set(\"QUIZ_ID\", pm.response.json().id);",
+													"pm.environment.set(\"QUIZ_QUESTION_ID\", pm.response.json().questions[0].id);",
+													"pm.environment.set(\"QUIZ_QUESTION_ANSWER_OPTION_ID\", pm.response.json().questions[0].answerOptions[0].id);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"sessionId\": null,\n  \"description\": \"string\",\n  \"questions\": [\n    {\n      \"weight\": 0,\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"string\",\n          \"orderNumber\": 0,\n          \"rightAnswer\": true\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-01-01\",\n  \"endTime\": \"2018-01-01\"\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/quizes",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"quizes"
+											]
+										},
+										"description": "Create Quiz. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Get quiz.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/quizes/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"quizes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{QUIZ_ID}}"
+												}
+											]
+										},
+										"description": "Get quiz. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Update Quiz.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"{{QUIZ_ID}}\",\n    \"name\": \"string\",\n    \"context\": \"Event\",\n    \"eventId\": \"0\",\n    \"sessionId\": \"0\",\n    \"description\": \"string\",\n    \"status\": \"Active\",\n    \"type\": \"Live\",\n    \"startTime\": 1483228800000,\n    \"endTime\": 1514764800000,\n    \"questions\": [\n    \t{\n            \"text\": \"new question\",\n            \"orderNumber\": 0,\n            \"type\": \"SingleSelection\",\n            \"answerOptions\": [\n                {\n                    \"text\": \"string\",\n                    \"orderNumber\": 0\n                },\n                 {\n                    \"text\": \"option\",\n                    \"orderNumber\": 0\n                }\n            ],\n            \"weight\": 3\n        },\n        {\n            \"id\": \"{{QUIZ_QUESTION_ID}}\",\n            \"text\": \"Will you recommend this event?\",\n            \"orderNumber\": 0,\n            \"type\": \"SingleSelection\",\n            \"answerOptions\": [\n                {\n                    \"id\": \"{{QUIZ_QUESTION_ANSWER_OPTION_ID}}\",\n                    \"text\": \"string\",\n                    \"orderNumber\": 0\n                },\n                 {\n                    \"text\": \"new option\",\n                    \"orderNumber\": 0\n                }\n            ],\n            \"weight\": 1\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/quizes/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"quizes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{QUIZ_ID}}"
+												}
+											]
+										},
+										"description": "Update Quiz. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Quiz.",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{URL}}/quizes/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"quizes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "6b6509c2-4d4f-43b4-96c8-bd5074f4515b"
+												}
+											]
+										},
+										"description": "Delete Quiz. \n"
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "polls",
+							"description": "Folder for polls",
+							"item": [
+								{
+									"name": "Search polls.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "http:///polls?sessionId={{sessionId}}&eventId={{eventId}}&name={{name}}&context={{context}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
+											"host": [
+												"http:"
+											],
+											"port": "",
+											"path": [
+												"",
+												"",
+												"polls"
+											],
+											"query": [
+												{
+													"key": "sessionId",
+													"value": "{{sessionId}}"
+												},
+												{
+													"key": "eventId",
+													"value": "{{eventId}}"
+												},
+												{
+													"key": "name",
+													"value": "{{name}}"
+												},
+												{
+													"key": "context",
+													"value": "{{context}}"
+												},
+												{
+													"key": "offset",
+													"value": "{{offset}}"
+												},
+												{
+													"key": "limit",
+													"value": "{{limit}}"
+												},
+												{
+													"key": "sortColumn",
+													"value": "{{sortColumn}}"
+												},
+												{
+													"key": "sortOrder",
+													"value": "{{sortOrder}}"
+												}
+											]
+										},
+										"description": "Search polls. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Create Poll.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5254c91d-0c4a-4bc3-9914-7e17e3d984e9",
+												"type": "text/javascript",
+												"exec": [
+													"pm.environment.set(\"POLL_ID\", pm.response.json().id);",
+													"pm.environment.set(\"POLL_QUESTION_ID\", pm.response.json().questions[0].id);",
+													"pm.environment.set(\"POLL_QUESTION_ANSWER_OPTION_ID\", pm.response.json().questions[0].answerOptions[0].id);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"sessionId\": \"{{SESSION_ID}}\",\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2016-01-01\",\n  \"endTime\": \"2017-01-01\"\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/polls",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"polls"
+											]
+										},
+										"description": "Create Poll. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Get poll.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/polls/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"polls",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{POLL_ID}}"
+												}
+											]
+										},
+										"description": "Get poll. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Update Poll.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"{{POLL_ID}}\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": 0,\n  \"sessionId\": 0,\n  \"questions\": [\n    {\n      \"text\": \"new queestion\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    },\n    {\n      \"id\": \"{{POLL_QUESTION_ID}}\",\n      \"text\": \"Will you recommend this event? updated\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n        \t\"id\": \"{{POLL_QUESTION_ANSWER_OPTION_ID}}\",\n          \"text\": \"Will you recommend this event? updated\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2016-01-01\",\n  \"endTime\": \"2017-01-01\"\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/polls/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"polls",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{POLL_ID}}"
+												}
+											]
+										},
+										"description": "Update Poll. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Poll.",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/polls/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"polls",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "dceedc0a-c4a5-4ae7-a74b-7c5b2a52ffbe"
+												}
+											]
+										},
+										"description": "Delete Poll. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Get poll total results.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/polls/:id/totalResults",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"polls",
+												":id",
+												"totalResults"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "af49499b-1cff-474a-818f-42d4e9469274"
+												}
+											]
+										},
+										"description": "Get poll. \n"
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "surveys",
+							"description": "Folder for surveys",
+							"item": [
+								{
+									"name": "Search surveys.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/surveys?sessionId=0&context=Event",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"surveys"
+											],
+											"query": [
+												{
+													"key": "sessionId",
+													"value": "0",
+													"equals": true
+												},
+												{
+													"key": "eventId",
+													"value": "{{eventId}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "name",
+													"value": "{{name}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "context",
+													"value": "Event",
+													"equals": true
+												},
+												{
+													"key": "offset",
+													"value": "{{offset}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "limit",
+													"value": "{{limit}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortColumn",
+													"value": "{{sortColumn}}",
+													"equals": true,
+													"disabled": true
+												},
+												{
+													"key": "sortOrder",
+													"value": "{{sortOrder}}",
+													"equals": true,
+													"disabled": true
+												}
+											]
+										},
+										"description": "Search surveys. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Create Survey.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "09e7e537-8164-4616-875c-9eda7c73a6d5",
+												"type": "text/javascript",
+												"exec": [
+													"pm.environment.set(\"SURVEY_ID\", pm.response.json().id);",
+													"pm.environment.set(\"SURVEY_QUESTION_ID\", pm.response.json().questions[0].id);",
+													"pm.environment.set(\"SURVEY_QUESTION_ANSWER_OPTION_ID\", pm.response.json().questions[0].answerOptions[0].id);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"survey 1\",\n  \"description\": \"This is a survey\",\n  \"context\": \"Event\",\n  \"eventId\": null,\n  \"sessionId\": \"{{SESSION_ID}}\",\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-12-01\",\n  \"endTime\": \"2017-12-18\"\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/surveys",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"surveys"
+											]
+										},
+										"description": "Create Survey. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Get survey.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/surveys/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"surveys",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{SURVEY_ID}}"
+												}
+											]
+										},
+										"description": "Get survey. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Update Survey.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"{{SURVEY_ID}}\",\n  \"name\": \"survey 1 modified.\",\n  \"description\": \"This is a survey\",\n  \"context\": \"Event\",\n  \"eventId\": 0,\n  \"sessionId\": 0,\n  \"questions\": [\n  \t{\n  \t\t\"text\": \"new question\",\n  \t\t\"type\": \"SingleSelection\",\n  \t\t\"orderNumber\": 0,\n  \t\t\"answerOptions\": [{\n  \t\t  \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n  \t\t}]\n  \t},\n    {\n      \"id\": \"{{SURVEY_QUESTION_ID}}\",\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\",\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2018-12-01\",\n  \"endTime\": \"2018-12-18\"\n}"
+										},
+										"url": {
+											"raw": "{{URL}}/surveys/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"surveys",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{SURVEY_ID}}"
+												}
+											]
+										},
+										"description": "Update Survey. \n"
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Survey.",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											}
+										],
+										"body": {},
+										"url": {
+											"raw": "{{URL}}/surveys/:id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"surveys",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "27dbb0dd-2c46-43e2-9b96-d6e958ba3801"
+												}
+											]
+										},
+										"description": "Delete Survey. \n"
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get event engagements.",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"body": {},
 								"url": {
-									"raw": "http:///polls?sessionId={{sessionId}}&eventId={{eventId}}&name={{name}}&context={{context}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
+									"raw": "http:///events/:id/engagements",
 									"host": [
 										"http:"
 									],
@@ -3348,445 +3939,18 @@
 									"path": [
 										"",
 										"",
-										"polls"
-									],
-									"query": [
-										{
-											"key": "sessionId",
-											"value": "{{sessionId}}"
-										},
-										{
-											"key": "eventId",
-											"value": "{{eventId}}"
-										},
-										{
-											"key": "name",
-											"value": "{{name}}"
-										},
-										{
-											"key": "context",
-											"value": "{{context}}"
-										},
-										{
-											"key": "offset",
-											"value": "{{offset}}"
-										},
-										{
-											"key": "limit",
-											"value": "{{limit}}"
-										},
-										{
-											"key": "sortColumn",
-											"value": "{{sortColumn}}"
-										},
-										{
-											"key": "sortOrder",
-											"value": "{{sortOrder}}"
-										}
-									]
-								},
-								"description": "Search polls. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Create Poll.",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "5254c91d-0c4a-4bc3-9914-7e17e3d984e9",
-										"type": "text/javascript",
-										"exec": [
-											"pm.environment.set(\"POLL_ID\", pm.response.json().id);",
-											"pm.environment.set(\"POLL_QUESTION_ID\", pm.response.json().questions[0].id);",
-											"pm.environment.set(\"POLL_QUESTION_ANSWER_OPTION_ID\", pm.response.json().questions[0].answerOptions[0].id);"
-										]
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"sessionId\": \"{{SESSION_ID}}\",\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2016-01-01\",\n  \"endTime\": \"2017-01-01\"\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/polls",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"polls"
-									]
-								},
-								"description": "Create Poll. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Get poll.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/polls/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"polls",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{POLL_ID}}"
-										}
-									]
-								},
-								"description": "Get poll. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Update Poll.",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"{{POLL_ID}}\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": 0,\n  \"sessionId\": 0,\n  \"questions\": [\n    {\n      \"text\": \"new queestion\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    },\n    {\n      \"id\": \"{{POLL_QUESTION_ID}}\",\n      \"text\": \"Will you recommend this event? updated\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n        \t\"id\": \"{{POLL_QUESTION_ANSWER_OPTION_ID}}\",\n          \"text\": \"Will you recommend this event? updated\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2016-01-01\",\n  \"endTime\": \"2017-01-01\"\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/polls/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"polls",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{POLL_ID}}"
-										}
-									]
-								},
-								"description": "Update Poll. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Poll.",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/polls/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"polls",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "dceedc0a-c4a5-4ae7-a74b-7c5b2a52ffbe"
-										}
-									]
-								},
-								"description": "Delete Poll. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Get poll total results.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/polls/:id/totalResults",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"polls",
+										"events",
 										":id",
-										"totalResults"
+										"engagements"
 									],
 									"variable": [
 										{
 											"key": "id",
-											"value": "af49499b-1cff-474a-818f-42d4e9469274"
+											"value": "{{id}}"
 										}
 									]
 								},
-								"description": "Get poll. \n"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "surveys",
-					"description": "Folder for surveys",
-					"item": [
-						{
-							"name": "Search surveys.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/surveys?sessionId=0&context=Event",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"surveys"
-									],
-									"query": [
-										{
-											"key": "sessionId",
-											"value": "0",
-											"equals": true
-										},
-										{
-											"key": "eventId",
-											"value": "{{eventId}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "name",
-											"value": "{{name}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "context",
-											"value": "Event",
-											"equals": true
-										},
-										{
-											"key": "offset",
-											"value": "{{offset}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "limit",
-											"value": "{{limit}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortColumn",
-											"value": "{{sortColumn}}",
-											"equals": true,
-											"disabled": true
-										},
-										{
-											"key": "sortOrder",
-											"value": "{{sortOrder}}",
-											"equals": true,
-											"disabled": true
-										}
-									]
-								},
-								"description": "Search surveys. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Create Survey.",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "09e7e537-8164-4616-875c-9eda7c73a6d5",
-										"type": "text/javascript",
-										"exec": [
-											"pm.environment.set(\"SURVEY_ID\", pm.response.json().id);",
-											"pm.environment.set(\"SURVEY_QUESTION_ID\", pm.response.json().questions[0].id);",
-											"pm.environment.set(\"SURVEY_QUESTION_ANSWER_OPTION_ID\", pm.response.json().questions[0].answerOptions[0].id);"
-										]
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"name\": \"survey 1\",\n  \"description\": \"This is a survey\",\n  \"context\": \"Event\",\n  \"eventId\": null,\n  \"sessionId\": \"{{SESSION_ID}}\",\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-12-01\",\n  \"endTime\": \"2017-12-18\"\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/surveys",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"surveys"
-									]
-								},
-								"description": "Create Survey. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Get survey.",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/surveys/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"surveys",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{SURVEY_ID}}"
-										}
-									]
-								},
-								"description": "Get survey. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Update Survey.",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"{{SURVEY_ID}}\",\n  \"name\": \"survey 1 modified.\",\n  \"description\": \"This is a survey\",\n  \"context\": \"Event\",\n  \"eventId\": 0,\n  \"sessionId\": 0,\n  \"questions\": [\n  \t{\n  \t\t\"text\": \"new question\",\n  \t\t\"type\": \"SingleSelection\",\n  \t\t\"orderNumber\": 0,\n  \t\t\"answerOptions\": [{\n  \t\t  \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n  \t\t}]\n  \t},\n    {\n      \"id\": \"{{SURVEY_QUESTION_ID}}\",\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"id\": \"{{SURVEY_QUESTION_ANSWER_OPTION_ID}}\",\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2018-12-01\",\n  \"endTime\": \"2018-12-18\"\n}"
-								},
-								"url": {
-									"raw": "{{URL}}/surveys/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"surveys",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{SURVEY_ID}}"
-										}
-									]
-								},
-								"description": "Update Survey. \n"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Survey.",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "{{URL}}/surveys/:id",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"surveys",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "27dbb0dd-2c46-43e2-9b96-d6e958ba3801"
-										}
-									]
-								},
-								"description": "Delete Survey. \n"
+								"description": "Get Event engagements. \n"
 							},
 							"response": []
 						}
@@ -4589,6 +4753,28 @@
 									]
 								},
 								"description": "Mark user's notification as read.\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Create/send event notification.",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http:///eventNotifications",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"eventNotifications"
+									]
+								},
+								"description": "Create notification. \n"
 							},
 							"response": []
 						}
