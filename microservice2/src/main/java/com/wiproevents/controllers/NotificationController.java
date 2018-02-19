@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The notification REST controller. Is effectively thread safe.
@@ -73,7 +74,7 @@ public class NotificationController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public Notification create(@RequestBody Notification entity) throws AttendeeException  {
+    public Notification create(@Valid @RequestBody Notification entity) throws AttendeeException  {
         return notificationService.create(entity);
     }
 
@@ -90,7 +91,7 @@ public class NotificationController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public Notification update(@PathVariable String id, @RequestBody Notification entity)
+    public Notification update(@PathVariable String id, @Valid @RequestBody Notification entity)
             throws AttendeeException  {
         return notificationService.update(id, entity);
     }
@@ -122,6 +123,20 @@ public class NotificationController {
     public SearchResult<Notification> search(@ModelAttribute NotificationSearchCriteria criteria,
                                           @ModelAttribute Paging paging) throws AttendeeException  {
         return notificationService.search(criteria, paging);
+    }
+
+    /**
+     * This method is used to delete an entity.
+     *
+     * @param id the id of the entity to delete
+     * @throws IllegalArgumentException if id is not positive
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/read", method = RequestMethod.PUT)
+    @Transactional
+    public void markeRead(@PathVariable String id) throws AttendeeException  {
+        notificationService.markRead(id);
     }
 }
 

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The user not REST controller. Is effectively thread safe.
@@ -73,7 +74,7 @@ public class UserNoteController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public UserNote create(@RequestBody UserNote entity) throws AttendeeException  {
+    public UserNote create(@Valid @RequestBody UserNote entity) throws AttendeeException  {
         return userNoteService.create(entity);
     }
 
@@ -90,7 +91,7 @@ public class UserNoteController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public UserNote update(@PathVariable String id, @RequestBody UserNote entity)
+    public UserNote update(@PathVariable String id, @Valid @RequestBody UserNote entity)
             throws AttendeeException  {
         return userNoteService.update(id, entity);
     }

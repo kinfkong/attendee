@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The email REST controller. Is effectively thread safe.
@@ -56,7 +57,7 @@ public class EmailController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public Email create(@RequestBody Email entity) throws AttendeeException  {
+    public Email create(@Valid @RequestBody Email entity) throws AttendeeException  {
         return emailService.create(entity);
     }
 

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The message REST controller. Is effectively thread safe.
@@ -73,7 +74,7 @@ public class MessageController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public Message create(@RequestBody Message entity) throws AttendeeException  {
+    public Message create(@Valid @RequestBody Message entity) throws AttendeeException  {
         return messageService.create(entity);
     }
 
@@ -90,7 +91,7 @@ public class MessageController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public Message update(@PathVariable String id, @RequestBody Message entity)
+    public Message update(@PathVariable String id, @Valid @RequestBody Message entity)
             throws AttendeeException  {
         return messageService.update(id, entity);
     }

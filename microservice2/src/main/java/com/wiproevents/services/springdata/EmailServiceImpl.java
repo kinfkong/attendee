@@ -63,6 +63,11 @@ public class EmailServiceImpl
 
     @Override
     public Email create(Email entity) throws AttendeeException {
+        // check emails field
+        Helper.checkNull(entity.getEmails(), "emails");
+        for (String email : entity.getEmails()) {
+            Helper.checkEmail(email, "email");
+        }
         if (!entity.isScheduled()) {
             // send immediately
             for (String email: entity.getEmails()) {

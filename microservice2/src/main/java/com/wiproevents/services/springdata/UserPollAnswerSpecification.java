@@ -10,8 +10,6 @@ import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import lombok.AllArgsConstructor;
 
-import java.util.Map;
-
 /**
  * The specification used to query user poll answer by criteria.
  *
@@ -30,11 +28,11 @@ public class UserPollAnswerSpecification implements DocumentDbSpecification<User
      * Converts the search criteria to sql query.
      *
      * @param query the sql query.
-     * @param values the parameter values.
      * @return the sql query.
      */
     @Override
     public Query toQuery(Query query) {
+        Helper.buildEqualPredict(query, "poll.id", criteria.getPollId());
         return query;
     }
 }

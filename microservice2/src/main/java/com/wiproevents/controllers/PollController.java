@@ -5,6 +5,7 @@ package com.wiproevents.controllers;
 
 
 import com.wiproevents.entities.Poll;
+import com.wiproevents.entities.PollTotalResult;
 import com.wiproevents.entities.criteria.PollSearchCriteria;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.exceptions.ConfigurationException;
@@ -122,6 +123,20 @@ public class PollController {
     public SearchResult<Poll> search(@ModelAttribute PollSearchCriteria criteria,
                                           @ModelAttribute Paging paging) throws AttendeeException  {
         return pollService.search(criteria, paging);
+    }
+
+    /**
+     * This method is used to retrieve an entity.
+     *
+     * @param id the id of the entity to retrieve
+     * @return the match entity
+     * @throws IllegalArgumentException if id is not positive
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/totalResults", method = RequestMethod.GET)
+    public PollTotalResult getTotalResults(@PathVariable String id) throws AttendeeException {
+        return pollService.calculatePollTotalResult(id);
     }
 }
 

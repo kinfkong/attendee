@@ -51,11 +51,11 @@ public class RepositoryRelation {
 
     @PostConstruct
     public void handleRepositoryRelations() {
-        handleUserNoteRepository();
-        handleNotificationRepository();
-        handleEmailRepository();
+        // handleUserNoteRepository();
+        // handleNotificationRepository();
+        // handleEmailRepository();
         handleConversationRepository();
-        handleMessageRepository();
+        // handleMessageRepository();
         handleEventWallPostRepository();
     }
 

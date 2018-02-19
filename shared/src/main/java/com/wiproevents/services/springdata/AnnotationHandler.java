@@ -6,10 +6,7 @@ import com.wiproevents.entities.IdentifiableEntity;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.services.AnnotationHandlerInterface;
 import com.wiproevents.utils.Helper;
-import com.wiproevents.utils.springdata.extensions.AssignId;
-import com.wiproevents.utils.springdata.extensions.DocumentDbSpecificationRepository;
-import com.wiproevents.utils.springdata.extensions.Embed;
-import com.wiproevents.utils.springdata.extensions.Reference;
+import com.wiproevents.utils.springdata.extensions.*;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -212,8 +209,9 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                 Reference referenceAnnotation = field.getAnnotation(Reference.class);
                 Embed embedAnnotation = field.getAnnotation(Embed.class);
                 AssignId assignIdAnnotation = field.getAnnotation(AssignId.class);
+                ForeignKey foreignKeyAnnotation = field.getAnnotation(ForeignKey.class);
 
-                if (referenceAnnotation == null && embedAnnotation == null) {
+                if (referenceAnnotation == null && embedAnnotation == null && foreignKeyAnnotation == null) {
                     continue;
                 }
 
@@ -243,9 +241,22 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                         assignId(assignIdAnnotation, value, id);
                     }
 
-                    Object subEntity = upsert(subAnnotation, value, oldValue);
-
-                    field.set(entity, subEntity);
+                    if (foreignKeyAnnotation != null) {
+                        if (value != null && value instanceof String) {
+                            // validate the foreign key
+                            DocumentDbSpecificationRepository<IdentifiableEntity, String> foreignRepository
+                                    = getRepositoryByClass(foreignKeyAnnotation.clazz());
+                            if (foreignRepository.findOne((String) value) == null) {
+                                throw new IllegalArgumentException(
+                                        "The " + field.getName() + " of " + value + " does not exists.");
+                            }
+                        }
+                    }
+                    if (subAnnotation != null) {
+                        // embed or reference
+                        Object subEntity = upsert(subAnnotation, value, oldValue);
+                        field.set(entity, subEntity);
+                    }
 
                     field.setAccessible(originalAccessible);
                 } catch (IllegalAccessException e) {

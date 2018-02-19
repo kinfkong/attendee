@@ -3,6 +3,7 @@
  */
 package com.wiproevents.entities.criteria;
 
+import com.wiproevents.entities.statuses.NotificationStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NotificationSearchCriteria extends BaseSearchCriteria {
+    private NotificationStatus status;
 }
 

@@ -10,8 +10,6 @@ import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import lombok.AllArgsConstructor;
 
-import java.util.Map;
-
 /**
  * The specification used to query user not by criteria.
  *
@@ -30,11 +28,12 @@ public class UserNoteSpecification implements DocumentDbSpecification<UserNote> 
      * Converts the search criteria to sql query.
      *
      * @param query the sql query.
-     * @param values the parameter values.
      * @return the sql query.
      */
     @Override
     public Query toQuery(Query query) {
+        Helper.buildEqualPredict(query, "event.id", criteria.getEventId());
+        Helper.buildEqualPredict(query, "session.id", criteria.getSessionId());
         return query;
     }
 }

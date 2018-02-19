@@ -16,5 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserNoteSearchCriteria extends BaseSearchCriteria {
+    private String eventId;
+    private String sessionId;
 }
 

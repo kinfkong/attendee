@@ -67,7 +67,7 @@ fi
 
 
 java -jar -Dserver.port=8081 target/attendee-rest-api-microservice1.jar &
-# java -jar -Dserver.port=8082 target/attendee-rest-api-microservice2.jar &
+java -jar -Dserver.port=8082 target/attendee-rest-api-microservice2.jar &
 java -jar -Dserver.port=8080 target/attendee-rest-api-gateway.jar &
 
 wait
