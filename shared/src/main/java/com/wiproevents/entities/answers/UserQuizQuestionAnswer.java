@@ -1,6 +1,7 @@
 package com.wiproevents.entities.answers;
 
 import com.wiproevents.entities.questions.QuizQuestion;
+import com.wiproevents.utils.springdata.extensions.Reference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,5 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserQuizQuestionAnswer extends BaseQuestionAnswer {
+    @Reference
     private QuizQuestion question;
+    private boolean answerCorrect;
 }

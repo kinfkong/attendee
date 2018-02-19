@@ -1,5 +1,23 @@
 zuul:
   routes:
+    userEventFeedbacks:
+      path: /userEventFeedbacks/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
+    userQuizAnswers:
+      path: /userQuizAnswers/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
+    userPollAnswers:
+      path: /userPollAnswers/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
     userSurveyAnswers:
       path: /userSurveyAnswers/**
       serviceId: microservice2

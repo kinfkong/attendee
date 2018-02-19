@@ -1,9 +1,10 @@
 package com.wiproevents.entities;
 
 import com.microsoft.azure.spring.data.documentdb.core.mapping.Document;
-import com.wiproevents.entities.answers.UserSurveyQuestionAnswer;
+import com.wiproevents.entities.answers.UserSurveyAnswer;
 import com.wiproevents.entities.briefs.EventBrief;
 import com.wiproevents.entities.briefs.UserBrief;
+import com.wiproevents.utils.springdata.extensions.Reference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +15,15 @@ import lombok.Setter;
 @Setter
 @Document(collection = "user_event_feedback")
 public class UserEventFeedback extends AuditableEntity {
+    @Reference
     private EventBrief event;
+
+    @Reference
     private UserBrief user;
-    private UserSurveyQuestionAnswer feedback;
+
+    @Reference(cascade = true)
+    private UserSurveyAnswer feedback;
+
     private int eventRating;
     private String comment;
     private boolean completed;
