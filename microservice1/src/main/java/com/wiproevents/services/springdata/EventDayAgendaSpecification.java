@@ -21,7 +21,7 @@ public class EventDayAgendaSpecification implements DocumentDbSpecification<Even
 
 
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         Helper.buildEqualPredict(query, "event.id", criteria.getEventId());
         return query;
     }

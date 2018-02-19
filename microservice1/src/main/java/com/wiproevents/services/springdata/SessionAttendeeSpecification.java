@@ -21,7 +21,7 @@ public class SessionAttendeeSpecification implements DocumentDbSpecification<Ses
 
 
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         Helper.buildEqualPredict(query, "session.id", this.criteria.getSessionId());
         Helper.buildEqualPredict(query, "user.id", this.criteria.getUserId());
         Helper.buildEqualPredict(query, "status", this.criteria.getStatus());

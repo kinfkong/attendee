@@ -98,8 +98,6 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
             throw new IllegalArgumentException("You cannot assign the id on create.");
         }
 
-        entity.setId(UUID.randomUUID().toString());
-
         handleNestedValidation(entity);
 
         handleNestedCreate(entity);

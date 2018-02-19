@@ -21,7 +21,7 @@ public class EventFAQSpecification implements DocumentDbSpecification<EventFAQ> 
 
 
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         Helper.buildEqualPredict(query, "eventId", criteria.getEventId());
         return query;
     }

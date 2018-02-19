@@ -7,8 +7,6 @@ import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import lombok.AllArgsConstructor;
 
-import java.util.Map;
-
 /**
  * The specification used to query User by criteria.
  */
@@ -21,7 +19,7 @@ public class UserSpecification implements DocumentDbSpecification<User> {
 
 
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
 
         Helper.buildEqualPredict(query, "fullName", this.criteria.getFullName());
         Helper.buildEqualPredict(query, "email", this.criteria.getEmail());

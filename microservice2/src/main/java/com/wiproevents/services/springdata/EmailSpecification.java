@@ -34,7 +34,7 @@ public class EmailSpecification implements DocumentDbSpecification<Email> {
      * @return the sql query.
      */
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         Helper.buildEqualPredict(query, "status", criteria.getStatus());
         return query;
     }

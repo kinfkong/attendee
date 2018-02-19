@@ -20,7 +20,7 @@ public class UserPreferenceSpecification implements DocumentDbSpecification<User
 
 
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         return query;
     }
 }

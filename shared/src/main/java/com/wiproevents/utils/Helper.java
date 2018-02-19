@@ -333,7 +333,7 @@ public class Helper {
 
     public static Query buildEqualPredict(Query query, String key, Object value) {
         if (value != null) {
-            Map<String, Object> values = new HashMap<>();
+            Map<String, Object> values = new LinkedHashMap<>();
             values.put(key, value);
             query.addCriteria(Criteria.where(key, values));
         }

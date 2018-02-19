@@ -33,7 +33,7 @@ public class UserQuizAnswerSpecification implements DocumentDbSpecification<User
      * @return the sql query.
      */
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         return query;
     }
 }

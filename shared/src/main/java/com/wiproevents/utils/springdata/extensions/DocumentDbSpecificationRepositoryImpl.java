@@ -43,8 +43,7 @@ public class DocumentDbSpecificationRepositoryImpl<T, ID extends Serializable> e
     @Override
     public SearchResult<T> findAll(DocumentDbSpecification<T> spec, Paging paging) {
         Query q = new Query();
-        LinkedHashMap<String, Object> values = new LinkedHashMap<>();
-        return documentDbOperations.find(spec.toQuery(q, values), entityInformation.getJavaType(),
+        return documentDbOperations.find(spec.toQuery(q), entityInformation.getJavaType(),
                 entityInformation.getCollectionName(), paging);
     }
 
@@ -166,8 +165,7 @@ public class DocumentDbSpecificationRepositoryImpl<T, ID extends Serializable> e
     @Override
     public long countAll(DocumentDbSpecification<T> spec) {
         Query q = new Query();
-        LinkedHashMap<String, Object> values = new LinkedHashMap<>();
-        return documentDbOperations.count(spec.toQuery(q, values), entityInformation.getJavaType(),
+        return documentDbOperations.count(spec.toQuery(q), entityInformation.getJavaType(),
                 entityInformation.getCollectionName());
     }
 

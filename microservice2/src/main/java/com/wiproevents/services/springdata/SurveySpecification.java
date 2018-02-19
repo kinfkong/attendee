@@ -34,7 +34,7 @@ public class SurveySpecification implements DocumentDbSpecification<Survey> {
      * @return the sql query.
      */
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         Helper.buildEqualPredict(query, "sessionId", criteria.getSessionId());
         Helper.buildEqualPredict(query, "eventId", criteria.getEventId());
         Helper.buildEqualPredict(query, "context", criteria.getContext());

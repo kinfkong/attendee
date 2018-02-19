@@ -21,7 +21,7 @@ public class SessionSpecification implements DocumentDbSpecification<Session> {
 
 
     @Override
-    public Query toQuery(Query query, Map<String, Object> values) {
+    public Query toQuery(Query query) {
         Helper.buildEqualPredict(query, "dayAgendaId", criteria.getDayAgendaId());
         Helper.buildEqualPredict(query, "event.id", criteria.getEventId());
         Helper.buildEqualPredict(query, "name", criteria.getName());

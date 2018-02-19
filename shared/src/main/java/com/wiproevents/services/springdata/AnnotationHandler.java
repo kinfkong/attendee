@@ -129,7 +129,7 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                 }
             }
             for (Object item : (List) entity) {
-                if (item instanceof IdentifiableEntity) {
+                if (item instanceof IdentifiableEntity && ((IdentifiableEntity) item).getId() != null) {
                     result.add(upsert(annotation, item, oldItemMappings.get(((IdentifiableEntity) item).getId())));
                 } else {
                     result.add(upsert(annotation, item, null));
@@ -148,8 +148,21 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                 }
             }
         }
+
         if (shouldSave) {
             IdentifiableEntity idEntity = (IdentifiableEntity) entity;
+            DocumentDbSpecificationRepository<IdentifiableEntity, String> repository
+                    = getRepositoryByClass(idEntity.getClass());
+            if (oldEntity != null && ((IdentifiableEntity) oldEntity).getId() == null) {
+                oldEntity = null;
+            }
+            if (oldEntity == null && idEntity.getId() != null) {
+                oldEntity = repository.findOne(idEntity.getId());
+                if (oldEntity == null) {
+                    throw new IllegalArgumentException("Entity not found of id: "
+                            + idEntity.getId() + " of type: " + idEntity.getClass());
+                }
+            }
             boolean isNew = oldEntity == null;
             if (isNew && idEntity.getId() == null) {
                 idEntity.setId(UUID.randomUUID().toString());
@@ -216,7 +229,7 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                     field.setAccessible(true);
                     value = field.get(entity);
                     if (oldEntity != null) {
-                        oldValue = field.get(entity);
+                        oldValue = field.get(oldEntity);
                     }
 
                     // assign the ids
