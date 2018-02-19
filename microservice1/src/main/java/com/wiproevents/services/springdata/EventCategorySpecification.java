@@ -35,7 +35,7 @@ public class EventCategorySpecification implements DocumentDbSpecification<Event
      */
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "name", this.criteria.getName());
+        Helper.buildEqualPredict(query, "name", this.criteria.getName());
         return query;
     }
 }

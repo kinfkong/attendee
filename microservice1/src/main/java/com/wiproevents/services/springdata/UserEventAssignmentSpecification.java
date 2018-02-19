@@ -21,8 +21,8 @@ public class UserEventAssignmentSpecification implements DocumentDbSpecification
 
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "event.id", criteria.getEventId());
-        Helper.buildEqualPredict(query, values, "user.id", criteria.getUserId());
+        Helper.buildEqualPredict(query, "event.id", criteria.getEventId());
+        Helper.buildEqualPredict(query, "user.id", criteria.getUserId());
         return query;
     }
 }

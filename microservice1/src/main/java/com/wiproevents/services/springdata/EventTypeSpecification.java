@@ -22,7 +22,7 @@ public class EventTypeSpecification implements DocumentDbSpecification<EventType
 
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "name", this.criteria.getName());
+        Helper.buildEqualPredict(query,  "name", this.criteria.getName());
         return query;
     }
 }

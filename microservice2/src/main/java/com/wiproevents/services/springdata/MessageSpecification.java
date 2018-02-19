@@ -35,7 +35,7 @@ public class MessageSpecification implements DocumentDbSpecification<Message> {
      */
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "conversationId", criteria.getConversationId());
+        Helper.buildEqualPredict(query, "conversationId", criteria.getConversationId());
         return query;
     }
 }

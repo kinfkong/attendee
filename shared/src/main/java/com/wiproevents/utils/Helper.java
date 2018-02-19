@@ -13,7 +13,6 @@ import com.wiproevents.security.UserAuthentication;
 import com.wiproevents.utils.springdata.extensions.InCriteria;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
@@ -314,7 +313,6 @@ public class Helper {
     /**
      * Encode password for user.
      * @param user the user entity.
-     * @param isUpdating the updating flag.
      * @return the user with encrypted password field.
      */
     public static User encodePassword(User user) {

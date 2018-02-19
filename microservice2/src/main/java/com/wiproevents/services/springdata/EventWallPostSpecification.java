@@ -22,7 +22,7 @@ public class EventWallPostSpecification implements DocumentDbSpecification<Event
 
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "parentPostId", criteria.getParentPostId());
+        Helper.buildEqualPredict(query,  "parentPostId", criteria.getParentPostId());
         return query;
     }
 }

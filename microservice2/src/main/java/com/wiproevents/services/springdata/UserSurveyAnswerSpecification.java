@@ -35,8 +35,8 @@ public class UserSurveyAnswerSpecification implements DocumentDbSpecification<Us
      */
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "user.id", criteria.getUserId());
-        Helper.buildEqualPredict(query, values, "survey.id", criteria.getSurveyId());
+        Helper.buildEqualPredict(query, "user.id", criteria.getUserId());
+        Helper.buildEqualPredict(query, "survey.id", criteria.getSurveyId());
         return query;
     }
 }

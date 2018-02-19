@@ -22,8 +22,8 @@ public class SocialUserSpecification implements DocumentDbSpecification<SocialUs
 
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "providerId", criteria.getProviderId());
-        Helper.buildEqualPredict(query, values, "providerUserId", criteria.getProviderUserId());
+        Helper.buildEqualPredict(query, "providerId", criteria.getProviderId());
+        Helper.buildEqualPredict(query, "providerUserId", criteria.getProviderUserId());
         return query;
     }
 }

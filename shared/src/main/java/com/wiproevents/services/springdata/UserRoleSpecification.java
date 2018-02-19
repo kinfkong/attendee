@@ -22,7 +22,7 @@ public class UserRoleSpecification implements DocumentDbSpecification<UserRole> 
 
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "name", criteria.getName());
+        Helper.buildEqualPredict(query, "name", criteria.getName());
         return query;
     }
 }

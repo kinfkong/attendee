@@ -22,7 +22,7 @@ public class EventFAQSpecification implements DocumentDbSpecification<EventFAQ> 
 
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
-        Helper.buildEqualPredict(query, values, "eventId", criteria.getEventId());
+        Helper.buildEqualPredict(query, "eventId", criteria.getEventId());
         return query;
     }
 }
