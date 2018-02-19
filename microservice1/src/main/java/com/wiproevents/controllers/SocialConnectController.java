@@ -88,7 +88,8 @@ public class SocialConnectController {
 
     private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 
-    private String applicationUrl = null;
+    @Value("${website.url}")
+    private String applicationUrl;
 
     @Autowired
     private UserService userService;
@@ -106,6 +107,10 @@ public class SocialConnectController {
     @PostConstruct
     public void afterPropertiesSet() throws Exception {
         this.connectSupport = new ConnectSupport(sessionStrategy);
+        if (this.applicationUrl != null) {
+            this.connectSupport.setApplicationUrl(this.applicationUrl);
+        }
+
     }
 
 

@@ -1,9 +1,6 @@
 #!/bin/sh
-export PORT=8080
 
-# export COSMOS_DB_URI=https://attendee.documents.azure.cn:443/
 export COSMOS_DB_URI=https://tcattendee.documents.azure.cn:443/
-# export COSMOS_DB_KEY=5C8wQj8aQyhocd6GxQmf70afwq2tRy3CsKh1bPmIIUvx13tBRcKyOKr4RxmWP47LR25AVVG1PGWnhllnTsmjeg==
 export COSMOS_DB_KEY=RXUS3AAIl1Ycf3FzIdxH6jBGKcQXxAnFfZ3VMVPKj7aW9xMwaLh82YDoqMk8UD359CbFCuNlCfstEAAwQtyzKg==
 export COSMOS_DB_NAME=attendee
 
@@ -20,6 +17,7 @@ export SOCIAL_TWITTER_APP_SECRET=Dm2aem0C1XQWYlj3gq4bnVt5sidconLhJe36fTyyPYG73uD
 export SOCIAL_GOOGLE_APP_ID=403393744957-i3b7b5a0r66cmlb4avnko06d4jlce2jq.apps.googleusercontent.com
 export SOCIAL_GOOGLE_APP_SECRET=9rRlFpD94G0tMwkzk6D-95a6
 
+export WEBSITE_URL=http://localhost:8080
 
 export MAIL_SMTP_HOST=localhost
 export MAIL_SMTP_PORT=9925
@@ -67,7 +65,7 @@ fi
 
 
 
-# java -jar -Dserver.port=8081 target/attendee-rest-api-microservice1.jar &
+java -jar -Dserver.port=8081 -DsocksProxyHost=127.0.0.1 -DsocksProxyPort=7070 target/attendee-rest-api-microservice1.jar &
 java -jar -Dserver.port=8082 target/attendee-rest-api-microservice2.jar &
 java -jar -Dserver.port=8080 target/attendee-rest-api-gateway.jar &
 

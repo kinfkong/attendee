@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The survey REST controller. Is effectively thread safe.
@@ -73,7 +74,7 @@ public class SurveyController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public Survey create(@RequestBody Survey entity) throws AttendeeException  {
+    public Survey create(@Valid @RequestBody Survey entity) throws AttendeeException  {
         return surveyService.create(entity);
     }
 
@@ -90,7 +91,7 @@ public class SurveyController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public Survey update(@PathVariable String id, @RequestBody Survey entity)
+    public Survey update(@PathVariable String id, @Valid @RequestBody Survey entity)
             throws AttendeeException  {
         return surveyService.update(id, entity);
     }

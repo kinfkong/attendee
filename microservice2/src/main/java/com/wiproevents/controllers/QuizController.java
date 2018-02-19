@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The quiz REST controller. Is effectively thread safe.
@@ -73,7 +74,7 @@ public class QuizController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public Quiz create(@RequestBody Quiz entity) throws AttendeeException  {
+    public Quiz create(@Valid @RequestBody Quiz entity) throws AttendeeException  {
         return quizService.create(entity);
     }
 
@@ -90,7 +91,7 @@ public class QuizController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public Quiz update(@PathVariable String id, @RequestBody Quiz entity)
+    public Quiz update(@PathVariable String id, @Valid @RequestBody Quiz entity)
             throws AttendeeException  {
         return quizService.update(id, entity);
     }

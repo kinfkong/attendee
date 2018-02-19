@@ -1,2 +1,3 @@
 Besides the new features for this challenge, also changing the followings for the previous challenge:
 1). change the Timezone entity properties
+2). the social logins should also work (because we have microservices changes the url).

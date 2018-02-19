@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The poll REST controller. Is effectively thread safe.
@@ -74,7 +75,7 @@ public class PollController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public Poll create(@RequestBody Poll entity) throws AttendeeException  {
+    public Poll create(@Valid @RequestBody Poll entity) throws AttendeeException  {
         return pollService.create(entity);
     }
 
@@ -91,7 +92,7 @@ public class PollController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public Poll update(@PathVariable String id, @RequestBody Poll entity)
+    public Poll update(@PathVariable String id, @Valid @RequestBody Poll entity)
             throws AttendeeException  {
         return pollService.update(id, entity);
     }

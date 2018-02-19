@@ -50,7 +50,7 @@
 
         <social.google.appId>${env.SOCIAL_GOOGLE_APP_ID}</social.google.appId>
         <social.google.appSecret>${env.SOCIAL_GOOGLE_APP_SECRET}</social.google.appSecret>
-
+        <website.url>${env.WEBSITE_URL}</website.url>
         <spring.mail.host>${env.MAIL_SMTP_HOST}</spring.mail.host>
         <spring.mail.port>${env.MAIL_SMTP_PORT}</spring.mail.port>
         <spring.mail.username>${env.MAIL_SMTP_USERNAME}</spring.mail.username>
