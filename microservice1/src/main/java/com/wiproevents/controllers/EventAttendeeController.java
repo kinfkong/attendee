@@ -6,6 +6,7 @@ package com.wiproevents.controllers;
 
 import com.wiproevents.entities.EventAttendee;
 import com.wiproevents.entities.criteria.EventAttendeeSearchCriteria;
+import com.wiproevents.entities.statuses.EventAttendeeStatus;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.exceptions.ConfigurationException;
 import com.wiproevents.exceptions.EntityNotFoundException;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+
 
 /**
  * The event attendee REST controller. Is effectively thread safe.
@@ -122,6 +124,86 @@ public class EventAttendeeController {
     public SearchResult<EventAttendee> search(@ModelAttribute EventAttendeeSearchCriteria criteria,
                                           @ModelAttribute Paging paging) throws AttendeeException  {
         return eventAttendeeService.search(criteria, paging);
+    }
+
+    /**
+     * This method is used to make the entity approved.
+     *
+     * @param id the id of the entity to update
+     * @return the updated entity
+     * @throws IllegalArgumentException if id is null or empty or entity is null or id of entity is null or empty.
+     * or id of entity not match id or entity is invalid
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/approve", method = RequestMethod.PUT)
+    @Transactional
+    public EventAttendee approve(@PathVariable String id)
+            throws AttendeeException  {
+        Helper.checkNullOrEmpty(id, "id");
+        EventAttendee entity = eventAttendeeService.get(id);
+        entity.setStatus(EventAttendeeStatus.Approved);
+        return eventAttendeeService.update(id, entity);
+    }
+
+    /**
+     * This method is used to make the entity rejected.
+     *
+     * @param id the id of the entity to update
+     * @return the updated entity
+     * @throws IllegalArgumentException if id is null or empty or entity is null or id of entity is null or empty.
+     * or id of entity not match id or entity is invalid
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/reject", method = RequestMethod.PUT)
+    @Transactional
+    public EventAttendee reject(@PathVariable String id)
+            throws AttendeeException  {
+        Helper.checkNullOrEmpty(id, "id");
+        EventAttendee entity = eventAttendeeService.get(id);
+        entity.setStatus(EventAttendeeStatus.Rejected);
+        return eventAttendeeService.update(id, entity);
+    }
+
+    /**
+     * This method is used to make the entity deleted.
+     *
+     * @param id the id of the entity to update
+     * @return the updated entity
+     * @throws IllegalArgumentException if id is null or empty or entity is null or id of entity is null or empty.
+     * or id of entity not match id or entity is invalid
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/delete", method = RequestMethod.PUT)
+    @Transactional
+    public EventAttendee markDelete(@PathVariable String id)
+            throws AttendeeException  {
+        Helper.checkNullOrEmpty(id, "id");
+        EventAttendee entity = eventAttendeeService.get(id);
+        entity.setStatus(EventAttendeeStatus.Deleted);
+        return eventAttendeeService.update(id, entity);
+    }
+
+    /**
+     * This method is used to make the entity checkedin.
+     *
+     * @param id the id of the entity to update
+     * @return the updated entity
+     * @throws IllegalArgumentException if id is null or empty or entity is null or id of entity is null or empty.
+     * or id of entity not match id or entity is invalid
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/checkIn", method = RequestMethod.PUT)
+    @Transactional
+    public EventAttendee checkIn(@PathVariable String id)
+            throws AttendeeException  {
+        Helper.checkNullOrEmpty(id, "id");
+        EventAttendee entity = eventAttendeeService.get(id);
+        entity.setStatus(EventAttendeeStatus.CheckedIn);
+        return eventAttendeeService.update(id, entity);
     }
 }
 

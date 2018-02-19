@@ -8,6 +8,7 @@ import com.wiproevents.entities.types.EngagementType;
 import com.wiproevents.utils.springdata.extensions.ForeignKey;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public abstract class BaseEngagement extends IdentifiableEntity {
     private EngagementContextType context;
 
     @ForeignKey(clazz = EventBrief.class)
+    @NotBlank
     private String eventId;
 
     @ForeignKey(clazz = SessionBrief.class)

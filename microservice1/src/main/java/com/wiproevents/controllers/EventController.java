@@ -4,6 +4,7 @@ package com.wiproevents.controllers;
 import com.wiproevents.entities.*;
 import com.wiproevents.entities.criteria.EventSearchCriteria;
 import com.wiproevents.exceptions.AttendeeException;
+import com.wiproevents.exceptions.EntityNotFoundException;
 import com.wiproevents.services.EventFAQService;
 import com.wiproevents.services.EventService;
 import com.wiproevents.utils.Helper;
@@ -191,9 +192,8 @@ public class EventController {
     /**
      * This method is used to update an entity.
      *
-     * @param id the id of the entity to update
+     * @param eventId the id of the entity to update
      * @param entity the entity to update
-     * @param documents the documents to upload
      * @return the updated entity
      * @throws IllegalArgumentException if id is not positive or entity is null or id of entity is not positive
      * or id of  entity not match id or entity is invalid
@@ -210,7 +210,6 @@ public class EventController {
     /**
      * This method is used to retrieve an entity.
      *
-     * @param id the id of the entity to retrieve
      * @return the match entity
      * @throws IllegalArgumentException if id is not positive
      * @throws EntityNotFoundException if the entity does not exist
@@ -218,14 +217,18 @@ public class EventController {
      */
     @RequestMapping(value = "{eventId}/eventFAQ", method = RequestMethod.GET)
     public EventFAQ getEventFAQ(@PathVariable String eventId) throws AttendeeException {
-        return eventFAQService.getByEventId(eventId);
+        EventFAQ result = eventFAQService.getByEventId(eventId);
+        if (result == null) {
+            throw new EntityNotFoundException("There is no faq for event: " + eventId);
+        }
+        return result;
     }
 
 
     /**
      * This method is used to delete an entity.
      *
-     * @param id the id of the entity to delete
+     * @param eventId the id of the entity to delete
      * @throws IllegalArgumentException if id is not positive
      * @throws EntityNotFoundException if the entity does not exist
      * @throws AttendeeException if any other error occurred during operation

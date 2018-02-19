@@ -138,6 +138,8 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
     @Transactional
     public T update(String id, T entity) throws AttendeeException {
         T existing = checkUpdate(id, entity);
+        handlePopulate(existing);
+
         handleNestedValidation(entity);
         handleNestedUpdate(entity, existing);
 
@@ -157,7 +159,7 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
      * or id of  entity not match id
      * @throws EntityNotFoundException if the entity does not exist
      */
-    protected T checkUpdate(String id, T entity) throws EntityNotFoundException {
+    protected T checkUpdate(String id, T entity) throws AttendeeException {
         Helper.checkUpdate(id, entity);
         return ensureEntityExist(id);
     }
@@ -305,9 +307,9 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
      * @throws IllegalArgumentException if id is not positive
      * @throws EntityNotFoundException if the match entity can not be found in DB
      */
-    private T ensureEntityExist(String id) throws EntityNotFoundException {
+    private T ensureEntityExist(String id) throws AttendeeException {
         Helper.checkNullOrEmpty(id, "id");
-        T entity = repository.findOne(id, true);
+        T entity = repository.findOne(id);
         if (entity == null) {
             throw new EntityNotFoundException(String.format("Entity with ID=%s can not be found", id));
         }

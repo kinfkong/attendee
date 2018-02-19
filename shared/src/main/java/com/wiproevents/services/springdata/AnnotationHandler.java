@@ -236,8 +236,16 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                             throw new AttendeeException("cannot find id in class: " + entity.getClass());
                         }
 
-                        String id = ((IdentifiableEntity) entity).getId();
-
+                        String id;
+                        if (assignIdAnnotation.from().isEmpty()) {
+                            id = ((IdentifiableEntity) entity).getId();
+                        } else {
+                            try {
+                                id = (String) beanUtils.getProperty(entity, assignIdAnnotation.from());
+                            } catch (InvocationTargetException | NoSuchMethodException e) {
+                                throw new AttendeeException("cannot get the id", e);
+                            }
+                        }
                         assignId(assignIdAnnotation, value, id);
                     }
 
@@ -320,7 +328,11 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
         DocumentDbSpecificationRepository repo = repositories.get(name + "Repository");
 
         if (repo == null) {
-            throw new AttendeeException("Cannot find repo of type: " + name);
+            repo = repositories.get(clazz.getSimpleName() + "Repository");
+            if (repo == null) {
+                throw new AttendeeException("Cannot find repo of type: " + name);
+            }
+
         }
 
         return repo;

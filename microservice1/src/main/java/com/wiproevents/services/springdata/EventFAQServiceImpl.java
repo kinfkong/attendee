@@ -53,7 +53,11 @@ public class EventFAQServiceImpl extends BaseService<EventFAQ, EventFAQSearchCri
         if (eventFAQ == null) {
             throw new EntityNotFoundException("event faq for event: " + eventId + " does not exist.");
         }
-        return update(eventFAQ.getId(), eventFAQ);
+
+        entity.setId(eventFAQ.getId());
+        entity.setEventId(eventId);
+
+        return update(eventFAQ.getId(), entity);
     }
 
     @Override
