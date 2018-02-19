@@ -9,9 +9,7 @@ This is the deployment guide for the Attendee REST API API.
 ## API Configuration
 ### application configuration
 
-Configuration file is `src/main/resources/application.properties`:  
-
-- **server.port**: the server port on which the API will run on
+Configuration file is `shared/src/main/resources/application.properties`:  
 
 - **azure.documentdb.uri**: the azure cosmos db connection url  
 - **azure.documentdb.key**: the azure cosmos db secret key   
@@ -34,24 +32,23 @@ Configuration file is `src/main/resources/application.properties`:
 - **spring.mail.properties.mail.smtp.starttls.enable**: true of false, enable tsl or not
 - **spring.mail.properties.mail.smtp.starttls.required**: true of false, tsl is required or not
 - **mail.from**: the from email when sending emails
-  
+
+- **website.url**: the website url of our app
   
 You can keep the rest of the parameters unchanged.
 
 ### log4j 2 configuration
-Edit file `src/main/resources/log4j2.properties`:  
+Edit file `shared/src/main/resources/log4j2.properties`:  
 
 - **com.wiproevents**: the log level to be used
 
 ## Building the app
 
 You can run below mvn command to run application directly.  
-set the env variables or modify the config in `src/main/resources/application.properties`  
+set the env variables or modify the config in `shared/src/main/resources/application.properties`  
 for example, in linux or mac:
 
-```bash
-export PORT=8080
-
+```
 export COSMOS_DB_URI=<YOUR_COSMOS_DB_URI>
 export COSMOS_DB_KEY=<YOUR_COSMOS_DB_KEY>
 export COSMOS_DB_NAME=<YOUR_COSMOS_DB_NAME>
@@ -65,6 +62,8 @@ export SOCIAL_TWITTER_APP_SECRET=Dm2aem0C1XQWYlj3gq4bnVt5sidconLhJe36fTyyPYG73uD
 export SOCIAL_GOOGLE_APP_ID=403393744957-i3b7b5a0r66cmlb4avnko06d4jlce2jq.apps.googleusercontent.com
 export SOCIAL_GOOGLE_APP_SECRET=9rRlFpD94G0tMwkzk6D-95a6
 
+export WEBSITE_URL=http://localhost:8080
+
 export MAIL_SMTP_HOST=localhost
 export MAIL_SMTP_PORT=9925
 export MAIL_SMTP_USERNAME=
@@ -73,16 +72,20 @@ export MAIL_SMTP_AUTH_REQUIRED=false
 export MAIL_SMTP_STARTTLS_ENABLED=false
 export MAIL_SMTP_STARTTLS_REQUIRED=false
 export MAIL_FROM_ADDRESS=test@tc.com
-
 ```
+
 
 Then run:
 
-``` bash
-mvn clean isntall
 ```
-then it will generate a jar file in `target/attendee-rest-api`
+mvn clean install
+```
+then it will generate several jar files in `target` folder:
 
+- **attendee-rest-api-gateway.jar** - the gateway for the 2 microservices
+- **attendee-rest-api-microservice1.jar** - the microservice1 app
+- **attendee-rest-api-microservice2.jar** - the microservice2 app
+- **attendee-dbtool.jar** - a tool for help to manage the db collections and data
 
 ## Database Setup
 
@@ -90,16 +93,16 @@ then it will generate a jar file in `target/attendee-rest-api`
 - config the database info (uri, key, database) to `application.properties` or env variables.
 - build the app using the commands in the above section.
 - To create all the collections, run:   
-```bash
-java -jar -Dloader.main=com.wiproevents.dbtool.DbToolApplication target/attendee-rest-api.jar create collections
+```
+java -jar target/attendee-dbtool.jar create collections
 ```
 - To insert the test data, run:  
-```bash
-java -jar -Dloader.main=com.wiproevents.dbtool.DbToolApplication target/attendee-rest-api.jar load collections
 ```
-- To drop all the collections, run:
-```bash
-java -jar -Dloader.main=com.wiproevents.dbtool.DbToolApplication target/attendee-rest-api.jar drop collections
+java -jar target/attendee-dbtool.jar load collections
+```
+- To drop all the collections, run:   
+```
+java -jar target/attendee-dbtool.jar drop collections
 ```
 
 ## Social OAuth Setup
@@ -108,29 +111,55 @@ java -jar -Dloader.main=com.wiproevents.dbtool.DbToolApplication target/attendee
 - config the appId/appSecret in the `application.properties` file or Env variables 
 - config the OAUTH callback url in Facebook, Google, Twitter and LinkedIn developer consoles.
 
-The urls are:
+The urls are:  
 ```
-http://localhost:8080/signup/facebook
-http://localhost:8080/signup/google
-http://localhost:8080/signup/twitter
-http://localhost:8080/signup/linkedin
-```
+http://localhost:8080/signup/facebook   
+http://localhost:8080/signup/google   
+http://localhost:8080/signup/twitter   
+http://localhost:8080/signup/linkedin   
+```  
 - In the developer console of the apps, make sure the app has permission to read the user's email.
 
 
 ## Run the app locally
 You can run below mvn command to run application directly.  
-set the env variables or modify the config in `src/main/resources/application.properties`  
+set the env variables or modify the config in `shared/src/main/resources/application.properties`  
 
-Then run:
 
-``` bash
-mvn clean install
-java -jar target/attendee-rest-api.jar
+building the apps:  
 ```
+mvn clean install
+```
+
+run the microservice 1:  
+```
+java -jar -Dserver.port=8081 target/attendee-rest-api-microservice1.jar
+```
+
+run the microservice 2:   
+```
+java -jar -Dserver.port=8082 target/attendee-rest-api-microservice2.jar
+```
+
+run the gateway:  
+```
+java -jar -Dserver.port=8080 target/attendee-rest-api-gateway.jar
+```
+
+the gateway forwards the requests by their urls to the microservices.
+the gateway configuration is in:  
+`gateway/src/main/resources/application.yml`
+
 ## deploy the Azure
-follow this post to deploy the Spring boot app to Azure:
+
+### microservices
+
+follow this post to deploy the 2 microservices to Azure:
 [https://stackoverflow.com/questions/30731982/spring-boot-app-on-microsoft-azure](https://stackoverflow.com/questions/30731982/spring-boot-app-on-microsoft-azure)
+
+### gateway
+we can use the azure gateway 
+[https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-introduction](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-introduction)
 
 ## Verification
 
@@ -138,26 +167,36 @@ follow this post to deploy the Spring boot app to Azure:
 Open **http://editor.swagger.io/** and copy  `docs/swagger.yaml` to verify.
 
 ### Postman
-Prepare clean and test data in db with `drop collections` and `create collections` commands using the above db tool..
+
+Prepare clean and test data in db with `drop collections` and `create collections` and `load collections` commands using the above db tool.
 
 Import Postman collection `docs/postman_collection.json` with environment variables `docs/postman_collection-env.json`. 
-There are 2 users pre-set in the test data, for 'USER' role, use:
+There are 2 users pre-set in the test data:   
+for 'USER' role, use:
+
+```  
 email: user@tc.com  
-password: 123456  
-for 'admin' role, use:
+password: 123456    
+```
+
+for 'admin' role, use:  
+```
 email: admin@tc.com
 password; 123456 
- 
- You can register your own users for tests.
+```
+
+You can register your own users for tests.
 
 ### Social login Verification
 We need to use the browser for social login. 
 visit [http://localhost:8080/test_pages/social.html](http://localhost:8080/test_pages/social.html) to test.
 
 ### demo video
-A short video demo is here:
-http://take.ms/syZUT  
-and  
-http://take.ms/0pLgS
+- for challenge #1 demos:   
+[http://take.ms/syZUT](http://take.ms/syZUT)
+[http://take.ms/0pLgS](http://take.ms/0pLgS)
 
+- for challenge #2 demo:   
+[http://take.ms/syZUT](http://take.ms/syZUT)
+[http://take.ms/0pLgS](http://take.ms/0pLgS)
 
