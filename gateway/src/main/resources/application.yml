@@ -1,5 +1,11 @@
 zuul:
   routes:
+    eventNotifications:
+      path: /eventNotifications/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
     eventEngagements:
       path: /events/*/engagements/**
       serviceId: microservice2
