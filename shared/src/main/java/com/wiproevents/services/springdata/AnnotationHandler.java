@@ -198,6 +198,13 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                 throw new IllegalArgumentException("Entity not found of id: "
                         + idEntity.getId() + " of type: " + idEntity.getClass());
             }
+        } else if (annotation instanceof Embed) {
+            if (entity instanceof IdentifiableEntity) {
+                IdentifiableEntity idEntity = (IdentifiableEntity) entity;
+                if (idEntity.getId() == null) {
+                    idEntity.setId(UUID.randomUUID().toString());
+                }
+            }
         }
 
 

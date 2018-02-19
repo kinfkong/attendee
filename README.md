@@ -193,10 +193,10 @@ visit [http://localhost:8080/test_pages/social.html](http://localhost:8080/test_
 
 ### demo video
 - for challenge #1 demos:   
-[http://take.ms/syZUT](http://take.ms/syZUT)
-[http://take.ms/0pLgS](http://take.ms/0pLgS)
+[http://take.ms/syZUT](http://take.ms/syZUT)   
+[http://take.ms/0pLgS](http://take.ms/0pLgS)   
 
 - for challenge #2 demo:   
-[http://take.ms/syZUT](http://take.ms/syZUT)
+[http://take.ms/syZUT](http://take.ms/syZUT)   
 [http://take.ms/0pLgS](http://take.ms/0pLgS)
 

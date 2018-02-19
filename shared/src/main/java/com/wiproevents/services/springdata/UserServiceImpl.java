@@ -161,6 +161,9 @@ public class UserServiceImpl extends BaseService<User, UserSearchCriteria> imple
         userPreference.setUpdatedOn(new Date());
 
         userPreference.setUserId(result.getId());
+        for (NotificationMethodPreference mp: userPreference.getNotificationMethodPreferences()) {
+            mp.setUserId(result.getId());
+        }
 
         // save the user preference
         userPreferenceRepository.save(userPreference);
