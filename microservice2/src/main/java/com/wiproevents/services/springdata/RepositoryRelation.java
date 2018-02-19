@@ -54,9 +54,9 @@ public class RepositoryRelation {
         // handleUserNoteRepository();
         // handleNotificationRepository();
         // handleEmailRepository();
-        handleConversationRepository();
+        // handleConversationRepository();
         // handleMessageRepository();
-        handleEventWallPostRepository();
+        // handleEventWallPostRepository();
     }
 
     private void handleEventWallPostRepository() {

@@ -50,7 +50,9 @@ public class ExtMappingDocumentDbConverter extends MappingDocumentDbConverter {
                 if (null != idProperty && field.getName().equals(idProperty.getName())) {
                     continue;
                 }
-
+                if (field.isAnnotationPresent(ReverseReference.class)) {
+                    continue;
+                }
                 Object value = accessor.getProperty(entityInformation.getPersistentProperty(field.getName()));
                 value = modifyValue(value);
                 targetDocument.set(field.getName(), value);

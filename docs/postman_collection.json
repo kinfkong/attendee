@@ -3204,7 +3204,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": 0,\n  \"sessionId\": 0,\n  \"description\": \"string\",\n  \"questions\": [\n    {\n      \"weight\": 0,\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"string\",\n          \"orderNumber\": 0,\n          \"rightAnswer\": true\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-01-01\",\n  \"endTime\": \"2018-01-01\"\n}"
+									"raw": "{\n  \"name\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"sessionId\": null,\n  \"description\": \"string\",\n  \"questions\": [\n    {\n      \"weight\": 0,\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"string\",\n          \"orderNumber\": 0,\n          \"rightAnswer\": true\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-01-01\",\n  \"endTime\": \"2018-01-01\"\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/quizes",
@@ -3419,7 +3419,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": 0,\n  \"sessionId\": 0,\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2016-01-01\",\n  \"endTime\": \"2017-01-01\"\n}"
+									"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"context\": \"Event\",\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"sessionId\": \"{{SESSION_ID}}\",\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"orderNumber\": 0,\n      \"type\": \"MultipleSelection\",\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2016-01-01\",\n  \"endTime\": \"2017-01-01\"\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/polls",
@@ -3675,7 +3675,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"survey 1\",\n  \"description\": \"This is a survey\",\n  \"context\": \"Event\",\n  \"eventId\": 0,\n  \"sessionId\": 0,\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-12-01\",\n  \"endTime\": \"2017-12-18\"\n}"
+									"raw": "{\n  \"name\": \"survey 1\",\n  \"description\": \"This is a survey\",\n  \"context\": \"Event\",\n  \"eventId\": null,\n  \"sessionId\": \"{{SESSION_ID}}\",\n  \"questions\": [\n    {\n      \"text\": \"Will you recommend this event?\",\n      \"type\": \"SingleSelection\",\n      \"orderNumber\": 0,\n      \"answerOptions\": [\n        {\n          \"text\": \"Will you recommend this event?\",\n          \"orderNumber\": 0\n        }\n      ]\n    }\n  ],\n  \"status\": \"Active\",\n  \"type\": \"Live\",\n  \"startTime\": \"2017-12-01\",\n  \"endTime\": \"2017-12-18\"\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/surveys",
@@ -4417,7 +4417,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"emails\": [\n    \"kinfkong@126.com\"\n  ],\n  \"title\": \"this is a title\",\n  \"text\": \"this is a text\",\n  \"scheduled\": false\n}"
+									"raw": "{\n  \"emails\": [\n    \"kinfkong@126.com\"\n  ],\n  \"title\": \"Hello, this is title\",\n  \"text\": \"this is a text\",\n  \"scheduled\": false\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/emails",
@@ -4474,39 +4474,51 @@
 							"name": "Get user's notifications.",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "http:///notifications?status={{status}}&startDate={{startDate}}&endDate={{endDate}}&offset={{offset}}&limit={{limit}}",
+									"raw": "{{URL}}/notifications",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"notifications"
 									],
 									"query": [
 										{
 											"key": "status",
-											"value": "{{status}}"
+											"value": "{{status}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "startDate",
-											"value": "{{startDate}}"
+											"value": "{{startDate}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "endDate",
-											"value": "{{endDate}}"
+											"value": "{{endDate}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "offset",
-											"value": "{{offset}}"
+											"value": "{{offset}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "limit",
-											"value": "{{limit}}"
+											"value": "{{limit}}",
+											"equals": true,
+											"disabled": true
 										}
 									]
 								},
@@ -4549,25 +4561,30 @@
 							"name": "Mark user's notification as read.",
 							"request": {
 								"method": "PUT",
-								"header": [],
-								"body": {},
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
-									"raw": "http:///notifications/:id/read",
+									"raw": "{{URL}}/notifications/:id/read",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"notifications",
 										":id",
 										"read"
 									],
 									"variable": [
 										{
-											"value": "{{id}}",
-											"id": "id"
+											"key": "id",
+											"value": "cbcb5c6f-20c2-4ecf-aa7c-a4b14655a8c3"
 										}
 									]
 								},
@@ -4586,43 +4603,55 @@
 							"name": "Get UserNotes.",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "http:///userNotes?eventId={{eventId}}&sessionId={{sessionId}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
+									"raw": "{{URL}}/userNotes?eventId={{EVENT_ID}}&sessionId={{SESSION_ID}}",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"userNotes"
 									],
 									"query": [
 										{
 											"key": "eventId",
-											"value": "{{eventId}}"
+											"value": "{{EVENT_ID}}",
+											"equals": true
 										},
 										{
 											"key": "sessionId",
-											"value": "{{sessionId}}"
+											"value": "{{SESSION_ID}}",
+											"equals": true
 										},
 										{
 											"key": "offset",
-											"value": "{{offset}}"
+											"value": "{{offset}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "limit",
-											"value": "{{limit}}"
+											"value": "{{limit}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "sortColumn",
-											"value": "{{sortColumn}}"
+											"value": "{{sortColumn}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "sortOrder",
-											"value": "{{sortOrder}}"
+											"value": "{{sortOrder}}",
+											"equals": true,
+											"disabled": true
 										}
 									]
 								},
@@ -4665,24 +4694,33 @@
 							"name": "Update UserNote.",
 							"request": {
 								"method": "PUT",
-								"header": [],
-								"body": {},
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"220b527c-1007-4615-b0ca-3ee20d4f4164\",\n  \"userId\": \"{{USER_ID}}\",\n  \"session\": {\n    \"id\": \"{{SESSION_ID}}\"\n  },\n  \"event\": {\n    \"id\": \"{{EVENT_ID}}\"\n  },\n  \"text\": \"this is a user note modified\",\n  \"attachedFiles\": [{\n      \"id\": \"{{FILE_ID}}\"\n    }\n  ]\n}"
+								},
 								"url": {
-									"raw": "http:///userNotes/:id",
+									"raw": "{{URL}}/userNotes/:id",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"userNotes",
 										":id"
 									],
 									"variable": [
 										{
-											"value": "{{id}}",
-											"id": "id"
+											"key": "id",
+											"value": "220b527c-1007-4615-b0ca-3ee20d4f4164"
 										}
 									]
 								},
@@ -4694,24 +4732,26 @@
 							"name": "Delete UserNote.",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "http:///userNotes/:id",
+									"raw": "{{URL}}/userNotes/:id",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"userNotes",
 										":id"
 									],
 									"variable": [
 										{
-											"value": "{{id}}",
-											"id": "id"
+											"key": "id",
+											"value": "220b527c-1007-4615-b0ca-3ee20d4f4164"
 										}
 									]
 								},

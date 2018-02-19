@@ -1,7 +1,6 @@
 package com.wiproevents.entities;
 
 import com.microsoft.azure.spring.data.documentdb.core.mapping.Document;
-import com.sun.istack.internal.NotNull;
 import com.wiproevents.entities.briefs.UserBrief;
 import com.wiproevents.entities.statuses.MessageStatus;
 import com.wiproevents.utils.springdata.extensions.ForeignKey;
@@ -10,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 

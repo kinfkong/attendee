@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The conversation REST controller. Is effectively thread safe.
@@ -73,7 +74,7 @@ public class ConversationController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public Conversation create(@RequestBody Conversation entity) throws AttendeeException  {
+    public Conversation create(@Valid @RequestBody Conversation entity) throws AttendeeException  {
         return conversationService.create(entity);
     }
 
@@ -90,7 +91,7 @@ public class ConversationController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public Conversation update(@PathVariable String id, @RequestBody Conversation entity)
+    public Conversation update(@Valid @PathVariable String id, @RequestBody Conversation entity)
             throws AttendeeException  {
         return conversationService.update(id, entity);
     }

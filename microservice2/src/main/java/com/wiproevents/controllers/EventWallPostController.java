@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 /**
  * The event wall post REST controller. Is effectively thread safe.
@@ -73,7 +74,7 @@ public class EventWallPostController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public EventWallPost create(@RequestBody EventWallPost entity) throws AttendeeException  {
+    public EventWallPost create(@Valid @RequestBody EventWallPost entity) throws AttendeeException  {
         return eventWallPostService.create(entity);
     }
 
@@ -90,7 +91,7 @@ public class EventWallPostController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @Transactional
-    public EventWallPost update(@PathVariable String id, @RequestBody EventWallPost entity)
+    public EventWallPost update(@PathVariable String id, @Valid @RequestBody EventWallPost entity)
             throws AttendeeException  {
         return eventWallPostService.update(id, entity);
     }
