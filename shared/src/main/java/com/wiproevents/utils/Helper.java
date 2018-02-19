@@ -10,8 +10,10 @@ import com.wiproevents.entities.*;
 import com.wiproevents.exceptions.ConfigurationException;
 import com.wiproevents.security.CustomUserDetails;
 import com.wiproevents.security.UserAuthentication;
+import com.wiproevents.utils.springdata.extensions.InCriteria;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
@@ -331,22 +333,22 @@ public class Helper {
         return DigestUtils.sha256Hex(token);
     }
 
-    public static Query buildEqualPredict(Query query, Map<String, Object> values, String key, Object value) {
+    public static Query buildEqualPredict(Query query, String key, Object value) {
         if (value != null) {
+            Map<String, Object> values = new HashMap<>();
             values.put(key, value);
             query.addCriteria(Criteria.where(key, values));
         }
         return query;
     }
 
-    public static Query buildLessEqualPredict(Query query, Map<String, Object> values, String key, Object value) {
-        if (value != null) {
-            values.put(key, value);
-            query.addCriteria(Criteria.where(key, values));
+    public static Query buildInPredict(Query query, Map<String, Object> values, String key, List<Object> array) {
+        if (array != null) {
+            values.put(key, array);
+            query.addCriteria(new InCriteria(key, array));
         }
         return query;
     }
-
 
 
     /**

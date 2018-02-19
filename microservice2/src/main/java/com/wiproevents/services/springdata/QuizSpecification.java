@@ -35,6 +35,10 @@ public class QuizSpecification implements DocumentDbSpecification<Quiz> {
      */
     @Override
     public Query toQuery(Query query, Map<String, Object> values) {
+        Helper.buildEqualPredict(query, values, "sessionId", criteria.getSessionId());
+        Helper.buildEqualPredict(query, values, "eventId", criteria.getEventId());
+        Helper.buildEqualPredict(query, values, "context", criteria.getContext());
+        Helper.buildEqualPredict(query, values, "name", criteria.getName());
         return query;
     }
 }
