@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-COMPONENT_NAME="Email"
-COMPONENT_H_NAME="email"
-COMPONENT_URL="emails"
-COMPONENT_VAR_NAME="email"
+COMPONENT_NAME="EventAttendee"
+COMPONENT_H_NAME="event attendee"
+COMPONENT_URL="eventAttendees"
+COMPONENT_VAR_NAME="eventAttendee"
 
-GENERATE_TARGET_DIR=./src/main/java/com/
+GENERATE_TARGET_DIR=./microservice1/src/main/java/com/
 
 TEMPLATE_NAME="EventCategory"
 TEMPLATE_H_NAME="event category"

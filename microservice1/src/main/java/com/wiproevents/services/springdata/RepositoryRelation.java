@@ -63,15 +63,15 @@ public class RepositoryRelation {
 
     @PostConstruct
     public void handleRepositoryRelations() {
-        handleEventRepository();
-        handleEventCategoryRepository();
-        handleEventDayAgendaRepository();
-        handleSessionRepository();
-        handleUserRoleRepository();
+        // handleEventRepository();
+        // handleEventCategoryRepository();
+        // handleEventDayAgendaRepository();
+        // handleSessionRepository();
+        // handleUserRoleRepository();
         // handleUserRepository();
-        handleUserPreferenceRepository();
-        handleUserEventAssignmentRepository();
-        handleSessionAttendeeRepository();
+        // handleUserPreferenceRepository();
+        // handleUserEventAssignmentRepository();
+        // handleSessionAttendeeRepository();
     }
 
     private void handleEventRepository() {

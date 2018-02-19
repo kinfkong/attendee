@@ -1,6 +1,7 @@
 package com.wiproevents.entities;
 
 import com.wiproevents.entities.types.NotificationType;
+import com.wiproevents.utils.springdata.extensions.Reference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class NotificationMethodPreference implements Model {
     private String userId;
+    @Reference
     private List<NotificationType> notificationTypesCovered = new ArrayList<>();
     private String notificationMethod;
 }

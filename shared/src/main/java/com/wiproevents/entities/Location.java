@@ -1,5 +1,6 @@
 package com.wiproevents.entities;
 
+import com.wiproevents.utils.springdata.extensions.Reference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.Date;
 @Setter
 public class Location implements Model {
     private String name;
+    @Reference
     private Country country;
     private String state;
     private String locality;
