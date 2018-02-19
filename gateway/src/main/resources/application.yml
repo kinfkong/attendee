@@ -1,5 +1,11 @@
 zuul:
   routes:
+    userSurveyAnswers:
+      path: /userSurveyAnswers/**
+      serviceId: microservice2
+      sensitiveHeaders:
+      stripPrefix: false
+
     polls:
       path: /polls/**
       serviceId: microservice2

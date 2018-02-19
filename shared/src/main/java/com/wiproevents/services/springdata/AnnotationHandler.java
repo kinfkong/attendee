@@ -119,29 +119,36 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
         }
         if (entity instanceof List) {
             List<Object> result = new ArrayList<>();
-            Class<?> clazz = (Class<?>) entity.getClass().getGenericInterfaces()[0];
-            if (IdentifiableEntity.class.isAssignableFrom(clazz)) {
-                List<IdentifiableEntity> idList = (List<IdentifiableEntity>) entity;
-                List<IdentifiableEntity> oldIdList = (List<IdentifiableEntity>) oldEntity;
-                Map<String, IdentifiableEntity> oldItemMappings = new HashMap<>();
-                if (oldIdList != null) {
-                    for (IdentifiableEntity subEntity: oldIdList) {
-                        oldItemMappings.put(subEntity.getId(), subEntity);
+            Map<String, Object> oldItemMappings = new HashMap<>();
+            if (oldEntity != null) {
+                for (Object subEntity: (List) oldEntity) {
+                    if (subEntity instanceof IdentifiableEntity) {
+                        oldItemMappings.put(((IdentifiableEntity) subEntity).getId(), subEntity);
                     }
-                }
-                for (IdentifiableEntity item : idList) {
-                    result.add(upsert(annotation, item, oldItemMappings.get(item.getId())));
-                }
 
-            } else {
-                for (Object item: (List) entity) {
+                }
+            }
+            for (Object item : (List) entity) {
+                if (item instanceof IdentifiableEntity) {
+                    result.add(upsert(annotation, item, oldItemMappings.get(((IdentifiableEntity) item).getId())));
+                } else {
                     result.add(upsert(annotation, item, null));
                 }
             }
+
             return result;
         }
 
-        if (entity instanceof IdentifiableEntity) {
+        boolean isRoot = annotation == null;
+        boolean shouldSave = isRoot;
+        if (!shouldSave) {
+            if (annotation instanceof Reference) {
+                if (((Reference) annotation).cascade()) {
+                    shouldSave = true;
+                }
+            }
+        }
+        if (shouldSave) {
             IdentifiableEntity idEntity = (IdentifiableEntity) entity;
             boolean isNew = oldEntity == null;
             if (isNew && idEntity.getId() == null) {
@@ -169,12 +176,20 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                     }
                 }
             }
-
+        } else if (annotation instanceof Reference) {
+            // only reference, not cascade, verity the id
+            IdentifiableEntity idEntity = (IdentifiableEntity) entity;
+            if (idEntity.getId() == null) {
+                throw new IllegalArgumentException("id is required for the type: " + idEntity.getClass());
+            }
             DocumentDbSpecificationRepository<IdentifiableEntity, String> repository
                     = getRepositoryByClass(idEntity.getClass());
-
-            entity = repository.save(idEntity);
+            if (repository.findOne(idEntity.getId()) == null) {
+                throw new IllegalArgumentException("Entity not found of id: "
+                        + idEntity.getId() + " of type: " + idEntity.getClass());
+            }
         }
+
 
         // upsert the nested entities
         Class<?> clazz = entity.getClass();
@@ -187,16 +202,6 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
 
                 if (referenceAnnotation == null && embedAnnotation == null) {
                     continue;
-                }
-
-                if (assignIdAnnotation != null) {
-                    if (!(entity instanceof IdentifiableEntity)) {
-                        throw new AttendeeException("cannot find id in class: " + entity.getClass());
-                    }
-
-                    String id = ((IdentifiableEntity) entity).getId();
-
-                    assignId(assignIdAnnotation, entity, id);
                 }
 
                 Annotation subAnnotation = referenceAnnotation;
@@ -214,6 +219,17 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                         oldValue = field.get(entity);
                     }
 
+                    // assign the ids
+                    if (assignIdAnnotation != null) {
+                        if (!(entity instanceof IdentifiableEntity)) {
+                            throw new AttendeeException("cannot find id in class: " + entity.getClass());
+                        }
+
+                        String id = ((IdentifiableEntity) entity).getId();
+
+                        assignId(assignIdAnnotation, value, id);
+                    }
+
                     Object subEntity = upsert(subAnnotation, value, oldValue);
 
                     field.set(entity, subEntity);
@@ -225,6 +241,13 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
                 }
             }
             clazz = clazz.getSuperclass();
+        }
+
+        if (shouldSave) {
+            IdentifiableEntity idEntity = (IdentifiableEntity) entity;
+            DocumentDbSpecificationRepository<IdentifiableEntity, String> repository
+                    = getRepositoryByClass(idEntity.getClass());
+            entity = repository.save(idEntity);
         }
 
 
@@ -255,7 +278,7 @@ public class AnnotationHandler implements AnnotationHandlerInterface {
         String idPath = annotation.to();
         if (!idPath.isEmpty()) {
             try {
-                beanUtils.setProperty(value, idPath,idToAssign);
+                beanUtils.setProperty(value, idPath, idToAssign);
             } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 throw new AttendeeException("Failed to assign id to path: " + idPath);
             }

@@ -2,26 +2,29 @@ package com.wiproevents.services.springdata;
 
 import com.microsoft.azure.spring.data.documentdb.core.mapping.Document;
 import com.microsoft.azure.spring.data.documentdb.repository.DocumentDbRepository;
-import com.wiproevents.entities.AuditableEntity;
-import com.wiproevents.entities.AuditableUserEntity;
 import com.wiproevents.entities.IdentifiableEntity;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.exceptions.ConfigurationException;
 import com.wiproevents.exceptions.EntityNotFoundException;
+import com.wiproevents.services.AnnotationHandlerInterface;
 import com.wiproevents.utils.Helper;
-import com.wiproevents.utils.springdata.extensions.*;
+import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
+import com.wiproevents.utils.springdata.extensions.DocumentDbSpecificationRepository;
+import com.wiproevents.utils.springdata.extensions.Paging;
+import com.wiproevents.utils.springdata.extensions.SearchResult;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import static lombok.AccessLevel.PROTECTED;
 
@@ -45,13 +48,13 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
     @Getter(value = PROTECTED)
     private DocumentDbSpecificationRepository<T, String> repository;
 
-    @Autowired
-    private ApplicationContext appContext;
 
     private PropertyUtilsBean beanUtils = new PropertyUtilsBean();
 
 
-    private Map<String, DocumentDbSpecificationRepository> repositories = new HashMap<>();
+    @Autowired
+    private AnnotationHandlerInterface annotationHandler;
+
 
     /**
      * Check if all required fields are initialized properly.
@@ -61,7 +64,6 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
     @PostConstruct
     protected void checkConfiguration() {
         Helper.checkConfigNotNull(repository, "repository");
-        repositories = appContext.getBeansOfType(DocumentDbSpecificationRepository.class);
     }
 
     /**
@@ -102,140 +104,11 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
 
         handleNestedCreate(entity);
 
-        T obj = createOrUpdateEntity(entity, null, repository);
+        IdentifiableEntity obj = annotationHandler.upsert(entity, null);
 
         // retrieve with populations
         return this.get(obj.getId());
     }
-
-    @SuppressWarnings(value = "unchecked")
-    private <ST extends IdentifiableEntity> ST createOrUpdateEntity(ST entity, ST oldEntity,
-                                                          DocumentDbSpecificationRepository<ST, String> repository)
-            throws AttendeeException {
-
-        Helper.checkNull(entity, "entity");
-
-        boolean isNew = oldEntity == null;
-
-        if (isNew && entity.getId() == null) {
-            entity.setId(UUID.randomUUID().toString());
-        }
-
-        if (repository == null) {
-            repository = getRepositoryByClass(entity.getClass());
-        }
-        if (entity instanceof AuditableEntity) {
-            AuditableEntity auditableEntity = (AuditableEntity) entity;
-            Date now = new Date();
-            if (isNew) {
-                auditableEntity.setCreatedOn(new Date());
-            } else {
-                auditableEntity.setCreatedOn(((AuditableEntity) oldEntity).getCreatedOn());
-            }
-            auditableEntity.setUpdatedOn(now);
-            if (entity instanceof AuditableUserEntity) {
-                AuditableUserEntity auditableUserEntity = (AuditableUserEntity) entity;
-                if (Helper.getAuthUser() != null) {
-                    if (isNew) {
-                        auditableUserEntity.setCreatedBy(Helper.getAuthUser().getId());
-                    } else {
-                        auditableUserEntity.setCreatedBy(((AuditableUserEntity) oldEntity).getCreatedBy());
-                    }
-                    auditableUserEntity.setUpdatedBy(Helper.getAuthUser().getId());
-                }
-            }
-        }
-
-        Class<?> clazz = entity.getClass();
-        while (clazz != null) {
-            Field[] fields = clazz.getDeclaredFields();
-            for (Field field : fields) {
-                Reference reverseReferenceAnnotation = field.getAnnotation(Reference.class);
-
-                // handle cascade reference
-                if (reverseReferenceAnnotation == null || !reverseReferenceAnnotation.cascade()) {
-                    continue;
-                }
-
-                boolean originalAccess = field.isAccessible();
-                field.setAccessible(true);
-                Object value;
-                Object oldValue = null;
-                try {
-                    value = field.get(entity);
-                    if (oldEntity != null) {
-                        oldValue = field.get(oldEntity);
-                    }
-                } catch (IllegalAccessException e) {
-                    throw new AttendeeException("cannot get the field: "
-                            + field.getName() + " from class: " + clazz.getName());
-                }
-                field.setAccessible(originalAccess);
-                if (value == null) {
-                    continue;
-                }
-                if (value instanceof List) {
-                    Map<String, IdentifiableEntity> oldEntityMappings = new HashMap<>();
-                    if (oldValue != null) {
-                        for (IdentifiableEntity subEntity: (List<IdentifiableEntity>) oldValue) {
-                            oldEntityMappings.put(subEntity.getId(), subEntity);
-                        }
-                    }
-                    for (IdentifiableEntity subEntity: (List<IdentifiableEntity>) value) {
-                        if (subEntity.getId() == null) {
-                            String idPath = reverseReferenceAnnotation.assignIdTo();
-                            if (!idPath.isEmpty()) {
-                                try {
-                                    beanUtils.setProperty(subEntity, idPath, entity.getId());
-                                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                                    throw new AttendeeException("Failed to assign id to path: " + idPath);
-                                }
-                            }
-                            createOrUpdateEntity(subEntity, null, null);
-                            continue;
-                        }
-                        IdentifiableEntity oldSubEntity = oldEntityMappings.get(subEntity.getId());
-                        String idPath = reverseReferenceAnnotation.assignIdTo();
-                        if (!idPath.isEmpty()) {
-                            try {
-                                beanUtils.setProperty(subEntity, idPath, entity.getId());
-                            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                                throw new AttendeeException("Failed to assign id to path: " + idPath);
-                            }
-                        }
-                        createOrUpdateEntity(subEntity, oldSubEntity, null);
-                    }
-                } else {
-                    String idPath = reverseReferenceAnnotation.assignIdTo();
-                    if (!idPath.isEmpty()) {
-                        try {
-                            beanUtils.setProperty(value, idPath, entity.getId());
-                        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                           throw new AttendeeException("Failed to assign id to path: " + idPath);
-                        }
-                    }
-                    createOrUpdateEntity((IdentifiableEntity) value, (IdentifiableEntity) oldValue, null);
-                }
-            }
-
-            clazz = clazz.getSuperclass();
-        }
-
-        // save the entity at last
-        return repository.save(entity);
-    }
-
-    @SuppressWarnings("unchecked")
-    private <ST extends IdentifiableEntity> DocumentDbSpecificationRepository<ST, String>
-        getRepositoryByClass(Class<? extends IdentifiableEntity> clazz) throws AttendeeException {
-        String name = clazz.getSimpleName().substring(0, 1).toLowerCase() + clazz.getSimpleName().substring(1);
-        DocumentDbSpecificationRepository repo = repositories.get(name + "Repository");
-        if (repo == null) {
-            throw new AttendeeException("Cannot find repo of type: " + name);
-        }
-        return repo;
-    }
-
 
     /**
      * This method is used to delete an entity.
@@ -270,10 +143,10 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
         handleNestedValidation(entity);
         handleNestedUpdate(entity, existing);
 
-        createOrUpdateEntity(entity, existing, repository);
+        IdentifiableEntity obj = annotationHandler.upsert(entity, existing);
 
         // for population
-        return get(entity.getId());
+        return get(obj.getId());
     }
 
     /**
@@ -343,75 +216,7 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
     }
 
     protected  void handlePopulate(T entity) throws AttendeeException {
-        populateEntity(entity);
-    }
-
-    @SuppressWarnings("unchecked")
-    private IdentifiableEntity populateEntity(IdentifiableEntity entity) throws AttendeeException {
-        Class<?> clazz = entity.getClass();
-        while (clazz != null) {
-            Field[] fields = clazz.getDeclaredFields();
-            for (Field field : fields) {
-                Reference referenceAnnotation = field.getAnnotation(Reference.class);
-                if (referenceAnnotation == null) {
-                    continue;
-                }
-
-                Object value;
-                try {
-                    boolean original = field.isAccessible();
-                    field.setAccessible(true);
-                    value = field.get(entity);
-                    field.setAccessible(original);
-                } catch (IllegalAccessException e) {
-                    throw new AttendeeException("failed to get the field: " + field.getName(), e);
-                }
-
-                if (value instanceof List) {
-                    List<IdentifiableEntity> populatedList = new ArrayList<>();
-                    for (IdentifiableEntity subEntity: (List<IdentifiableEntity>) value) {
-                        // read the item from the repo
-                        DocumentDbSpecificationRepository<IdentifiableEntity, String> theRepository
-                                = getRepositoryByClass(subEntity.getClass());
-
-                        IdentifiableEntity populatedSubEntity = theRepository.findOne(subEntity.getId(), true);
-                        if (populatedSubEntity != null) {
-                            populateEntity(populatedSubEntity);
-                            populatedList.add(populatedSubEntity);
-                        }
-                    }
-                    try {
-                        boolean originalAccessible = field.isAccessible();
-                        field.setAccessible(true);
-                        field.set(entity, populatedList);
-                        field.setAccessible(originalAccessible);
-                    } catch (IllegalAccessException e) {
-                        throw new AttendeeException("failed to set the field: " + field.getName(), e);
-                    }
-                } else {
-                    IdentifiableEntity subEntity = (IdentifiableEntity) value;
-
-                    // read the item from the repo
-                    DocumentDbSpecificationRepository<IdentifiableEntity, String> theRepository
-                            = getRepositoryByClass(subEntity.getClass());
-
-                    IdentifiableEntity populatedSubEntity = theRepository.findOne(subEntity.getId(), true);
-                    if (populatedSubEntity != null) {
-                        populateEntity(populatedSubEntity);
-                    }
-                    try {
-                        boolean originalAccessible = field.isAccessible();
-                        field.setAccessible(true);
-                        field.set(entity, populatedSubEntity);
-                        field.setAccessible(originalAccessible);
-                    } catch (IllegalAccessException e) {
-                        throw new AttendeeException("failed to set the field: " + field.getName(), e);
-                    }
-                }
-            }
-            clazz = clazz.getSuperclass();
-        }
-        return entity;
+        annotationHandler.populate(entity);
     }
 
     protected  void handleNestedValidation(T entity) throws AttendeeException {

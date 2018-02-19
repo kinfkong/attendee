@@ -2,6 +2,7 @@ package com.wiproevents.entities;
 
 import com.microsoft.azure.spring.data.documentdb.core.mapping.Document;
 import com.wiproevents.entities.questions.QuizQuestion;
+import com.wiproevents.utils.springdata.extensions.AssignId;
 import com.wiproevents.utils.springdata.extensions.Reference;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import java.util.List;
 @Setter
 @Document(collection = "quiz")
 public class Quiz extends BaseEngagement {
-    @Reference(cascade = true, assignIdTo = "quizId")
+    @Reference(cascade = true)
+    @AssignId(to = "quizId")
     private List<QuizQuestion> questions = new ArrayList<>();
 }

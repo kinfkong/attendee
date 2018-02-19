@@ -9,5 +9,4 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Reference {
     boolean cascade() default false;
-    String assignIdTo() default "";
 }
