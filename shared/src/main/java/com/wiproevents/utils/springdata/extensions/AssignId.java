@@ -4,10 +4,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Created by wangjinggang on 2018/2/18.
+ * Created by wangjinggang on 2018/2/19.
  */
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Reference {
-    boolean cascade() default false;
-    String assignIdTo() default "";
+public @interface AssignId {
+    String to();
 }

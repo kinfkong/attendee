@@ -16,6 +16,6 @@ import java.util.List;
 @Getter
 @Setter
 public class Survey extends BaseEngagement {
-    @Reference(cascade = true)
+    @Reference(cascade = true, assignIdTo = "surveyId")
     private List<SurveyQuestion> questions = new ArrayList<>();
 }

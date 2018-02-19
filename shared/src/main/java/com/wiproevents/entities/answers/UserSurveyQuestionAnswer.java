@@ -1,6 +1,7 @@
 package com.wiproevents.entities.answers;
 
 import com.wiproevents.entities.questions.SurveyQuestion;
+import com.wiproevents.utils.springdata.extensions.Reference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,5 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UserSurveyQuestionAnswer extends BaseQuestionAnswer<SurveyQuestion> {
+public class UserSurveyQuestionAnswer extends BaseQuestionAnswer {
+    @Reference
+    private SurveyQuestion question;
 }

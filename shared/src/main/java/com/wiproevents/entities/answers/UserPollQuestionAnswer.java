@@ -9,6 +9,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UserPollQuestionAnswer extends BaseQuestionAnswer<PollQuestion> {
-
+public class UserPollQuestionAnswer extends BaseQuestionAnswer {
+    private PollQuestion question;
 }

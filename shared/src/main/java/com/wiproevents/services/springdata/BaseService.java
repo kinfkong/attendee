@@ -102,21 +102,7 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
 
         handleNestedCreate(entity);
 
-        if (entity instanceof AuditableEntity) {
-            AuditableEntity auditableEntity = (AuditableEntity) entity;
-            Date now = new Date();
-            auditableEntity.setCreatedOn(new Date());
-            auditableEntity.setUpdatedOn(now);
-
-            if (entity instanceof AuditableUserEntity) {
-                AuditableUserEntity auditableUserEntity = (AuditableUserEntity) entity;
-                auditableUserEntity.setCreatedBy(Helper.getAuthUser().getId());
-                auditableUserEntity.setUpdatedBy(Helper.getAuthUser().getId());
-            }
-
-        }
-
-        T obj = repository.save(entity);
+        T obj = createOrUpdateEntity(entity, null, repository);
 
         // retrieve with populations
         return this.get(obj.getId());
@@ -160,8 +146,6 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
             }
         }
 
-        ST result = repository.save(entity);
-
         Class<?> clazz = entity.getClass();
         while (clazz != null) {
             Field[] fields = clazz.getDeclaredFields();
@@ -199,13 +183,37 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
                     }
                     for (IdentifiableEntity subEntity: (List<IdentifiableEntity>) value) {
                         if (subEntity.getId() == null) {
+                            String idPath = reverseReferenceAnnotation.assignIdTo();
+                            if (!idPath.isEmpty()) {
+                                try {
+                                    beanUtils.setProperty(subEntity, idPath, entity.getId());
+                                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                                    throw new AttendeeException("Failed to assign id to path: " + idPath);
+                                }
+                            }
                             createOrUpdateEntity(subEntity, null, null);
                             continue;
                         }
                         IdentifiableEntity oldSubEntity = oldEntityMappings.get(subEntity.getId());
+                        String idPath = reverseReferenceAnnotation.assignIdTo();
+                        if (!idPath.isEmpty()) {
+                            try {
+                                beanUtils.setProperty(subEntity, idPath, entity.getId());
+                            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                                throw new AttendeeException("Failed to assign id to path: " + idPath);
+                            }
+                        }
                         createOrUpdateEntity(subEntity, oldSubEntity, null);
                     }
                 } else {
+                    String idPath = reverseReferenceAnnotation.assignIdTo();
+                    if (!idPath.isEmpty()) {
+                        try {
+                            beanUtils.setProperty(value, idPath, entity.getId());
+                        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                           throw new AttendeeException("Failed to assign id to path: " + idPath);
+                        }
+                    }
                     createOrUpdateEntity((IdentifiableEntity) value, (IdentifiableEntity) oldValue, null);
                 }
             }
@@ -213,14 +221,19 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
             clazz = clazz.getSuperclass();
         }
 
-        return result;
+        // save the entity at last
+        return repository.save(entity);
     }
 
     @SuppressWarnings("unchecked")
     private <ST extends IdentifiableEntity> DocumentDbSpecificationRepository<ST, String>
-        getRepositoryByClass(Class<? extends IdentifiableEntity> clazz) {
+        getRepositoryByClass(Class<? extends IdentifiableEntity> clazz) throws AttendeeException {
         String name = clazz.getSimpleName().substring(0, 1).toLowerCase() + clazz.getSimpleName().substring(1);
-        return repositories.get(name);
+        DocumentDbSpecificationRepository repo = repositories.get(name + "Repository");
+        if (repo == null) {
+            throw new AttendeeException("Cannot find repo of type: " + name);
+        }
+        return repo;
     }
 
 
@@ -257,23 +270,7 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
         handleNestedValidation(entity);
         handleNestedUpdate(entity, existing);
 
-        if (entity instanceof AuditableEntity) {
-            AuditableEntity auditableEntity = (AuditableEntity) entity;
-            auditableEntity.setCreatedOn(((AuditableEntity) existing).getCreatedOn());
-            auditableEntity.setUpdatedOn(new Date());
-
-            if (entity instanceof AuditableUserEntity) {
-                AuditableUserEntity auditableUserEntity = (AuditableUserEntity) entity;
-
-                auditableUserEntity.setCreatedBy(((AuditableUserEntity) existing).getCreatedBy());
-                if (Helper.getAuthUser() != null) {
-                    auditableUserEntity.setUpdatedBy(Helper.getAuthUser().getId());
-                }
-
-            }
-        }
-
-        repository.save(entity);
+        createOrUpdateEntity(entity, existing, repository);
 
         // for population
         return get(entity.getId());
@@ -346,7 +343,75 @@ public abstract class BaseService<T extends IdentifiableEntity, S> {
     }
 
     protected  void handlePopulate(T entity) throws AttendeeException {
+        populateEntity(entity);
+    }
 
+    @SuppressWarnings("unchecked")
+    private IdentifiableEntity populateEntity(IdentifiableEntity entity) throws AttendeeException {
+        Class<?> clazz = entity.getClass();
+        while (clazz != null) {
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                Reference referenceAnnotation = field.getAnnotation(Reference.class);
+                if (referenceAnnotation == null) {
+                    continue;
+                }
+
+                Object value;
+                try {
+                    boolean original = field.isAccessible();
+                    field.setAccessible(true);
+                    value = field.get(entity);
+                    field.setAccessible(original);
+                } catch (IllegalAccessException e) {
+                    throw new AttendeeException("failed to get the field: " + field.getName(), e);
+                }
+
+                if (value instanceof List) {
+                    List<IdentifiableEntity> populatedList = new ArrayList<>();
+                    for (IdentifiableEntity subEntity: (List<IdentifiableEntity>) value) {
+                        // read the item from the repo
+                        DocumentDbSpecificationRepository<IdentifiableEntity, String> theRepository
+                                = getRepositoryByClass(subEntity.getClass());
+
+                        IdentifiableEntity populatedSubEntity = theRepository.findOne(subEntity.getId(), true);
+                        if (populatedSubEntity != null) {
+                            populateEntity(populatedSubEntity);
+                            populatedList.add(populatedSubEntity);
+                        }
+                    }
+                    try {
+                        boolean originalAccessible = field.isAccessible();
+                        field.setAccessible(true);
+                        field.set(entity, populatedList);
+                        field.setAccessible(originalAccessible);
+                    } catch (IllegalAccessException e) {
+                        throw new AttendeeException("failed to set the field: " + field.getName(), e);
+                    }
+                } else {
+                    IdentifiableEntity subEntity = (IdentifiableEntity) value;
+
+                    // read the item from the repo
+                    DocumentDbSpecificationRepository<IdentifiableEntity, String> theRepository
+                            = getRepositoryByClass(subEntity.getClass());
+
+                    IdentifiableEntity populatedSubEntity = theRepository.findOne(subEntity.getId(), true);
+                    if (populatedSubEntity != null) {
+                        populateEntity(populatedSubEntity);
+                    }
+                    try {
+                        boolean originalAccessible = field.isAccessible();
+                        field.setAccessible(true);
+                        field.set(entity, populatedSubEntity);
+                        field.setAccessible(originalAccessible);
+                    } catch (IllegalAccessException e) {
+                        throw new AttendeeException("failed to set the field: " + field.getName(), e);
+                    }
+                }
+            }
+            clazz = clazz.getSuperclass();
+        }
+        return entity;
     }
 
     protected  void handleNestedValidation(T entity) throws AttendeeException {

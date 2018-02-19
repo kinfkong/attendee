@@ -65,7 +65,7 @@
     {
       "enabled": true,
       "key": "SESSION_ID",
-      "value": "629e1a27-984a-457c-b26d-085c167ae030",
+      "value": "471e6622-b26d-4bb3-ac0c-e0bbd91d1bcb",
       "type": "text"
     },
     {
@@ -85,10 +85,88 @@
       "key": "EVENT_ID",
       "value": "99e25cdc-6607-48b8-ac4f-b3bee4519741",
       "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "NOTIFICATION_TYPE_ID",
+      "value": "5b725233-b50e-2161-bfe6-41a861e23fb7",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "TIMEZONE_ID",
+      "value": "e07ed08d-911a-d3fa-c781-12f0a1687f9a",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "CONVERSATION_ID",
+      "value": "c01fbeec-eacf-4bfa-b81e-f4e2de7bc9cb",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "EVENT_WALL_POST_ID",
+      "value": "307df0e8-4686-49e7-b711-884eb3a89f30",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "SURVEY_ID",
+      "value": "2b07e0e0-0672-46dc-9586-842ae5f37771",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "SURVEY_QUESTION_ID",
+      "value": "34e4a242-f7b5-477f-b428-87141e9780ea",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "SURVEY_QUESTION_ANSWER_OPTION_ID",
+      "value": "0c883cb9-4042-4c5e-bff8-47660f8e0ff3",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "POLL_ID",
+      "value": "2dada214-f468-4101-b2dd-ac3003852c04",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "POLL_QUESTION_ID",
+      "value": "49428bc9-8155-42be-98b2-da833ebc1757",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "POLL_QUESTION_ANSWER_OPTION_ID",
+      "value": "f92bdc49-be5b-4b60-a987-004848c42361",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "QUIZ_ID",
+      "value": "abac1594-a594-4a83-ba01-dc4f4ebbd405",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "QUIZ_QUESTION_ID",
+      "value": "599a5aca-61b2-485a-a2e3-028e7bd58cb1",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "QUIZ_QUESTION_ANSWER_OPTION_ID",
+      "value": "c03fbaad-ace3-4c0b-b64f-57d56a0d57fa",
+      "type": "text"
     }
   ],
-  "timestamp": 1518911895763,
+  "timestamp": 1518994614477,
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-02-18T00:00:18.836Z",
+  "_postman_exported_at": "2018-02-18T22:57:27.654Z",
   "_postman_exported_using": "Postman/5.5.2"
 }
