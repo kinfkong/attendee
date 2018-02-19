@@ -10,8 +10,6 @@ import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import lombok.AllArgsConstructor;
 
-import java.util.Map;
-
 /**
  * The specification used to query user event feedback by criteria.
  *
@@ -30,12 +28,12 @@ public class UserEventFeedbackSpecification implements DocumentDbSpecification<U
      * Converts the search criteria to sql query.
      *
      * @param query the sql query.
-     * @param values the parameter values.
      * @return the sql query.
      */
     @Override
     public Query toQuery(Query query) {
-        Helper.buildEqualPredict(query, "name", this.criteria.getName());
+        Helper.buildEqualPredict(query, "event.id", this.criteria.getEventId());
+        Helper.buildEqualPredict(query, "user.id", this.criteria.getUserId());
         return query;
     }
 }

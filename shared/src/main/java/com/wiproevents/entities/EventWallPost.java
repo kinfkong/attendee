@@ -1,6 +1,7 @@
 package com.wiproevents.entities;
 
 import com.microsoft.azure.spring.data.documentdb.core.mapping.Document;
+import com.wiproevents.entities.briefs.EventBrief;
 import com.wiproevents.entities.briefs.UserBrief;
 import com.wiproevents.entities.statuses.EventWallPostStatus;
 import com.wiproevents.utils.springdata.extensions.ForeignKey;
@@ -24,6 +25,10 @@ public class EventWallPost extends AuditableEntity {
 
     @ForeignKey(clazz = EventWallPost.class)
     private String parentPostId;
+
+    @ForeignKey(clazz = EventBrief.class)
+    @NotBlank
+    private String eventId;
 
     @Reference
     @NotNull

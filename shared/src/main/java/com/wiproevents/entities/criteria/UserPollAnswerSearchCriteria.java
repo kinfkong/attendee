@@ -17,5 +17,6 @@ import lombok.Setter;
 @Setter
 public class UserPollAnswerSearchCriteria extends BaseSearchCriteria {
     private String pollId;
+    private String userId;
 }
 

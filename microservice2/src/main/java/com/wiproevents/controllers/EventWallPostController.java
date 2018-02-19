@@ -5,6 +5,7 @@ package com.wiproevents.controllers;
 
 
 import com.wiproevents.entities.EventWallPost;
+import com.wiproevents.entities.briefs.UserBrief;
 import com.wiproevents.entities.criteria.EventWallPostSearchCriteria;
 import com.wiproevents.exceptions.AttendeeException;
 import com.wiproevents.exceptions.ConfigurationException;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * The event wall post REST controller. Is effectively thread safe.
@@ -95,6 +99,63 @@ public class EventWallPostController {
             throws AttendeeException  {
         return eventWallPostService.update(id, entity);
     }
+
+    /**
+     * This method is used to update an entity.
+     *
+     * @param id the id of the entity to update
+     * @return the updated entity
+     * @throws IllegalArgumentException if id is null or empty or entity is null or id of entity is null or empty.
+     * or id of entity not match id or entity is invalid
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/like", method = RequestMethod.PUT)
+    @Transactional
+    public EventWallPost linkByUser(@PathVariable String id)
+            throws AttendeeException  {
+        EventWallPost entity = eventWallPostService.get(id);
+        UserBrief user = new UserBrief();
+        user.setId(Helper.getAuthUser().getId());
+        List<UserBrief> users = entity.getLikeFromUsers();
+        Set<UserBrief> userSet = new HashSet<>();
+        userSet.addAll(users);
+        if (userSet.contains(user)) {
+            return entity;
+        }
+        users.add(user);
+
+        return eventWallPostService.update(id, entity);
+    }
+
+
+    /**
+     * This method is used to update an entity.
+     *
+     * @param id the id of the entity to update
+     * @return the updated entity
+     * @throws IllegalArgumentException if id is null or empty or entity is null or id of entity is null or empty.
+     * or id of entity not match id or entity is invalid
+     * @throws EntityNotFoundException if the entity does not exist
+     * @throws AttendeeException if any other error occurred during operation
+     */
+    @RequestMapping(value = "{id}/unlike", method = RequestMethod.PUT)
+    @Transactional
+    public EventWallPost unlinkByUser(@PathVariable String id)
+            throws AttendeeException  {
+        EventWallPost entity = eventWallPostService.get(id);
+        UserBrief user = new UserBrief();
+        user.setId(Helper.getAuthUser().getId());
+        List<UserBrief> users = entity.getLikeFromUsers();
+        Set<UserBrief> userSet = new HashSet<>();
+        userSet.addAll(users);
+        if (!userSet.contains(user)) {
+            return entity;
+        }
+        users.remove(user);
+        return eventWallPostService.update(id, entity);
+    }
+
 
     /**
      * This method is used to delete an entity.

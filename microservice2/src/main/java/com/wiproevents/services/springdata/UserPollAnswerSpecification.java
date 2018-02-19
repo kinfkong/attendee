@@ -33,6 +33,7 @@ public class UserPollAnswerSpecification implements DocumentDbSpecification<User
     @Override
     public Query toQuery(Query query) {
         Helper.buildEqualPredict(query, "poll.id", criteria.getPollId());
+        Helper.buildEqualPredict(query, "user.id", criteria.getUserId());
         return query;
     }
 }

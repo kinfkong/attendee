@@ -6,10 +6,9 @@ package com.wiproevents.services.springdata;
 import com.microsoft.azure.spring.data.documentdb.core.query.Query;
 import com.wiproevents.entities.answers.UserQuizAnswer;
 import com.wiproevents.entities.criteria.UserQuizAnswerSearchCriteria;
+import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import lombok.AllArgsConstructor;
-
-import java.util.Map;
 
 /**
  * The specification used to query user quiz answer by criteria.
@@ -29,11 +28,12 @@ public class UserQuizAnswerSpecification implements DocumentDbSpecification<User
      * Converts the search criteria to sql query.
      *
      * @param query the sql query.
-     * @param values the parameter values.
      * @return the sql query.
      */
     @Override
     public Query toQuery(Query query) {
+        Helper.buildEqualPredict(query, "user.id", criteria.getUserId());
+        Helper.buildEqualPredict(query, "quiz.id", criteria.getQuizId());
         return query;
     }
 }

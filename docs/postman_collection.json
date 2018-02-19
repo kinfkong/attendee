@@ -88,7 +88,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"fullName\": \"John Nash\",\n  \"email\": \"user2@tc.com\",\n  \"password\": \"123456\"\n}"
+									"raw": "{\n  \"fullName\": \"John Nash\",\n  \"email\": \"user@tc.com\",\n  \"password\": \"123456\"\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/signup",
@@ -2884,37 +2884,6 @@
 								"description": "Check in EventAttendee. \n"
 							},
 							"response": []
-						},
-						{
-							"name": "Get EventAttendee by QR code.",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{USER_TOKEN}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{URL}}/eventAttendeeByQRCode",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"eventAttendeeByQRCode"
-									]
-								},
-								"description": "Get EventAttendee by QR code. \n"
-							},
-							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -5143,17 +5112,26 @@
 							"name": "Create/send event notification.",
 							"request": {
 								"method": "POST",
-								"header": [],
-								"body": {},
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"title\": \"New poll available\",\n  \"text\": \"string\",\n  \"recipientTypes\": [\n    \"All\"\n  ],\n  \"type\": {\n    \"id\": \"{{NOTIFICATION_TYPE_ID}}\"\n  }\n}"
+								},
 								"url": {
-									"raw": "http:///eventNotifications",
+									"raw": "{{URL}}/eventNotifications",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"eventNotifications"
 									]
 								},

@@ -7,8 +7,6 @@ import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import lombok.AllArgsConstructor;
 
-import java.util.Map;
-
 /**
  * The specification used to query User by criteria.
  */
@@ -23,6 +21,7 @@ public class EventWallPostSpecification implements DocumentDbSpecification<Event
     @Override
     public Query toQuery(Query query) {
         Helper.buildEqualPredict(query,  "parentPostId", criteria.getParentPostId());
+        Helper.buildEqualPredict(query, "eventId", criteria.getEventId());
         return query;
     }
 }

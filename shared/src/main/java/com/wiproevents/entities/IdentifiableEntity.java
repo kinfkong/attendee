@@ -29,6 +29,9 @@ public abstract class IdentifiableEntity implements Model {
     public boolean equals(Object target) {
         if (target instanceof IdentifiableEntity) {
             IdentifiableEntity entity = (IdentifiableEntity) target;
+            if (entity.getId() == null) {
+                return ((IdentifiableEntity) target).getId() == null;
+            }
             return entity.getId().equals(this.id);
         }
         return false;

@@ -10,8 +10,6 @@ import com.wiproevents.utils.Helper;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecification;
 import lombok.AllArgsConstructor;
 
-import java.util.Map;
-
 /**
  * The specification used to query user survey answer by criteria.
  *
@@ -30,7 +28,6 @@ public class UserSurveyAnswerSpecification implements DocumentDbSpecification<Us
      * Converts the search criteria to sql query.
      *
      * @param query the sql query.
-     * @param values the parameter values.
      * @return the sql query.
      */
     @Override

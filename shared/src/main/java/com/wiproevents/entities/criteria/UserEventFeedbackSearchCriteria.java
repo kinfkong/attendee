@@ -16,6 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserEventFeedbackSearchCriteria extends BaseSearchCriteria {
-    private String name;
+    private String eventId;
+    private String userId;
 }
 

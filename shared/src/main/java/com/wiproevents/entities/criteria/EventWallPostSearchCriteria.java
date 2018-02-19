@@ -11,5 +11,6 @@ import lombok.Setter;
 @Setter
 public class EventWallPostSearchCriteria extends BaseSearchCriteria {
     private String parentPostId;
+    private String eventId;
 }
 
