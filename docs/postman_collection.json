@@ -2946,14 +2946,14 @@
 													"disabled": true
 												},
 												{
-													"key": "offset",
-													"value": "{{offset}}",
+													"key": "requestContinuation",
+													"value": "{{requestContinuation}}",
 													"equals": true,
 													"disabled": true
 												},
 												{
-													"key": "limit",
-													"value": "{{limit}}",
+													"key": "pageSize",
+													"value": "{{pageSize}}",
 													"equals": true,
 													"disabled": true
 												},
@@ -3127,14 +3127,14 @@
 													"disabled": true
 												},
 												{
-													"key": "offset",
-													"value": "{{offset}}",
+													"key": "requestContinuation",
+													"value": "{{requestContinuation}}",
 													"equals": true,
 													"disabled": true
 												},
 												{
-													"key": "limit",
-													"value": "{{limit}}",
+													"key": "pageSize",
+													"value": "{{pageSize}}",
 													"equals": true,
 													"disabled": true
 												},
@@ -3308,14 +3308,14 @@
 													"disabled": true
 												},
 												{
-													"key": "offset",
-													"value": "{{offset}}",
+													"key": "requestContinuation",
+													"value": "{{requestContinuation}}",
 													"equals": true,
 													"disabled": true
 												},
 												{
-													"key": "limit",
-													"value": "{{limit}}",
+													"key": "pageSize",
+													"value": "{{pageSize}}",
 													"equals": true,
 													"disabled": true
 												},
@@ -3448,43 +3448,60 @@
 									"name": "Search UserEventFeedbacks.",
 									"request": {
 										"method": "GET",
-										"header": [],
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_TOKEN}}"
+											},
+											{
+												"key": "",
+												"value": ""
+											}
+										],
 										"body": {},
 										"url": {
-											"raw": "http:///userEventFeedbacks?eventId={{eventId}}&userId={{userId}}&offset={{offset}}&limit={{limit}}&sortColumn={{sortColumn}}&sortOrder={{sortOrder}}",
+											"raw": "{{URL}}/userEventFeedbacks?eventId={{eventId}}",
 											"host": [
-												"http:"
+												"{{URL}}"
 											],
-											"port": "",
 											"path": [
-												"",
-												"",
 												"userEventFeedbacks"
 											],
 											"query": [
 												{
 													"key": "eventId",
-													"value": "{{eventId}}"
+													"value": "{{eventId}}",
+													"equals": true
 												},
 												{
 													"key": "userId",
-													"value": "{{userId}}"
+													"value": "{{userId}}",
+													"equals": true,
+													"disabled": true
 												},
 												{
-													"key": "offset",
-													"value": "{{offset}}"
+													"key": "requestContinuation",
+													"value": "{{requestContinuation}}",
+													"equals": true,
+													"disabled": true
 												},
 												{
-													"key": "limit",
-													"value": "{{limit}}"
+													"key": "pageSize",
+													"value": "{{pageSize}}",
+													"equals": true,
+													"disabled": true
 												},
 												{
 													"key": "sortColumn",
-													"value": "{{sortColumn}}"
+													"value": "{{sortColumn}}",
+													"equals": true,
+													"disabled": true
 												},
 												{
 													"key": "sortOrder",
-													"value": "{{sortOrder}}"
+													"value": "{{sortOrder}}",
+													"equals": true,
+													"disabled": true
 												}
 											]
 										},
@@ -4317,31 +4334,38 @@
 							"name": "Search event wall posts.",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "http:///eventWallPosts?eventId={{eventId}}&offset={{offset}}&limit={{limit}}",
+									"raw": "{{URL}}/eventWallPosts?eventId={{EVENT_ID}}",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"eventWallPosts"
 									],
 									"query": [
 										{
 											"key": "eventId",
-											"value": "{{eventId}}"
+											"value": "{{EVENT_ID}}",
+											"equals": true
 										},
 										{
 											"key": "offset",
-											"value": "{{offset}}"
+											"value": "{{offset}}",
+											"equals": true,
+											"disabled": true
 										},
 										{
 											"key": "limit",
-											"value": "{{limit}}"
+											"value": "{{limit}}",
+											"equals": true,
+											"disabled": true
 										}
 									]
 								},
@@ -4378,7 +4402,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"parentPostId\": null,\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"text\": \"this is a post\",\n  \"status\": \"Published\",\n  \"attachedFiles\": [\n    {\n      \"id\": \"{{FILE_ID}}\"\n    }\n  ]\n}"
+									"raw": "{\n  \"parentPostId\": null,\n  \"eventId\": \"{{EVENT_ID}}\",\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"text\": \"this is a post\",\n  \"status\": \"Published\",\n  \"attachedFiles\": [\n    {\n      \"id\": \"{{FILE_ID}}\"\n    }\n  ]\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/eventWallPosts",
@@ -4409,7 +4433,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"parentPostId\": \"{{EVENT_WALL_POST_ID}}\",\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"text\": \"this is a post\",\n  \"status\": \"Published\",\n  \"attachedFiles\": [\n    {\n      \"id\": \"{{FILE_ID}}\"\n    }\n  ]\n}"
+									"raw": "{\n  \"parentPostId\": \"{{EVENT_WALL_POST_ID}}\",\n    \"eventId\": \"{{EVENT_ID}}\",\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"text\": \"this is a post\",\n  \"status\": \"Published\",\n  \"attachedFiles\": [\n    {\n      \"id\": \"{{FILE_ID}}\"\n    }\n  ]\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/eventWallPosts",
@@ -4459,24 +4483,33 @@
 							"name": "Update EventWallPost.",
 							"request": {
 								"method": "PUT",
-								"header": [],
-								"body": {},
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"{{EVENT_WALL_POST_ID}}\",\n  \"parentPostId\": null,\n    \"eventId\": \"{{EVENT_ID}}\",\n  \"user\": {\n    \"id\": \"{{USER_ID}}\"\n  },\n  \"text\": \"this is a post modified\",\n  \"status\": \"Published\",\n  \"attachedFiles\": [\n    {\n      \"id\": \"{{FILE_ID}}\"\n    }\n  ]\n}"
+								},
 								"url": {
-									"raw": "http:///eventWallPosts/:id",
+									"raw": "{{URL}}/eventWallPosts/:id",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"eventWallPosts",
 										":id"
 									],
 									"variable": [
 										{
-											"value": "{{id}}",
-											"id": "id"
+											"key": "id",
+											"value": "{{EVENT_WALL_POST_ID}}"
 										}
 									]
 								},
@@ -4488,24 +4521,29 @@
 							"name": "Delete EventWallPost.",
 							"request": {
 								"method": "DELETE",
-								"header": [],
-								"body": {},
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
-									"raw": "http:///eventWallPosts/:id",
+									"raw": "{{URL}}/eventWallPosts/:id",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"eventWallPosts",
 										":id"
 									],
 									"variable": [
 										{
-											"value": "{{id}}",
-											"id": "id"
+											"key": "id",
+											"value": "{{EVENT_WALL_POST_ID}}"
 										}
 									]
 								},
@@ -4517,25 +4555,27 @@
 							"name": "Like EventWallPost.",
 							"request": {
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "http:///eventWallPosts/:id/like",
+									"raw": "{{URL}}/eventWallPosts/:id/like",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"eventWallPosts",
 										":id",
 										"like"
 									],
 									"variable": [
 										{
-											"value": "{{id}}",
-											"id": "id"
+											"key": "id",
+											"value": "{{EVENT_WALL_POST_ID}}"
 										}
 									]
 								},
@@ -4547,25 +4587,27 @@
 							"name": "Unlike EventWallPost.",
 							"request": {
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_TOKEN}}"
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "http:///eventWallPosts/:id/unlike",
+									"raw": "{{URL}}/eventWallPosts/:id/unlike",
 									"host": [
-										"http:"
+										"{{URL}}"
 									],
-									"port": "",
 									"path": [
-										"",
-										"",
 										"eventWallPosts",
 										":id",
 										"unlike"
 									],
 									"variable": [
 										{
-											"value": "{{id}}",
-											"id": "id"
+											"key": "id",
+											"value": "{{EVENT_WALL_POST_ID}}"
 										}
 									]
 								},
@@ -4933,7 +4975,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"emails\": [\n    \"kinfkong@126.com\"\n  ],\n  \"title\": \"Hello, this is title\",\n  \"text\": \"this is a text\",\n  \"scheduled\": false\n}"
+									"raw": "{\n  \"emails\": [\n    \"kinfkong@126.com\"\n  ],\n  \"title\": \"Hello, this is title2\",\n  \"text\": \"this is a text\",\n  \"scheduled\": false\n}"
 								},
 								"url": {
 									"raw": "{{URL}}/emails",
