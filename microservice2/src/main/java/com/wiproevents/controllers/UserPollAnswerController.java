@@ -36,7 +36,7 @@ public class UserPollAnswerController {
      * The service used to perform operations. Should be non-null after injection.
      */
     @Autowired
-    private UserPollAnswerService userQuizAnswerService;
+    private UserPollAnswerService userPollAnswerService;
 
     /**
      * Check if all required fields are initialized properly.
@@ -45,7 +45,7 @@ public class UserPollAnswerController {
      */
     @PostConstruct
     protected void checkConfiguration() {
-        Helper.checkConfigNotNull(userQuizAnswerService, "userQuizAnswerService");
+        Helper.checkConfigNotNull(userPollAnswerService, "userPollAnswerService");
     }
 
     /**
@@ -59,7 +59,7 @@ public class UserPollAnswerController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public UserPollAnswer get(@PathVariable String id) throws AttendeeException {
-        return userQuizAnswerService.get(id);
+        return userPollAnswerService.get(id);
     }
 
     /**
@@ -74,7 +74,7 @@ public class UserPollAnswerController {
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
     public UserPollAnswer create(@RequestBody UserPollAnswer entity) throws AttendeeException  {
-        return userQuizAnswerService.create(entity);
+        return userPollAnswerService.create(entity);
     }
 
     /**
@@ -92,7 +92,7 @@ public class UserPollAnswerController {
     @Transactional
     public UserPollAnswer update(@PathVariable String id, @RequestBody UserPollAnswer entity)
             throws AttendeeException  {
-        return userQuizAnswerService.update(id, entity);
+        return userPollAnswerService.update(id, entity);
     }
 
     /**
@@ -106,7 +106,7 @@ public class UserPollAnswerController {
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     @Transactional
     public void delete(@PathVariable String id) throws AttendeeException  {
-        userQuizAnswerService.delete(id);
+        userPollAnswerService.delete(id);
     }
 
     /**
@@ -121,7 +121,7 @@ public class UserPollAnswerController {
     @RequestMapping(method = RequestMethod.GET)
     public SearchResult<UserPollAnswer> search(@ModelAttribute UserPollAnswerSearchCriteria criteria,
                                           @ModelAttribute Paging paging) throws AttendeeException  {
-        return userQuizAnswerService.search(criteria, paging);
+        return userPollAnswerService.search(criteria, paging);
     }
 }
 

@@ -70,7 +70,7 @@ import java.util.Map;
 @RequestMapping("/signup")
 public class SocialConnectController {
 
-    private final static Log logger = LogFactory.getLog(ConnectController.class);
+    private final static Log logger = LogFactory.getLog(SocialConnectController.class);
 
     @Autowired
     private ConnectionFactoryLocator connectionFactoryLocator;
