@@ -154,8 +154,19 @@ the gateway configuration is in:
 
 ### microservices
 
-follow this post to deploy the 2 microservices to Azure:
-[https://stackoverflow.com/questions/30731982/spring-boot-app-on-microsoft-azure](https://stackoverflow.com/questions/30731982/spring-boot-app-on-microsoft-azure)
+#### create the microservices
+- in the portal.azure.com, click the **App Services** in the left panel.
+- Add a new app service of type: **Web App** (and remember to choose Java 8)
+- Click the service you just created, click **Deployment > Deployment credentials**. You can set your FTP credentials for upload.
+- Click the **Overview**, you can see the FTP upload options(Ftp hostname, Ftp deployment/username) there. 
+Connect that ftp using some ftp client tool (like FileZilla).
+- upload the following files to `/site/wwwroot/` in ftp server.   
+```
+     target/attendee-rest-api-microservice1.jar   
+     deployment/microservice1/web.config
+```
+- In the **Overview**, you can find the URL to visit.
+- repeat the above steps to deploy the microservice 2.
 
 ### gateway
 we can use the azure gateway 
