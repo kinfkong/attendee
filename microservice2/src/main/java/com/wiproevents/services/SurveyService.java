@@ -7,7 +7,7 @@ import com.wiproevents.entities.Survey;
 import com.wiproevents.entities.criteria.SurveySearchCriteria;
 
 /**
- * The survey service.Implementation should be effectively thread-safe.
+ * The survey service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

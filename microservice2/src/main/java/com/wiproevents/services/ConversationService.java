@@ -7,7 +7,7 @@ import com.wiproevents.entities.Conversation;
 import com.wiproevents.entities.criteria.ConversationSearchCriteria;
 
 /**
- * The conversation service.Implementation should be effectively thread-safe.
+ * The conversation service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

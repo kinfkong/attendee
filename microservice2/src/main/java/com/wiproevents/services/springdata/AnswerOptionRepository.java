@@ -1,6 +1,6 @@
 package com.wiproevents.services.springdata;
 
-import com.wiproevents.entities.AnswerOption;
+import com.wiproevents.entities.answers.AnswerOption;
 import com.wiproevents.utils.springdata.extensions.DocumentDbSpecificationRepository;
 
 /**

@@ -7,7 +7,7 @@ import com.wiproevents.exceptions.AttendeeException;
 import java.util.List;
 
 /**
- * The lookup service.Implementation should be effectively thread-safe.
+ * The lookup service implementation should be effectively thread-safe.
  */
 public interface EventService extends GenericService<Event, EventSearchCriteria> {
     EventStatistics calculateDashboard(String id) throws AttendeeException;

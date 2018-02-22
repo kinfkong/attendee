@@ -7,7 +7,7 @@ import com.wiproevents.entities.EventNotification;
 import com.wiproevents.entities.criteria.EventNotificationSearchCriteria;
 
 /**
- * The event notification service.Implementation should be effectively thread-safe.
+ * The event notification service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

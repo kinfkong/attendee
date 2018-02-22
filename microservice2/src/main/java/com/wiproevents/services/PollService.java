@@ -9,7 +9,7 @@ import com.wiproevents.entities.criteria.PollSearchCriteria;
 import com.wiproevents.exceptions.AttendeeException;
 
 /**
- * The poll service.Implementation should be effectively thread-safe.
+ * The poll service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

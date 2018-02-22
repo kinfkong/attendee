@@ -8,7 +8,7 @@ import com.wiproevents.entities.criteria.EmailSearchCriteria;
 import com.wiproevents.exceptions.AttendeeException;
 
 /**
- * The email service.Implementation should be effectively thread-safe.
+ * The email service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

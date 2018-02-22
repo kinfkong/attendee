@@ -7,7 +7,7 @@ import com.wiproevents.entities.UserNote;
 import com.wiproevents.entities.criteria.UserNoteSearchCriteria;
 
 /**
- * The user not service.Implementation should be effectively thread-safe.
+ * The user not service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

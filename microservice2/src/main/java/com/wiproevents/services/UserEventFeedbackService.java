@@ -7,7 +7,7 @@ import com.wiproevents.entities.UserEventFeedback;
 import com.wiproevents.entities.criteria.UserEventFeedbackSearchCriteria;
 
 /**
- * The user event feedback service.Implementation should be effectively thread-safe.
+ * The user event feedback service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

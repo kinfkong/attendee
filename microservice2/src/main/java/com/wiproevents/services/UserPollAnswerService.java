@@ -7,7 +7,7 @@ import com.wiproevents.entities.answers.UserPollAnswer;
 import com.wiproevents.entities.criteria.UserPollAnswerSearchCriteria;
 
 /**
- * The user poll answer service.Implementation should be effectively thread-safe.
+ * The user poll answer service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

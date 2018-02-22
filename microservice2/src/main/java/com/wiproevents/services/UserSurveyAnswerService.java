@@ -7,7 +7,7 @@ import com.wiproevents.entities.answers.UserSurveyAnswer;
 import com.wiproevents.entities.criteria.UserSurveyAnswerSearchCriteria;
 
 /**
- * The user survey answer service.Implementation should be effectively thread-safe.
+ * The user survey answer service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

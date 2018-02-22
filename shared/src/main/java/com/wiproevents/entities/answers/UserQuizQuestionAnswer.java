@@ -5,6 +5,8 @@ import com.wiproevents.utils.springdata.extensions.Reference;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
  * Created by wangjinggang on 2018/2/16.
  */
@@ -14,4 +16,7 @@ public class UserQuizQuestionAnswer extends BaseQuestionAnswer {
     @Reference
     private QuizQuestion question;
     private boolean answerCorrect;
+
+    @Reference
+    private List<AnswerOption> selectedAnswerOptions;
 }

@@ -1,5 +1,6 @@
 package com.wiproevents.entities;
 
+import com.wiproevents.entities.answers.AnswerOption;
 import lombok.Getter;
 import lombok.Setter;
 

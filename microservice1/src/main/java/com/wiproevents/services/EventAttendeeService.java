@@ -7,7 +7,7 @@ import com.wiproevents.entities.EventAttendee;
 import com.wiproevents.entities.criteria.EventAttendeeSearchCriteria;
 
 /**
- * The event attendee service.Implementation should be effectively thread-safe.
+ * The event attendee service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0

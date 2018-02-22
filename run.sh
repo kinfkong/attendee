@@ -1,8 +1,8 @@
 #!/bin/sh
 
-export COSMOS_DB_URI=https://tcattendee.documents.azure.cn:443/
-export COSMOS_DB_KEY=RXUS3AAIl1Ycf3FzIdxH6jBGKcQXxAnFfZ3VMVPKj7aW9xMwaLh82YDoqMk8UD359CbFCuNlCfstEAAwQtyzKg==
-export COSMOS_DB_NAME=attendee
+export COSMOS_DB_URI=https://attendeewce.documents.azure.cn:443/
+export COSMOS_DB_KEY=m2FRyk6hfrs7eJgYwRO65iIYK2ritFhOTYaqKlF6MltwYBiHlJrgikRWm2wUqTENdsMhyqEbGdpfxqJ7140MtA==
+export COSMOS_DB_NAME=attendeewce
 
 
 export SOCIAL_FACEBOOK_APP_ID=136798196925939

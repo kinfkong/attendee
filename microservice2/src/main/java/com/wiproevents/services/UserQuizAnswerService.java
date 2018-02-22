@@ -7,7 +7,7 @@ import com.wiproevents.entities.answers.UserQuizAnswer;
 import com.wiproevents.entities.criteria.UserQuizAnswerSearchCriteria;
 
 /**
- * The user quiz answer service.Implementation should be effectively thread-safe.
+ * The user quiz answer service implementation should be effectively thread-safe.
  *
  * @author TCSDEVELOPER
  * @version 1.0
