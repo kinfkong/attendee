@@ -112,7 +112,7 @@ public class EventWallPostController {
      */
     @RequestMapping(value = "{id}/like", method = RequestMethod.PUT)
     @Transactional
-    public EventWallPost linkByUser(@PathVariable String id)
+    public EventWallPost likeByUser(@PathVariable String id)
             throws AttendeeException  {
         EventWallPost entity = eventWallPostService.get(id);
         UserBrief user = new UserBrief();
@@ -141,7 +141,7 @@ public class EventWallPostController {
      */
     @RequestMapping(value = "{id}/unlike", method = RequestMethod.PUT)
     @Transactional
-    public EventWallPost unlinkByUser(@PathVariable String id)
+    public EventWallPost unlikeByUser(@PathVariable String id)
             throws AttendeeException  {
         EventWallPost entity = eventWallPostService.get(id);
         UserBrief user = new UserBrief();
